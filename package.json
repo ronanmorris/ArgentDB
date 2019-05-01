@@ -1,0 +1,38 @@
+{
+  "name": "argentdb",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
+    "cheerio": "^1.0.0-rc.3",
+    "jquery": "^3.4.0",
+    "puppeteer": "^1.14.0",
+    "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.8",
+    "react-dom": "^16.8.6",
+    "react-responsive-modal": "^3.6.0",
+    "react-router-dom": "^4.3.1",
+    "react-router-modal": "^2.0.0-rc3",
+    "react-scripts": "2.1.8",
+    "react-trigger-change": "^1.0.2",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "styled-components": "^4.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
