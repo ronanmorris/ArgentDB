@@ -45,7 +45,8 @@ export default class CardList extends Component {
       sFire: false,
       sAir: false,
       sWater: false,
-      sDark: false
+      sDark: false,
+      sNeutral: false
     };
 
   //Updates the search field onchange
@@ -101,7 +102,7 @@ export default class CardList extends Component {
       this.setState({ sAllCost: false });
     }
     //Toggle Seach all Elemeents off if one of the other buttons are clicked
-    if ( this.state.sAllElement && (event.target.id === "sLight" || "sFire" || "sAir" || "sWater" || "sDark") ) {
+    if ( this.state.sAllElement && (event.target.id === "sLight" || "sFire" || "sAir" || "sWater" || "sDark" || "sNeutral") ) {
       this.setState({ sAllElement: false });
     }
     //Toggle the other buttons off if Seach in all Texts is clicked
@@ -139,13 +140,14 @@ export default class CardList extends Component {
       })
     }
     //Toggle the other buttons off if Seach all Elements is clicked
-    if ( (event.target.id === "sAllElement") && (this.state.sLight || this.state.sFire || this.state.sAir || this.state.sWater || this.state.sDark) ) {
+    if ( (event.target.id === "sAllElement") && (this.state.sLight || this.state.sFire || this.state.sAir || this.state.sWater || this.state.sDark || this.state.sNeutral) ) {
       this.setState({
       sLight: false,
       sFire: false,
       sAir: false,
       sWater: false,
-      sDark: false
+      sDark: false,
+      sNeutral: false
       })
     }
   }
@@ -182,7 +184,7 @@ export default class CardList extends Component {
     }
     //Makes sure that the Search in All Elements is on if the other three buttons are off
     if ( (!this.state.sAllElement) ) {
-      if ( !(this.state.sLight) && !(this.state.sFire) && !(this.state.sAir) && !(this.state.sWater) && !(this.state.sDark)) { this.setState({ sAllElement: true}); }
+      if ( !(this.state.sLight) && !(this.state.sFire) && !(this.state.sAir) && !(this.state.sWater) && !(this.state.sDark) && !(this.state.sNeutral)) { this.setState({ sAllElement: true}); }
     }
   }
 
@@ -342,6 +344,11 @@ export default class CardList extends Component {
             return ( card.element !== "Dark" )
           });
         }
+        if ( !(this.state.sNeutral) ) {
+          filteredCards = filteredCards.filter(card => {
+            return ( card.element !== "Neutral" )
+          });
+        }
       }
 
     } else {
@@ -433,6 +440,7 @@ export default class CardList extends Component {
                           <button type="button" id="sAir" className={"btn " + (this.state.sAir ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Air</button>
                           <button type="button" id="sWater" className={"btn " + (this.state.sWater ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Water</button>
                           <button type="button" id="sDark" className={"btn " + (this.state.sDark ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Dark</button>
+                          <button type="button" id="sNeutral" className={"btn " + (this.state.sNeutral ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Neutral</button>
                         </div>
                         </div>
                       </div>
