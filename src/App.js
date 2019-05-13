@@ -12,6 +12,7 @@ import Cards from './components/cards/Cards.js';
 
 import backgroundImage from './pattern.png';
 
+
 class App extends Component {
   render() {
     document.title = "Argent DB";
