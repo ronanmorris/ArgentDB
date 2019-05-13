@@ -476,7 +476,6 @@ export default class CardList extends Component {
           
           {filteredCards.map(card => (
              <div key={"a" + card.index} className={"width-" + this.state.cardsPerRow.toString()}>
-              <LazyLoadComponent>
                 <CardCard
                   key={card.index}
                   index={card.index}
@@ -484,7 +483,6 @@ export default class CardList extends Component {
                   url={card.url}
                   columns={this.state.cardsPerRow}
                 />
-              </LazyLoadComponent>
             </div>
             ))}
           </div>
