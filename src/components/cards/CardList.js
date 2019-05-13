@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import CardCard from './CardCard';
-import { LazyLoadComponent } from 'react-lazy-load-image-component';
+import loadMoreImage from '../../loadMore.png';
+import { LazyLoadComponent, LazyLoadImage } from 'react-lazy-load-image-component';
 
-
+const Card = styled.div`
+  background: rgba(198, 198, 198, 0.4);
+  box-shadow: 0 4px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  &:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+  -moz-user-select: none;
+  -website-user-select: none;
+  user-select: none;
+  -o-user-select: none;
+`;
 
 export default class CardList extends Component {
 
@@ -14,12 +27,14 @@ export default class CardList extends Component {
   }
     state = {
       url: './CardDB.json',
-      cards: null,
+      cards: [],
       search: "",
       filerShow: true,
       filterButtonClicked: 'Hide Filters',
       cardsPerRow: '',
       windowWidth: window.innerWidth,
+      showItems: 25,
+      maxShowItems: null,
       sAllText: true,
       sName: false,
       sText: false,
@@ -57,6 +72,17 @@ export default class CardList extends Component {
 
   handleChangeRows(event) {
     this.setState({ cardsPerRow: event.target.value });
+  }
+
+  handleShowMore() {
+    this.setState({
+      showItems:
+        this.state.showItems >= this.state.maxShowItems ?
+          this.state.showItems : this.state.showItems + 25
+    })
+    if ( this.state.showItems >= this.state.maxShowItems ) {
+      this.setState({ showItems: this.state.maxShowItems });
+    }
   }
 
   //set the amount of initial columns based on window size
@@ -165,7 +191,10 @@ export default class CardList extends Component {
   async componentDidMount() {
     //fetches card data from the JSON file. URL stored in state
       const res = await axios.get(this.state.url);
-      this.setState({ cards: res.data['cards'] });
+      this.setState({ 
+        cards: res.data['cards'],
+        maxShowItems: res.data['cards'].length
+     });
       this.resetRows();
   }
 
@@ -197,6 +226,7 @@ export default class CardList extends Component {
     const filter = this.state.search.toLowerCase();
     let currentList = this.state.cards;
     let filteredCards = currentList;
+    let filterMap;
 
     if ( (this.state.search !== "") || !(this.state.sAllText) || !(this.state.sAllTypes) || !(this.state.sAllCost) || !(this.state.sAllElement) ) {
       console.log("hi");
@@ -351,9 +381,35 @@ export default class CardList extends Component {
           });
         }
       }
-
+      //this.setState({ maxShowItems: filteredCards.length })
+      filterMap = filteredCards.slice(0, this.state.showItems).map(
+        card => (
+          <div key={"a" + card.index} className={"width-" + this.state.cardsPerRow.toString()}>
+            <CardCard
+              key={card.index}
+              index={card.index}
+              name={card.name}
+              url={card.url}
+              columns={this.state.cardsPerRow}
+            />
+          </div>
+        )
+      )
     } else {
       filteredCards = this.state.cards;
+      filterMap = filteredCards.slice(0, this.state.showItems).map(
+        card => (
+          <div key={"a" + card.index} className={"width-" + this.state.cardsPerRow.toString()}>
+            <CardCard
+              key={card.index}
+              index={card.index}
+              name={card.name}
+              url={card.url}
+              columns={this.state.cardsPerRow}
+            />
+          </div>
+        )
+      )
     }
 
     return (
@@ -473,18 +529,19 @@ export default class CardList extends Component {
             
           
           <div className="row">
-          
-          {filteredCards.map(card => (
-             <div key={"a" + card.index} className={"width-" + this.state.cardsPerRow.toString()}>
-                <CardCard
-                  key={card.index}
-                  index={card.index}
-                  name={card.name}
-                  url={card.url}
-                  columns={this.state.cardsPerRow}
-                />
-            </div>
-            ))}
+            {filterMap}
+            {this.state.showItems >= this.state.maxShowItems ? null : (
+              <div className={"width-" + this.state.cardsPerRow.toString()}>
+                <Card className="card transparent-bg">
+                  <LazyLoadImage 
+                    className="card-img-top rounded mx-auto"
+                    src={loadMoreImage}
+                    draggable="false"
+                    onClick={this.handleShowMore.bind(this)}
+                  />
+                </Card>
+              </div>
+            )}
           </div>
         </div>
         ) : (

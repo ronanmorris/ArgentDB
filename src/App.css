@@ -21,6 +21,10 @@ footer {
   text-align: center;
 }
 
+transparent-bg {
+  background-color: rgba(245, 245, 245, 0.2) !important;
+}
+
 .foot-pad {
   margin-bottom: 30px;
 }
