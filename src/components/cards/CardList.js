@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import CardCard from './CardCard';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 
 
@@ -475,14 +476,16 @@ export default class CardList extends Component {
           
           {filteredCards.map(card => (
              <div key={"a" + card.index} className={"width-" + this.state.cardsPerRow.toString()}>
-              <CardCard
-                key={card.index}
-                index={card.index}
-                name={card.name}
-                url={card.url}
-                columns={this.state.cardsPerRow}
-              />
-              </div>
+              <LazyLoadComponent>
+                <CardCard
+                  key={card.index}
+                  index={card.index}
+                  name={card.name}
+                  url={card.url}
+                  columns={this.state.cardsPerRow}
+                />
+              </LazyLoadComponent>
+            </div>
             ))}
           </div>
         </div>
