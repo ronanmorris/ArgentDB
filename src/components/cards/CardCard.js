@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import loadingGIF from '../cards/loading.gif';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const Sprite = styled.img`
   display: none;
@@ -56,19 +57,13 @@ state ={
       {/*</div><div className="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-xs-6 col-6 mb-3">*/}
         <StyledLink to={`cards/${this.state.cardIndex}`}>
           <Card className="card">
-            {/*show loading spinner if the image hasnt been displayed yet*/}
-            {this.state.imageLoading ? (
-              <div className="text-center mt-4">
-              <img src={loadingGIF} style={{ width: '2em', height: '2em' }} alt="Loading GIF" />
-              </div>
-            ) : null}
-
-            {/*Show the card image, removing the spinner when it loads*/}
-            <Sprite className="card-img-top rounded mx-auto"
-            onLoad={() => this.setState({ imageLoading: false })}
-            src={this.state.imageUrl}
-            style={ this.state.imageLoading ? null : {display: "block"}}
-            draggable="false"
+            <LazyLoadImage 
+              className="card-img-top rounded mx-auto"
+              alt={this.state.name}
+              src={this.state.imageUrl}
+              style={{display: "block"}}
+              draggable="false"
+              effect="blur"
             />
           </Card>
         </StyledLink>
