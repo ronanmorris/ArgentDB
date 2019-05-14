@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import loadingGIF from '../cards/loading.gif';
 import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component';
-
-const Sprite = styled.img`
-  display: none;
-`;
 
 const Card = styled.div`
   box-shadow: 0 4px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import styled from 'styled-components';
 import CardCard from './CardCard';
 import loadMoreImage from '../../loadMore.png';
-import { LazyLoadComponent, LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import cardData from '../../CardDB.json';
 
 const Card = styled.div`
   background: rgba(198, 198, 198, 0.4);
@@ -191,10 +191,9 @@ export default class CardList extends Component {
   
   async componentDidMount() {
     //fetches card data from the JSON file. URL stored in state
-      const res = await axios.get(this.state.url);
       this.setState({ 
-        cards: res.data['cards'],
-        maxShowItems: res.data['cards'].length
+        cards: cardData['cards'],
+        maxShowItems: cardData['cards'].length
      });
       this.resetRows();
   }

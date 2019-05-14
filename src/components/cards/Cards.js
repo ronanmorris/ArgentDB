@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import CloseIcon from '../../close.png';
 import { Link } from 'react-router-dom';
+import cardData from '../../CardDB.json';
 
 export default class Cards extends Component {
     state = {
@@ -22,23 +22,19 @@ export default class Cards extends Component {
     };
 
     async componentDidMount() {
-      const { cardIndex } = this.props.match.params;
-      const dataUrl = './CardDB.json';
-
-      const cardRes = await axios.get(dataUrl);
-
-      const cardName = cardRes.data['cards'][cardIndex].name;
-      const imageUrl = cardRes.data['cards'][cardIndex].url;
-      const cardNumber = cardRes.data['cards'][cardIndex].number;
-      const cardType = cardRes.data['cards'][cardIndex].type;
-      const cardElement = cardRes.data['cards'][cardIndex].element;
-      const cardCost = cardRes.data['cards'][cardIndex].cost;
-      const cardRace = cardRes.data['cards'][cardIndex].race;
-      const cardPower = cardRes.data['cards'][cardIndex].power;
-      const cardSet = cardRes.data['cards'][cardIndex].set;
-      const cardIllust = cardRes.data['cards'][cardIndex].illust;
-      const cardSplash = cardRes.data['cards'][cardIndex].splash;
-      const cardWholeEffect = cardRes.data['cards'][cardIndex].effect;
+      let cardIndex = this.props.match.params.cardIndex;
+      const cardName = cardData['cards'][cardIndex].name;
+      const imageUrl = cardData['cards'][cardIndex].url;
+      const cardNumber = cardData['cards'][cardIndex].number;
+      const cardType = cardData['cards'][cardIndex].type;
+      const cardElement = cardData['cards'][cardIndex].element;
+      const cardCost = cardData['cards'][cardIndex].cost;
+      const cardRace = cardData['cards'][cardIndex].race;
+      const cardPower = cardData['cards'][cardIndex].power;
+      const cardSet = cardData['cards'][cardIndex].set;
+      const cardIllust = cardData['cards'][cardIndex].illust;
+      const cardSplash = cardData['cards'][cardIndex].splash;
+      const cardWholeEffect = cardData['cards'][cardIndex].effect;
       const cardEffects = cardWholeEffect.split('^^');
       this.setState({ cardName, imageUrl, cardNumber, cardType, cardElement, cardCost, cardRace,
         cardPower, cardSet, cardIllust, cardSplash, cardEffects });

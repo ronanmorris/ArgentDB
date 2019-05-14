@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { ModalContainer, ModalLink } from 'react-router-modal';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,7 +17,7 @@ class App extends Component {
   render() {
     document.title = "Argent DB";
     return (
-      <Router>
+      <BrowserRouter>
         <div>
           <div className="content">
             <div className="App" style={{background: `url(${backgroundImage})`}}>
@@ -35,7 +35,7 @@ class App extends Component {
           <ModalContainer />
         </div>
           
-      </Router>
+      </BrowserRouter>
       
     );
   }
