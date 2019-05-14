@@ -35,6 +35,7 @@ export default class CardList extends Component {
       cardsPerRow: '',
       windowWidth: window.innerWidth,
       showItems: 25,
+      filteredAmount: '',
       maxShowItems: null,
       sAllText: true,
       sName: false,
@@ -411,12 +412,14 @@ export default class CardList extends Component {
         )
       )
     }
+    
 
     return (
       <React.Fragment>
         <div className="foot-pad">
         {filteredCards ? (
           <div>
+            <span className="rft">
             <div className="input-group mb-3 pd-cool">
               <div className="input-group-prepend">
                 <button className="btn btn-outline-secondary button-padded" type="button" data-toggle="button" 
@@ -436,11 +439,11 @@ export default class CardList extends Component {
                           <div className="search-text-padded">Search In:</div>
                         </div>
                         <div className="col-md-10">
-                        <button type="button" id="sAllText" className={"btn-right-margin btn " + (this.state.sAllText ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>All</button>
+                        <button type="button" id="sAllText" className={"btn-right-margin btn rft " + (this.state.sAllText ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>All</button>
                         <div className="btn-group btn-group-wrap" role="group" aria-label="Basic example">
-                          <button type="button" id="sName" className={"btn " + (this.state.sName ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Name</button>
-                          <button type="button" id="sText" className={"btn " + (this.state.sText ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Text</button>
-                          <button type="button" id="sRaces" className={"btn " + (this.state.sRaces ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Races</button>
+                          <button type="button" id="sName" className={"btn rft " + (this.state.sName ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Name</button>
+                          <button type="button" id="sText" className={"btn rft " + (this.state.sText ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Text</button>
+                          <button type="button" id="sRaces" className={"btn rft " + (this.state.sRaces ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Races</button>
                         </div>
                         </div>
                       </div>
@@ -451,15 +454,15 @@ export default class CardList extends Component {
                           <div className="search-text-padded">Card Type:</div>
                         </div>
                         <div className="col-md-10">
-                        <button type="button" id="sAllTypes" className={"btn-right-margin btn " + (this.state.sAllTypes ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>All</button>
+                        <button type="button" id="sAllTypes" className={"btn-right-margin btn rft " + (this.state.sAllTypes ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>All</button>
                         <div className="btn-group btn-group-wrap" role="group" aria-label="Basic example">
-                          <button type="button" id="sChampion" className={"btn " + (this.state.sChampion ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Champion</button>
-                          <button type="button" id="sSpirit" className={"btn " + (this.state.sSpirit ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Spirit</button>
-                          <button type="button" id="sUnit" className={"btn " + (this.state.sUnit ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Unit</button>
-                          <button type="button" id="sSpell" className={"btn " + (this.state.sSpell ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Spell</button>
-                          <button type="button" id="sAugment" className={"btn " + (this.state.sAugment ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Augment</button>
-                          <button type="button" id="sTower" className={"btn " + (this.state.sTower ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Tower</button>
-                          <button type="button" id="sShard" className={"btn " + (this.state.sShard ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Shard</button>
+                          <button type="button" id="sChampion" className={"btn rft " + (this.state.sChampion ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Champion</button>
+                          <button type="button" id="sSpirit" className={"btn rft " + (this.state.sSpirit ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Spirit</button>
+                          <button type="button" id="sUnit" className={"btn rft " + (this.state.sUnit ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Unit</button>
+                          <button type="button" id="sSpell" className={"btn rft " + (this.state.sSpell ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Spell</button>
+                          <button type="button" id="sAugment" className={"btn rft " + (this.state.sAugment ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Augment</button>
+                          <button type="button" id="sTower" className={"btn rft " + (this.state.sTower ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Tower</button>
+                          <button type="button" id="sShard" className={"btn rft " + (this.state.sShard ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Shard</button>
                         </div>
                         </div>
                       </div>
@@ -470,16 +473,16 @@ export default class CardList extends Component {
                           <div className="search-text-padded">Card Cost:</div>
                         </div>
                         <div className="col-md-10">
-                        <button type="button" id="sAllCost" className={"btn-right-margin btn " + (this.state.sAllCost ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>All</button>
+                        <button type="button" id="sAllCost" className={"btn-right-margin btn rft " + (this.state.sAllCost ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>All</button>
                         <div className="btn-group btn-group-wrap" role="group" aria-label="Basic example">
-                          <button type="button" id="sCost0" className={"btn " + (this.state.sCost0 ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>0</button>
-                          <button type="button" id="sCost1" className={"btn " + (this.state.sCost1 ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>1</button>
-                          <button type="button" id="sCost2" className={"btn " + (this.state.sCost2 ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>2</button>
-                          <button type="button" id="sCost3" className={"btn " + (this.state.sCost3 ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>3</button>
-                          <button type="button" id="sCost4" className={"btn " + (this.state.sCost4 ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>4</button>
-                          <button type="button" id="sCost5" className={"btn " + (this.state.sCost5 ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>5</button>
-                          <button type="button" id="sCost6" className={"btn " + (this.state.sCost6 ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>6</button>
-                          <button type="button" id="sCost7up" className={"btn " + (this.state.sCost7up ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>7+</button>
+                          <button type="button" id="sCost0" className={"btn rft " + (this.state.sCost0 ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>0</button>
+                          <button type="button" id="sCost1" className={"btn rft " + (this.state.sCost1 ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>1</button>
+                          <button type="button" id="sCost2" className={"btn rft " + (this.state.sCost2 ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>2</button>
+                          <button type="button" id="sCost3" className={"btn rft " + (this.state.sCost3 ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>3</button>
+                          <button type="button" id="sCost4" className={"btn rft " + (this.state.sCost4 ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>4</button>
+                          <button type="button" id="sCost5" className={"btn rft " + (this.state.sCost5 ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>5</button>
+                          <button type="button" id="sCost6" className={"btn rft " + (this.state.sCost6 ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>6</button>
+                          <button type="button" id="sCost7up" className={"btn rft " + (this.state.sCost7up ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>7+</button>
                         </div>
                         </div>
                       </div>
@@ -490,14 +493,14 @@ export default class CardList extends Component {
                           <div className="search-text-padded">Element:</div>
                         </div>
                         <div className="col-md-10">
-                        <button type="button" id="sAllElement" className={"btn-right-margin btn " + (this.state.sAllElement ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>All</button>
+                        <button type="button" id="sAllElement" className={"btn-right-margin btn rft " + (this.state.sAllElement ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>All</button>
                         <div className="btn-group btn-group-wrap" role="group" aria-label="Basic example">
-                          <button type="button" id="sLight" className={"btn " + (this.state.sLight ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Light</button>
-                          <button type="button" id="sFire" className={"btn " + (this.state.sFire ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Fire</button>
-                          <button type="button" id="sAir" className={"btn " + (this.state.sAir ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Air</button>
-                          <button type="button" id="sWater" className={"btn " + (this.state.sWater ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Water</button>
-                          <button type="button" id="sDark" className={"btn " + (this.state.sDark ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Dark</button>
-                          <button type="button" id="sNeutral" className={"btn " + (this.state.sNeutral ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Neutral</button>
+                          <button type="button" id="sLight" className={"btn rft " + (this.state.sLight ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Light</button>
+                          <button type="button" id="sFire" className={"btn rft " + (this.state.sFire ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Fire</button>
+                          <button type="button" id="sAir" className={"btn rft " + (this.state.sAir ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Air</button>
+                          <button type="button" id="sWater" className={"btn rft " + (this.state.sWater ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Water</button>
+                          <button type="button" id="sDark" className={"btn rft " + (this.state.sDark ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Dark</button>
+                          <button type="button" id="sNeutral" className={"btn rft " + (this.state.sNeutral ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>Neutral</button>
                         </div>
                         </div>
                       </div>
@@ -505,19 +508,19 @@ export default class CardList extends Component {
                   </div>
                   <br />
                   <div className="row">
-                    <div className="col-3 col-sm-3">
+                    <div className="col-4 col-sm-3">
                       <span className="float-right desktop-padding-2">Cards per row </span>
                     </div>
                     <div className="col-6 col-sm-6">
                       <div className="input-group">
                         <div className="input-group-prepend">
-                          <button className="btn btn-outline-secondary button-padded-2" type="button"
+                          <button className="btn btn-outline-secondary button-padded-2 rft " type="button"
                           onClick={this.decrementRows.bind(this)}>-</button>
                         </div>
-                        <input type="text" className="form-control centre-input" aria-describedby="basic-addon1"
+                        <input type="text" className="form-control centre-input rft " aria-describedby="basic-addon1"
                         value={this.state.cardsPerRow} onChange={this.handleChangeRows.bind(this)} />
                         <div className="input-group-append">
-                          <button className="btn btn-outline-secondary button-padded-2" type="button"
+                          <button className="btn btn-outline-secondary button-padded-2 rft " type="button"
                           onClick={this.incrementRows.bind(this)}>+</button>
                         </div>
                       </div>
@@ -530,7 +533,7 @@ export default class CardList extends Component {
           
           <div className="row">
             {filterMap}
-            {this.state.showItems >= this.state.maxShowItems ? null : (
+            {(this.state.showItems >= filteredCards.length) ? null : (
               <div className={"width-" + this.state.cardsPerRow.toString()}>
                 <Card className="card transparent-bg">
                   <LazyLoadImage 
@@ -543,6 +546,7 @@ export default class CardList extends Component {
               </div>
             )}
           </div>
+          </span>
         </div>
         ) : (
         <h1>Loading Cards</h1>
