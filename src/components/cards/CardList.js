@@ -87,6 +87,16 @@ export default class CardList extends Component {
     }
   }
 
+  handleEnter(e) {
+    if (e.key === 'Enter') {
+      e.target.blur();
+      this.setState({ filerShow: false })
+      if (this.state.filterButtonClicked === 'Hide Filters') {
+      this.setState({ filterButtonClicked: 'Show Filters'});
+    }
+    }
+  }
+
   //set the amount of initial columns based on window size
   resetRows() {
     let perRow;
@@ -428,7 +438,7 @@ export default class CardList extends Component {
                 </button>
               </div>
               <input type="text" id="searchbox" name='search' className="form-control" value={this.state.search}
-                onChange={this.handleChange.bind(this)} placeholder="Search Cards..." />
+                onChange={this.handleChange.bind(this)} onKeyDown={this.handleEnter.bind(this)} placeholder="Search Cards..." />
             </div>
             <div className={"collapse" + show}>
               <div className="card card-body padded-card">
