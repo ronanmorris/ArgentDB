@@ -3,7 +3,7 @@
         {
             "index": "0",
             "url": "/img/0.jpg",
-            "number": "48/86 | 1INT",
+            "number": "48/86 - 1INT",
             "name": "Liam, Traitor of Knights",
             "type": "Champion",
             "element": "Light",
@@ -18,7 +18,7 @@
         {
             "index": "1",
             "url": "/img/1.jpg",
-            "number": "68/86 | 1INT",
+            "number": "68/86 - 1INT",
             "name": "Sola, The Light Spirit",
             "type": "Spirit",
             "element": "Light",
@@ -33,7 +33,7 @@
         {
             "index": "2",
             "url": "/img/2.jpg",
-            "number": "06/86 | 1INT",
+            "number": "06/86 - 1INT",
             "name": "Corum Assassin",
             "type": "Unit",
             "element": "Light",
@@ -48,7 +48,7 @@
         {
             "index": "3",
             "url": "/img/3.jpg",
-            "number": "07/86 | 1INT",
+            "number": "07/86 - 1INT",
             "name": "Corum Blademaster",
             "type": "Unit",
             "element": "Light",
@@ -63,7 +63,7 @@
         {
             "index": "4",
             "url": "/img/4.jpg",
-            "number": "08/86 | 1INT",
+            "number": "08/86 - 1INT",
             "name": "Corum Craftsman",
             "type": "Unit",
             "element": "Light",
@@ -78,7 +78,7 @@
         {
             "index": "5",
             "url": "/img/5.jpg",
-            "number": "09/86 | 1INT",
+            "number": "09/86 - 1INT",
             "name": "Corum Lancer",
             "type": "Unit",
             "element": "Light",
@@ -93,7 +93,7 @@
         {
             "index": "6",
             "url": "/img/6.jpg",
-            "number": "10/86 | 1INT",
+            "number": "10/86 - 1INT",
             "name": "Corum Phalanx",
             "type": "Unit",
             "element": "Light",
@@ -108,7 +108,7 @@
         {
             "index": "7",
             "url": "/img/7.jpg",
-            "number": "11/86 | 1INT",
+            "number": "11/86 - 1INT",
             "name": "Corum Rampart",
             "type": "Unit",
             "element": "Light",
@@ -123,7 +123,7 @@
         {
             "index": "8",
             "url": "/img/8.jpg",
-            "number": "12/86 | 1INT",
+            "number": "12/86 - 1INT",
             "name": "Corum Squire",
             "type": "Unit",
             "element": "Light",
@@ -138,7 +138,7 @@
         {
             "index": "9",
             "url": "/img/9.jpg",
-            "number": "38/86 | 1INT",
+            "number": "38/86 - 1INT",
             "name": "Holy Slash",
             "type": "Spell",
             "element": "Light",
@@ -153,7 +153,7 @@
         {
             "index": "10",
             "url": "/img/10.jpg",
-            "number": "49/86 | 1INT",
+            "number": "49/86 - 1INT",
             "name": "Locke, Knight of Fury",
             "type": "Unit",
             "element": "Light",
@@ -168,7 +168,7 @@
         {
             "index": "11",
             "url": "/img/11.jpg",
-            "number": "50/86 | 1INT",
+            "number": "50/86 - 1INT",
             "name": "Lucient, Guardian of Vigilance",
             "type": "Unit",
             "element": "Light",
@@ -183,7 +183,7 @@
         {
             "index": "12",
             "url": "/img/12.jpg",
-            "number": "70/86 | 1INT",
+            "number": "70/86 - 1INT",
             "name": "Standard Shardarmor",
             "type": "Augment",
             "element": "Light",
@@ -198,7 +198,7 @@
         {
             "index": "13",
             "url": "/img/13.jpg",
-            "number": "71/86 | 1INT",
+            "number": "71/86 - 1INT",
             "name": "Standard Shardshield",
             "type": "Augment",
             "element": "Light",
@@ -213,7 +213,7 @@
         {
             "index": "14",
             "url": "/img/14.jpg",
-            "number": "72/86 | 1INT",
+            "number": "72/86 - 1INT",
             "name": "Standard Shardsword",
             "type": "Augment",
             "element": "Light",
@@ -228,7 +228,7 @@
         {
             "index": "15",
             "url": "/img/15.jpg",
-            "number": "85/86 | 1INT",
+            "number": "85/86 - 1INT",
             "name": "Vi, Giver of Light",
             "type": "Unit",
             "element": "Light",
@@ -243,7 +243,7 @@
         {
             "index": "16",
             "url": "/img/16.jpg",
-            "number": "15/86 | 1INT",
+            "number": "15/86 - 1INT",
             "name": "Dragonholt, The Dracoborg",
             "type": "Champion",
             "element": "Fire",
@@ -258,7 +258,7 @@
         {
             "index": "17",
             "url": "/img/17.jpg",
-            "number": "05/86 | 1INT",
+            "number": "05/86 - 1INT",
             "name": "Corona, the Fire Spirit",
             "type": "Spirit",
             "element": "Fire",
@@ -273,7 +273,7 @@
         {
             "index": "18",
             "url": "/img/18.jpg",
-            "number": "04/86 | 1INT",
+            "number": "04/86 - 1INT",
             "name": "Booster Dragon",
             "type": "Unit",
             "element": "Fire",
@@ -288,7 +288,7 @@
         {
             "index": "19",
             "url": "/img/19.jpg",
-            "number": "14/86 | 1INT",
+            "number": "14/86 - 1INT",
             "name": "Deranged Dragon",
             "type": "Unit",
             "element": "Fire",
@@ -303,7 +303,7 @@
         {
             "index": "20",
             "url": "/img/20.jpg",
-            "number": "16/86 | 1INT",
+            "number": "16/86 - 1INT",
             "name": "Dragonic Blast",
             "type": "Spell",
             "element": "Fire",
@@ -318,7 +318,7 @@
         {
             "index": "21",
             "url": "/img/21.jpg",
-            "number": "17/86 | 1INT",
+            "number": "17/86 - 1INT",
             "name": "Dragonic Destroyer",
             "type": "Unit",
             "element": "Fire",
@@ -333,7 +333,7 @@
         {
             "index": "22",
             "url": "/img/22.jpg",
-            "number": "18/86 | 1INT",
+            "number": "18/86 - 1INT",
             "name": "Dragonic Summoner",
             "type": "Unit",
             "element": "Fire",
@@ -348,7 +348,7 @@
         {
             "index": "23",
             "url": "/img/23.jpg",
-            "number": "21/86 | 1INT",
+            "number": "21/86 - 1INT",
             "name": "Enraged Dragon",
             "type": "Unit",
             "element": "Fire",
@@ -363,7 +363,7 @@
         {
             "index": "24",
             "url": "/img/24.jpg",
-            "number": "22/86 | 1INT",
+            "number": "22/86 - 1INT",
             "name": "Exploding Dragon",
             "type": "Unit",
             "element": "Fire",
@@ -378,7 +378,7 @@
         {
             "index": "25",
             "url": "/img/25.jpg",
-            "number": "43/86 | 1INT",
+            "number": "43/86 - 1INT",
             "name": "Imbued by Fire",
             "type": "Spell",
             "element": "Fire",
@@ -393,7 +393,7 @@
         {
             "index": "26",
             "url": "/img/26.jpg",
-            "number": "45/86 | 1INT",
+            "number": "45/86 - 1INT",
             "name": "Juvenile Dragon",
             "type": "Unit",
             "element": "Fire",
@@ -408,7 +408,7 @@
         {
             "index": "27",
             "url": "/img/27.jpg",
-            "number": "52/86 | 1INT",
+            "number": "52/86 - 1INT",
             "name": "Mechdragon's Flame",
             "type": "Spell",
             "element": "Fire",
@@ -423,7 +423,7 @@
         {
             "index": "28",
             "url": "/img/28.jpg",
-            "number": "56/86 | 1INT",
+            "number": "56/86 - 1INT",
             "name": "Rao Dragon Tamer",
             "type": "Unit",
             "element": "Fire",
@@ -438,7 +438,7 @@
         {
             "index": "29",
             "url": "/img/29.jpg",
-            "number": "69/86 | 1INT",
+            "number": "69/86 - 1INT",
             "name": "Soulfire Dragon",
             "type": "Unit",
             "element": "Fire",
@@ -453,7 +453,7 @@
         {
             "index": "30",
             "url": "/img/30.jpg",
-            "number": "83/86 | 1INT",
+            "number": "83/86 - 1INT",
             "name": "Vehemont, Crimson Guardian",
             "type": "Unit",
             "element": "Fire",
@@ -468,7 +468,7 @@
         {
             "index": "31",
             "url": "/img/31.jpg",
-            "number": "84/86 | 1INT",
+            "number": "84/86 - 1INT",
             "name": "Vengeful Dragon",
             "type": "Unit",
             "element": "Fire",
@@ -483,7 +483,7 @@
         {
             "index": "32",
             "url": "/img/32.jpg",
-            "number": "20/86 | 1INT",
+            "number": "20/86 - 1INT",
             "name": "Eitan, Exiled Prince",
             "type": "Champion",
             "element": "Air",
@@ -498,7 +498,7 @@
         {
             "index": "33",
             "url": "/img/33.jpg",
-            "number": "47/86 | 1INT",
+            "number": "47/86 - 1INT",
             "name": "Kyte, the Air Spirit",
             "type": "Spirit",
             "element": "Air",
@@ -513,7 +513,7 @@
         {
             "index": "34",
             "url": "/img/34.jpg",
-            "number": "1/86 | 1INT",
+            "number": "1/86 - 1INT",
             "name": "Ariana, Young Prodigy",
             "type": "Unit",
             "element": "Air",
@@ -528,7 +528,7 @@
         {
             "index": "35",
             "url": "/img/35.jpg",
-            "number": "35/86 | 1INT",
+            "number": "35/86 - 1INT",
             "name": "Greathawk of Cloudsea",
             "type": "Unit",
             "element": "Air",
@@ -543,7 +543,7 @@
         {
             "index": "36",
             "url": "/img/36.jpg",
-            "number": "39/86 | 1INT",
+            "number": "39/86 - 1INT",
             "name": "Hurricane Shot",
             "type": "Spell",
             "element": "Air",
@@ -558,7 +558,7 @@
         {
             "index": "37",
             "url": "/img/37.jpg",
-            "number": "46/86 | 1INT",
+            "number": "46/86 - 1INT",
             "name": "Kala, Trusty Companion",
             "type": "Unit",
             "element": "Air",
@@ -573,7 +573,7 @@
         {
             "index": "38",
             "url": "/img/38.jpg",
-            "number": "57/86 | 1INT",
+            "number": "57/86 - 1INT",
             "name": "Royal Reflection",
             "type": "Spell",
             "element": "Air",
@@ -588,7 +588,7 @@
         {
             "index": "39",
             "url": "/img/39.jpg",
-            "number": "60/86 | 1INT",
+            "number": "60/86 - 1INT",
             "name": "Sky Recruit",
             "type": "Unit",
             "element": "Air",
@@ -603,7 +603,7 @@
         {
             "index": "40",
             "url": "/img/40.jpg",
-            "number": "61/86 | 1INT",
+            "number": "61/86 - 1INT",
             "name": "Skyship Engineer",
             "type": "Unit",
             "element": "Air",
@@ -618,7 +618,7 @@
         {
             "index": "41",
             "url": "/img/41.jpg",
-            "number": "62/86 | 1INT",
+            "number": "62/86 - 1INT",
             "name": "Skytree Aviator",
             "type": "Unit",
             "element": "Air",
@@ -633,7 +633,7 @@
         {
             "index": "42",
             "url": "/img/42.jpg",
-            "number": "63/86 | 1INT",
+            "number": "63/86 - 1INT",
             "name": "Skytree Battle Cruiser",
             "type": "Unit",
             "element": "Air",
@@ -648,7 +648,7 @@
         {
             "index": "43",
             "url": "/img/43.jpg",
-            "number": "64/86 | 1INT",
+            "number": "64/86 - 1INT",
             "name": "Skytree Blockadeship",
             "type": "Unit",
             "element": "Air",
@@ -663,7 +663,7 @@
         {
             "index": "44",
             "url": "/img/44.jpg",
-            "number": "65/86 | 1INT",
+            "number": "65/86 - 1INT",
             "name": "Skytree Dragon",
             "type": "Unit",
             "element": "Air",
@@ -678,7 +678,7 @@
         {
             "index": "45",
             "url": "/img/45.jpg",
-            "number": "66/86 | 1INT",
+            "number": "66/86 - 1INT",
             "name": "Skytree Sandship",
             "type": "Unit",
             "element": "Air",
@@ -693,7 +693,7 @@
         {
             "index": "46",
             "url": "/img/46.jpg",
-            "number": "67/86 | 1INT",
+            "number": "67/86 - 1INT",
             "name": "Skytree Warship",
             "type": "Unit",
             "element": "Air",
@@ -708,7 +708,7 @@
         {
             "index": "47",
             "url": "/img/47.jpg",
-            "number": "76/86 | 1INT",
+            "number": "76/86 - 1INT",
             "name": "Tornado Shot",
             "type": "Spell",
             "element": "Air",
@@ -723,7 +723,7 @@
         {
             "index": "48",
             "url": "/img/48.jpg",
-            "number": "44/86 | 1INT",
+            "number": "44/86 - 1INT",
             "name": "Jemial, Cryptic Caster",
             "type": "Champion",
             "element": "Water",
@@ -738,7 +738,7 @@
         {
             "index": "49",
             "url": "/img/49.jpg",
-            "number": "25/86 | 1INT",
+            "number": "25/86 - 1INT",
             "name": "Fizzy, the Water Spirit",
             "type": "Spirit",
             "element": "Water",
@@ -753,7 +753,7 @@
         {
             "index": "50",
             "url": "/img/50.jpg",
-            "number": "02/86 | 1INT",
+            "number": "02/86 - 1INT",
             "name": "Azure Guardian",
             "type": "Unit",
             "element": "Water",
@@ -768,7 +768,7 @@
         {
             "index": "51",
             "url": "/img/51.jpg",
-            "number": "03/86 | 1INT",
+            "number": "03/86 - 1INT",
             "name": "Azure Seer",
             "type": "Unit",
             "element": "Water",
@@ -783,7 +783,7 @@
         {
             "index": "52",
             "url": "/img/52.jpg",
-            "number": "13/86 | 1INT",
+            "number": "13/86 - 1INT",
             "name": "Cryptic Deflection",
             "type": "Spell",
             "element": "Water",
@@ -799,7 +799,7 @@
         {
             "index": "53",
             "url": "/img/53.jpg",
-            "number": "26/86 | 1INT",
+            "number": "26/86 - 1INT",
             "name": "Force Blast",
             "type": "Spell",
             "element": "Water",
@@ -814,7 +814,7 @@
         {
             "index": "54",
             "url": "/img/54.jpg",
-            "number": "34/86 | 1INT",
+            "number": "34/86 - 1INT",
             "name": "Great Stormfish",
             "type": "Unit",
             "element": "Water",
@@ -829,7 +829,7 @@
         {
             "index": "55",
             "url": "/img/55.jpg",
-            "number": "40/86 | 1INT",
+            "number": "40/86 - 1INT",
             "name": "Iakuma Mistmage",
             "type": "Unit",
             "element": "Water",
@@ -844,7 +844,7 @@
         {
             "index": "56",
             "url": "/img/56.jpg",
-            "number": "41/86 | 1INT",
+            "number": "41/86 - 1INT",
             "name": "Iakuma Silencer",
             "type": "Unit",
             "element": "Water",
@@ -859,7 +859,7 @@
         {
             "index": "57",
             "url": "/img/57.jpg",
-            "number": "42/86 | 1INT",
+            "number": "42/86 - 1INT",
             "name": "Iakuma Stormknight",
             "type": "Unit",
             "element": "Water",
@@ -874,7 +874,7 @@
         {
             "index": "58",
             "url": "/img/58.jpg",
-            "number": "53/86 | 1INT",
+            "number": "53/86 - 1INT",
             "name": "Mei-yu's Assistant",
             "type": "Unit",
             "element": "Water",
@@ -889,7 +889,7 @@
         {
             "index": "59",
             "url": "/img/59.jpg",
-            "number": "55/86 | 1INT",
+            "number": "55/86 - 1INT",
             "name": "Phantasmal Guards",
             "type": "Spell",
             "element": "Water",
@@ -904,7 +904,7 @@
         {
             "index": "60",
             "url": "/img/60.jpg",
-            "number": "58/86 | 1INT",
+            "number": "58/86 - 1INT",
             "name": "Shard Hoarder",
             "type": "Unit",
             "element": "Water",
@@ -919,7 +919,7 @@
         {
             "index": "61",
             "url": "/img/61.jpg",
-            "number": "59/86 | 1INT",
+            "number": "59/86 - 1INT",
             "name": "Shards of Winter",
             "type": "Spell",
             "element": "Water",
@@ -934,7 +934,7 @@
         {
             "index": "62",
             "url": "/img/62.jpg",
-            "number": "73/86 | 1INT",
+            "number": "73/86 - 1INT",
             "name": "Stormcaster of Azure Tower",
             "type": "Unit",
             "element": "Water",
@@ -949,7 +949,7 @@
         {
             "index": "63",
             "url": "/img/63.jpg",
-            "number": "74/86 | 1INT",
+            "number": "74/86 - 1INT",
             "name": "Stormfish",
             "type": "Unit",
             "element": "Water",
@@ -964,7 +964,7 @@
         {
             "index": "64",
             "url": "/img/64.jpg",
-            "number": "37/86 | 1INT",
+            "number": "37/86 - 1INT",
             "name": "Hoenna, Immoral Conjurer",
             "type": "Champion",
             "element": "Dark",
@@ -979,7 +979,7 @@
         {
             "index": "65",
             "url": "/img/65.jpg",
-            "number": "51/86 | 1INT",
+            "number": "51/86 - 1INT",
             "name": "Luna, the Dark Spirit",
             "type": "Spirit",
             "element": "Dark",
@@ -994,7 +994,7 @@
         {
             "index": "66",
             "url": "/img/66.jpg",
-            "number": "19/86 | 1INT",
+            "number": "19/86 - 1INT",
             "name": "Dusk Strike",
             "type": "Spell",
             "element": "Dark",
@@ -1009,7 +1009,7 @@
         {
             "index": "67",
             "url": "/img/67.jpg",
-            "number": "23/86 | 1INT",
+            "number": "23/86 - 1INT",
             "name": "Failed Golem #1",
             "type": "Unit",
             "element": "Dark",
@@ -1024,7 +1024,7 @@
         {
             "index": "68",
             "url": "/img/68.jpg",
-            "number": "24/86 | 1INT",
+            "number": "24/86 - 1INT",
             "name": "Failed Golem #2",
             "type": "Unit",
             "element": "Dark",
@@ -1039,7 +1039,7 @@
         {
             "index": "69",
             "url": "/img/69.jpg",
-            "number": "27/86 | 1INT",
+            "number": "27/86 - 1INT",
             "name": "Golem of Allurment",
             "type": "Unit",
             "element": "Dark",
@@ -1054,7 +1054,7 @@
         {
             "index": "70",
             "url": "/img/70.jpg",
-            "number": "28/86 | 1INT",
+            "number": "28/86 - 1INT",
             "name": "Golem of Arrogance",
             "type": "Unit",
             "element": "Dark",
@@ -1069,7 +1069,7 @@
         {
             "index": "71",
             "url": "/img/71.jpg",
-            "number": "29/86 | 1INT",
+            "number": "29/86 - 1INT",
             "name": "Golem of Avarice",
             "type": "Unit",
             "element": "Dark",
@@ -1084,7 +1084,7 @@
         {
             "index": "72",
             "url": "/img/72.jpg",
-            "number": "30/86 | 1INT",
+            "number": "30/86 - 1INT",
             "name": "Golem of Devourment",
             "type": "Unit",
             "element": "Dark",
@@ -1099,7 +1099,7 @@
         {
             "index": "73",
             "url": "/img/73.jpg",
-            "number": "31/86 | 1INT",
+            "number": "31/86 - 1INT",
             "name": "Golem of Indolence",
             "type": "Unit",
             "element": "Dark",
@@ -1114,7 +1114,7 @@
         {
             "index": "74",
             "url": "/img/74.jpg",
-            "number": "32/86 | 1INT",
+            "number": "32/86 - 1INT",
             "name": "Golem of Jealousy",
             "type": "Unit",
             "element": "Dark",
@@ -1129,7 +1129,7 @@
         {
             "index": "75",
             "url": "/img/75.jpg",
-            "number": "33/86 | 1INT",
+            "number": "33/86 - 1INT",
             "name": "Golem of Vengeance",
             "type": "Unit",
             "element": "Dark",
@@ -1144,7 +1144,7 @@
         {
             "index": "76",
             "url": "/img/76.jpg",
-            "number": "36/86 | 1INT",
+            "number": "36/86 - 1INT",
             "name": "Hellish Guardhound",
             "type": "Unit",
             "element": "Dark",
@@ -1159,7 +1159,7 @@
         {
             "index": "77",
             "url": "/img/77.jpg",
-            "number": "54/86 | 1INT",
+            "number": "54/86 - 1INT",
             "name": "Nobe the Shadow Guardian",
             "type": "Unit",
             "element": "Dark",
@@ -1174,7 +1174,7 @@
         {
             "index": "78",
             "url": "/img/78.jpg",
-            "number": "75/86 | 1INT",
+            "number": "75/86 - 1INT",
             "name": "Strike of the Golems",
             "type": "Spell",
             "element": "Dark",
@@ -1189,7 +1189,7 @@
         {
             "index": "79",
             "url": "/img/79.jpg",
-            "number": "82/86 | 1INT",
+            "number": "82/86 - 1INT",
             "name": "Uncertain Experiment",
             "type": "Spell",
             "element": "Dark",
@@ -1204,7 +1204,7 @@
         {
             "index": "80",
             "url": "/img/80.jpg",
-            "number": "80/86 | 1INT",
+            "number": "80/86 - 1INT",
             "name": "Tower of Light",
             "type": "Tower",
             "element": "Light",
@@ -1219,7 +1219,7 @@
         {
             "index": "81",
             "url": "/img/81.jpg",
-            "number": "79/86 | 1INT",
+            "number": "79/86 - 1INT",
             "name": "Tower of Fire",
             "type": "Tower",
             "element": "Fire",
@@ -1234,7 +1234,7 @@
         {
             "index": "82",
             "url": "/img/82.jpg",
-            "number": "77/86 | 1INT",
+            "number": "77/86 - 1INT",
             "name": "Tower of Air",
             "type": "Tower",
             "element": "Air",
@@ -1249,7 +1249,7 @@
         {
             "index": "83",
             "url": "/img/83.jpg",
-            "number": "81/86 | 1INT",
+            "number": "81/86 - 1INT",
             "name": "Tower of Water",
             "type": "Tower",
             "element": "Water",
@@ -1264,7 +1264,7 @@
         {
             "index": "84",
             "url": "/img/84.jpg",
-            "number": "78/86 | 1INT",
+            "number": "78/86 - 1INT",
             "name": "Tower of Darkness",
             "type": "Tower",
             "element": "Dark",
@@ -1279,7 +1279,7 @@
         {
             "index": "85",
             "url": "/img/85.jpg",
-            "number": "86/86 | 1INT",
+            "number": "86/86 - 1INT",
             "name": "Argent Shard",
             "type": "Shard",
             "element": "Neutral",
