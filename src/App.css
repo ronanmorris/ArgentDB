@@ -420,3 +420,27 @@ h4 {
   cursor: pointer;
 }
 
+.card-img {
+  z-index: 1;
+}
+.card-img:hover {
+  opacity: 0.9;
+}
+
+.card-img:hover div.btn-deck {
+  display: block;
+}
+
+.button-position {
+  position: relative;
+  width: 100%;
+}
+
+.btn-deck {
+  position: absolute;
+  display: none;
+  white-space: nowrap;
+  top: 1vh;
+  left: 4%;
+  z-index: 2;
+}

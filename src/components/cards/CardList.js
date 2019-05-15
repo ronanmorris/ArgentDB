@@ -4,6 +4,7 @@ import CardCard from './CardCard';
 import loadMoreImage from '../../loadMore.png';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import cardData from '../../CardDB.json';
+import DeckBuilder from './DeckBuilder';
 
 const Card = styled.div`
   background: rgba(198, 198, 198, 0.4);
@@ -24,11 +25,13 @@ export default class CardList extends Component {
   constructor(props) {
     super(props)
     this.buttonUpdateState = this.buttonUpdateState.bind(this);
+    this.buttonAddToDeck = this.buttonAddToDeck.bind(this);
     this.inputRef = React.createRef();
   }
     state = {
       url: './CardDB.json',
       cards: [],
+      currentDeck: [],
       search: "",
       filerShow: true,
       filterButtonClicked: 'Hide Filters',
@@ -95,6 +98,27 @@ export default class CardList extends Component {
       this.setState({ filterButtonClicked: 'Show Filters'});
     }
     }
+  }
+
+  buttonAddToDeck(event) {
+    let split = event.target.id.split('x');
+    let quantity = split[0];
+    let index = split[1];
+    let currentDeck = this.state.currentDeck;
+    let exists = false;
+    currentDeck.forEach(function(card) {
+      if (card.index === index) { 
+        exists = true;
+        if (card.quantity !== quantity) {
+          card.quantity = quantity;
+        }
+      }
+    });
+    if (!exists) {
+      currentDeck.push({index: index, quantity: quantity});
+    }
+    this.setState({currentDeck: currentDeck})
+    console.log(currentDeck);
   }
 
   //set the amount of initial columns based on window size
@@ -410,14 +434,26 @@ export default class CardList extends Component {
       filteredCards = this.state.cards;
       filterMap = filteredCards.slice(0, this.state.showItems).map(
         card => (
-          <div key={"a" + card.index} className={"width-" + this.state.cardsPerRow.toString()}>
+          <div key={"a" + card.index} className={"card-img width-" + this.state.cardsPerRow.toString()}>
+            <div className="button-position">
+              <div className="btn-group btn-deck">
+                <button id={"0x" + card.index} type="button" className="btn btn-info" onClick={this.buttonAddToDeck}>x0</button>
+                <button id={"1x" + card.index} type="button" className="btn btn-info" onClick={this.buttonAddToDeck}>x1</button>
+                <button id={"2x" + card.index} type="button" className="btn btn-info" onClick={this.buttonAddToDeck}>x2</button>
+                <button id={"3x" + card.index} type="button" className="btn btn-info" onClick={this.buttonAddToDeck}>x3</button>
+              </div>
+            </div>
+            
             <CardCard
               key={card.index}
               index={card.index}
               name={card.name}
               url={card.url}
               columns={this.state.cardsPerRow}
-            />
+            >
+              
+            </CardCard>
+            
           </div>
         )
       )
@@ -556,6 +592,7 @@ export default class CardList extends Component {
               </div>
             )}
           </div>
+          <DeckBuilder currentDeck={this.state.currentDeck} />
           </span>
         </div>
         ) : (
