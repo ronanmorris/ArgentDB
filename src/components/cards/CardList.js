@@ -4,7 +4,7 @@ import CardCard from './CardCard';
 import loadMoreImage from '../../loadMore.png';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import cardData from '../../CardDB.json';
-import DeckBuilder from './DeckBuilder';
+import DeckBuilderButton from '../layout/DeckBuilderButton';
 
 const Card = styled.div`
   background: rgba(198, 198, 198, 0.4);
@@ -118,7 +118,6 @@ export default class CardList extends Component {
       currentDeck.push({index: index, quantity: quantity});
     }
     this.setState({currentDeck: currentDeck})
-    console.log(currentDeck);
   }
 
   //set the amount of initial columns based on window size
@@ -592,7 +591,7 @@ export default class CardList extends Component {
               </div>
             )}
           </div>
-          <DeckBuilder currentDeck={this.state.currentDeck} />
+          <DeckBuilderButton currentDeck={this.state.currentDeck} />
           </span>
         </div>
         ) : (

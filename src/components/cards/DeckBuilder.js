@@ -2,20 +2,19 @@ import React, { Component } from 'react'
 
 export default class DeckBuilder extends Component {
     state = {
-        currentDeck: []
+        deckName: 'UntitledDeck'
     }
 
     componentDidMount() {
-        const currentDeck = this.props.currentDeck;
-        this.setState({currentDeck})
+        console.log(this.props.location.state.currentDeck);
     }
 
-
   render() {
+    
     return (
-      <div className="row">
-        
+      <div>
+          
       </div>
     )
-  } 
+  }
 }

@@ -428,12 +428,16 @@ h4 {
 }
 
 .card-img:hover div.btn-deck {
-  display: block;
+  display: flex;
 }
 
 .button-position {
   position: relative;
   width: 100%;
+}
+
+.btn-deck .btn {
+  flex: 1;
 }
 
 .btn-deck {
@@ -443,4 +447,13 @@ h4 {
   top: 1vh;
   left: 4%;
   z-index: 2;
+}
+
+
+.deck-builder-toggle {
+  position: fixed !important;
+  z-index: 10 !important;
+  left: 5px !important;
+  top: 5px !important;
+  font-size: 1.2rem;
 }

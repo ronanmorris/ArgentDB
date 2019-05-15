@@ -11,6 +11,8 @@ import Dashboard from './components/layout/Dashboard';
 import Cards from './components/cards/Cards.js';
 
 import backgroundImage from './pattern.png';
+import DeckBuilderButton from './components/layout/DeckBuilderButton';
+import DeckBuilder from './components/cards/DeckBuilder';
 
 
 class App extends Component {
@@ -25,6 +27,7 @@ class App extends Component {
               <div className="container">
                 <Route path="/" component={Dashboard} />
                 <ModalLink path="/cards/:cardIndex" component={Cards} />
+                <ModalLink path="/builder/:deckID?" component={DeckBuilder} />
               </div>
             </div>
           </div>
