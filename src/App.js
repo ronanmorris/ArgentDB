@@ -29,7 +29,7 @@ class App extends Component {
             </div>
           </div>
           <footer>
-            <span className="nav-link">v1.1.1<br/>All Images, Art and Card information are the properties and copyright of Alter Reality, LLC.<br/>This is a fan made website. This website is in no way affiliated with, endorsed by, associated with or in any way officially connected with, Alter Reality, LLC. or any of their realated affiliates or brands</span>
+            <span className="nav-link">v1.1.2<br/>All Images, Art and Card information are the properties and copyright of Alter Reality, LLC.<br/>This is a fan made website. This website is in no way affiliated with, endorsed by, associated with or in any way officially connected with, Alter Reality, LLC. or any of their realated affiliates or brands</span>
           </footer>
           <ModalContainer />
         </div>

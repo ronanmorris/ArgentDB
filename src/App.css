@@ -105,6 +105,7 @@ body {
   top: 50%;
   left: 50%;
   width: 55%;
+  max-width: 960px;
   transform: translate(-50%, -50%);
   background-color: white;
   border-radius: 5px;
@@ -210,6 +211,9 @@ h4 {
   .resp-text {
     font-size: 0.7rem;
   }
+  .cardImgRounded {
+    width: 95% !important;
+  }
 
   .rft {
     font-size: 0.9rem;
@@ -234,7 +238,9 @@ h4 {
   .resp-text {
     font-size: 0.8rem;
   }
-
+  .cardImgRounded {
+    width: 80% !important;
+  }
   .rft {
     font-size: 1rem;
   }
@@ -254,6 +260,9 @@ h4 {
   .faint-text {
     font-size: 1rem;
   }
+  .cardImgRounded {
+    width: 80% !important;
+  }
   .resp-text {
     font-size: 1rem;
   }
@@ -270,11 +279,21 @@ h4 {
   .react-router-modal__modal {
     width: 55%;
   }
+  .cardImgRounded {
+    width: 80% !important;
+  }
 }
 
 .cardImgRounded {
   border-radius: 12px;
   z-index: 1;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
 }
 
 .tabbed-text {
