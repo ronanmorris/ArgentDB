@@ -4,6 +4,8 @@ import CardCard from "./CardCard";
 import loadMoreImage from "../../loadMore.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import cardData from "../../CardDB.json";
+import Picky from 'react-picky';
+import 'react-picky/dist/picky.css'; // Include CSS
 
 const Card = styled.div`
   background: rgba(198, 198, 198, 0.4);
@@ -73,7 +75,10 @@ export default class CardList extends Component {
     sSuper: false,
     sArgent: false,
     sTopper: false,
-    sPromo: false
+    sPromo: false,
+    sAllSet: true,
+    setValues: [{id: 0, name: 'Intro Deck'}, {id: 1, name: 'Betrayal'}],
+    searchSetValue: []
   };
 
   //Updates the search field onchange
@@ -84,6 +89,18 @@ export default class CardList extends Component {
   //Updates the amount of rows of cards shown
   handleChangeRows(event) {
     this.setState({ cardsPerRow: event.target.value });
+  }
+
+  handleSetSearch(value) {
+    this.setState({ searchSetValue: value});
+    
+    //Toggle Seach all sets off if one of the other buttons are clicked
+    if (
+      this.state.sAllSet &&
+      (value !== [])
+    ) {
+      this.setState({ sAllSet: false });
+    }
   }
 
   //Handler for the button to view more cards.  Logic shows 25 more cards and caps out at the length of the filtered cards list
@@ -289,6 +306,15 @@ export default class CardList extends Component {
         sNeutral: false
       });
     }
+    //Toggle the dropdown off if Seach all sets is clicked
+    if (
+      event.target.id === "sAllSet" &&
+      (this.state.searchSetValue !== [])
+    ) {
+      this.setState({
+        searchSetValue: []
+      });
+    }
     //Toggle the other buttons off if Seach all Rarity is clicked
     if (
       event.target.id === "sAllRarity" &&
@@ -379,6 +405,7 @@ export default class CardList extends Component {
         this.setState({ sAllElement: true });
       }
     }
+    
     if (!this.state.sAllRarity) {
       if (
         !this.state.sFixed &&
@@ -397,6 +424,12 @@ export default class CardList extends Component {
   render() {
     //variable for showing the filters dropdown
     const show = this.state.filerShow ? "show" : "";
+    if (!this.state.sAllSet) {
+      if (this.state.searchSetValue === []) {
+        console.log("hi")
+        this.setState({ sAllSet: true});
+      }
+    }
 
     //variables for filtering results
     const filter = this.state.search.toLowerCase();
@@ -1090,6 +1123,40 @@ export default class CardList extends Component {
                           </div>
                         </div>
                       </div>
+                      <div className="list-group-item">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <div className="search-text-padded">Set:</div>
+                          </div>
+                          <div className="col-md-10">
+                            <button
+                              type="button"
+                              id="sAllSet"
+                              className={
+                                "btn-right-margin btn rft " +
+                                (this.state.sAllSet
+                                  ? "btn-secondary"
+                                  : "btn-light")
+                              }
+                              onClick={this.buttonUpdateState}
+                            >
+                              All
+                            </button>
+
+                            <Picky
+                              className="pickybox"
+                              options={this.state.setValues}
+                              value={this.state.searchSetValue}
+                              multiple={true}
+                              onChange={this.handleSetSearch.bind(this)}
+                              valueKey="id"
+                              labelKey="name"
+                              dropdownHeight={600}
+                            />
+                          </div>
+                        </div>
+                      </div>
+
                       <div className="list-group-item">
                         <div className="row">
                           <div className="col-md-2">

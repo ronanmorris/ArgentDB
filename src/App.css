@@ -370,6 +370,12 @@ h4 {
   display: inline-block;
 }
 
+.pickybox {
+  display: inline-block ;
+  width: 50% !important;
+  vertical-align: middle;
+}
+
 .desktop-padding-1 {
   padding-top: 0.2%;
   vertical-align: top;
