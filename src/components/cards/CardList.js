@@ -93,7 +93,6 @@ export default class CardList extends Component {
 
   handleSetSearch(value) {
     this.setState({ searchSetValue: value});
-    
     //Toggle Seach all sets off if one of the other buttons are clicked
     if (
       this.state.sAllSet &&
@@ -144,6 +143,7 @@ export default class CardList extends Component {
 
   //decrease the amount of card columns, resetting if invalid input
   decrementRows() {
+    console.log(this.state.searchSetValue)
     let i = this.state.cardsPerRow;
     if (isNaN(i)) {
       this.resetRows();
@@ -405,7 +405,7 @@ export default class CardList extends Component {
         this.setState({ sAllElement: true });
       }
     }
-    
+
     if (!this.state.sAllRarity) {
       if (
         !this.state.sFixed &&
@@ -419,17 +419,16 @@ export default class CardList extends Component {
         this.setState({ sAllRarity: true });
       }
     }
+    if (this.state.sAllSet === false) {
+      if (this.state.searchSetValue.length === 0) {
+        this.setState({sAllSet: true})
+      }
+    }
   }
 
   render() {
     //variable for showing the filters dropdown
     const show = this.state.filerShow ? "show" : "";
-    if (!this.state.sAllSet) {
-      if (this.state.searchSetValue === []) {
-        console.log("hi")
-        this.setState({ sAllSet: true});
-      }
-    }
 
     //variables for filtering results
     const filter = this.state.search.toLowerCase();
@@ -444,7 +443,8 @@ export default class CardList extends Component {
       !this.state.sAllTypes ||
       !this.state.sAllCost ||
       !this.state.sAllElement ||
-      !this.state.sAllRarity
+      !this.state.sAllRarity ||
+      !this.state.sAllSet
     ) {
       //Search Names, Races AND Text
       if (this.state.sAllText) {
@@ -594,6 +594,23 @@ export default class CardList extends Component {
         if (!this.state.sNeutral) {
           filteredCards = filteredCards.filter(card => {
             return card.element !== "Neutral";
+          });
+        }
+      }
+      //Filter out card sets if they are not selected
+      let filterSets = [];
+      this.state.searchSetValue.forEach(function(set) {
+        filterSets.push(set.name);
+      });
+      if (!this.state.sAllSet) {
+        if (!filterSets.includes("Intro Deck")) {
+          filteredCards = filteredCards.filter(card => {
+            return card.set !== "Intro Deck";
+          });
+        }
+        if (!filterSets.includes("Betrayal")) {
+          filteredCards = filteredCards.filter(card => {
+            return card.set !== "Betrayal";
           });
         }
       }
