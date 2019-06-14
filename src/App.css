@@ -296,8 +296,7 @@ h4 {
 }
 
 .effects-class {
-  vertical-align: top;
-  display: inline-block;
+  display: block;
   line-height: 1.25;
   white-space: pre-line;
   padding-bottom: 10px;
