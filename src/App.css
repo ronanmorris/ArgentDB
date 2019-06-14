@@ -1,14 +1,12 @@
 .App {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: repeat;
-    background-color: #fafafa;
-    padding-top: 4rem;
-    min-height: 100vh;
-    padding-top: 0%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: repeat;
+  background-color: #fafafa;
+  padding-top: 4rem;
+  min-height: 100vh;
+  padding-top: 0%;
 }
-
-
 
 .fixed-botright {
   position: fixed;
@@ -33,10 +31,22 @@ transparent-bg {
   margin-top: 1.7%;
 }
 
-body { 
+body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+}
+
+.card {
+  position: relative;
+}
+
+.card-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: #F7F7F7;
 }
 
 .content {
@@ -60,89 +70,85 @@ body {
   cursor: pointer;
 }
 
-
 /* added to the body element when shown; prevent scrolling */
 .react-router-modal__modal-open {
-    overflow: hidden;
-  }
-  
-  /* container that contains all modals and backdrops */
-  .react-router-modal__container {
-    position: fixed;
-    z-index: 1000
-  }
-  
-  /* wrapper that contains backdrop and modal */
-  /* setting this to absolute and setting a z-index creates a new stacking context */
-  .react-router-modal__wrapper {
+  overflow: hidden;
+}
+
+/* container that contains all modals and backdrops */
+.react-router-modal__container {
+  position: fixed;
+  z-index: 1000;
+}
+
+/* wrapper that contains backdrop and modal */
+/* setting this to absolute and setting a z-index creates a new stacking context */
+.react-router-modal__wrapper {
+  position: absolute;
+  z-index: 1;
+}
+
+/* backdrop shown behind each modal */
+.react-router-modal__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150vh;
+
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* modal element for the modal component */
+.react-router-modal__modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 55%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #777;
+  overflow-y: scroll;
+}
+
+/* mobile devices, particularly iOS, have some quirks to work around */
+@media only screen and (max-device-width: 1024px) {
+  .react-router-modal__modal-open {
     position: absolute;
-    z-index: 1;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
   }
-  
-  /* backdrop shown behind each modal */
-  .react-router-modal__backdrop {
+  .react-router-modal__container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 150vh;
-  
-    background-color: rgba(0,0,0,0.5)
+    height: 94vh;
+    transform: translate3d(0, 0, 0);
   }
-  
-  
-  /* modal element for the modal component */
   .react-router-modal__modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 55%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 5px;
-    border: 1px solid #777;
+    max-height: 84vh;
     overflow-y: scroll;
   }
-  
-  /* mobile devices, particularly iOS, have some quirks to work around */
-  @media only screen and (max-device-width: 1024px) {
-    .react-router-modal__modal-open {
-      position: absolute;
-      overflow: hidden;
-      -webkit-overflow-scrolling: touch;
-    }
-    .react-router-modal__container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 94vh;
-      transform: translate3d(0, 0, 0)
-    }
-    .react-router-modal__modal {
-      max-height: 84vh;
-      overflow-y: scroll;
-    }
-    .fixed-botright {
-      position: fixed;
-      left: 88vw;
-      top: 2vh;
-      z-index: 1000;
-    }
+  .fixed-botright {
+    position: fixed;
+    left: 88vw;
+    top: 2vh;
+    z-index: 1000;
   }
+}
 
-  
-h2 { 
-  font-size: 1rem; 
+h2 {
+  font-size: 1rem;
   padding-left: 2%;
   padding-top: 1%;
   white-space: nowrap;
   display: inline-block;
 }
 
-
-h4 { 
-  font-size: 1rem; 
+h4 {
+  font-size: 1rem;
   display: inline-block;
   vertical-align: middle;
   white-space: nowrap;
@@ -151,7 +157,7 @@ h4 {
 
 @media (max-width: 575px) {
   .img-fluid {
-    max-width: 70% !important; 
+    max-width: 70% !important;
     margin-left: 15%;
   }
   .list-group-item {
@@ -174,12 +180,13 @@ h4 {
   .react-router-modal__modal {
     width: 80%;
   }
-  
-  
+
   h4 {
     font-size: 0.6rem;
   }
-  h2 { font-size: 0.8rem; }
+  h2 {
+    font-size: 0.8rem;
+  }
 
   .rft {
     font-size: 0.8rem;
@@ -190,7 +197,9 @@ h4 {
   h4 {
     font-size: 0.65rem;
   }
-  h2 { font-size: 1.2rem; }
+  h2 {
+    font-size: 1.2rem;
+  }
 
   .react-router-modal__modal {
     width: 80%;
@@ -201,7 +210,7 @@ h4 {
   .resp-text {
     font-size: 0.7rem;
   }
-  
+
   .rft {
     font-size: 0.9rem;
   }
@@ -213,7 +222,9 @@ h4 {
     white-space: nowrap;
     margin-top: 0.5vh;
   }
-  h2 { font-size: 1.5rem; }
+  h2 {
+    font-size: 1.5rem;
+  }
   .react-router-modal__modal {
     width: 80%;
   }
@@ -234,7 +245,9 @@ h4 {
     font-size: 1rem;
     margin-top: 0.5vh;
   }
-  h2 { font-size: 2rem; }
+  h2 {
+    font-size: 2rem;
+  }
   .react-router-modal__modal {
     width: 70%;
   }
@@ -247,18 +260,21 @@ h4 {
 }
 
 @media (min-width: 1200px) {
-  h4 { 
+  h4 {
     font-size: 1.25rem;
     margin-top: 0.5vh;
   }
-  h2 { font-size: 2.1rem; }
+  h2 {
+    font-size: 2.1rem;
+  }
   .react-router-modal__modal {
     width: 55%;
   }
 }
 
 .cardImgRounded {
-  border-radius:12px;
+  border-radius: 12px;
+  z-index: 1;
 }
 
 .tabbed-text {
@@ -288,8 +304,6 @@ h4 {
   padding-top: 3px;
 }
 
-
-
 .button-padded {
   background-color: #c9c9c9 !important;
 }
@@ -310,7 +324,6 @@ h4 {
   margin-top: 1%;
 }
 
-
 .btn-right-margin {
   margin-right: 2%;
 }
@@ -318,8 +331,6 @@ h4 {
 .btn-light {
   background-color: #e5e5e5 !important;
 }
-
-
 
 .search-text-padded {
   padding-top: 6%;
@@ -356,9 +367,14 @@ h4 {
 }
 
 .item-inline-block {
-  display: inline-block
+  display: inline-block;
 }
 
+.pickybox {
+  display: inline-block ;
+  width: 50% !important;
+  vertical-align: middle;
+}
 
 .desktop-padding-1 {
   padding-top: 0.2%;
@@ -398,7 +414,7 @@ h4 {
   padding: 0.3rem;
 }
 .width-7 {
-  width:14.2%;
+  width: 14.2%;
   padding: 0.3rem;
 }
 .width-8 {
@@ -419,4 +435,3 @@ h4 {
   color: #515151;
   cursor: pointer;
 }
-

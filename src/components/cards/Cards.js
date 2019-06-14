@@ -1,96 +1,127 @@
-import React, { Component } from 'react';
-import CloseIcon from '../../close.png';
-import { Link } from 'react-router-dom';
-import cardData from '../../CardDB.json';
+import React, { Component } from "react";
+import CloseIcon from "../../close.png";
+import { Link } from "react-router-dom";
+import cardData from "../../CardDB.json";
 
 export default class Cards extends Component {
-    state = {
-        cardName: '',
-        cardIndex: '',
-        imageUrl: '',
-        cardNumber: '',
-        cardType: '',
-        cardElement: '',
-        cardCost: '',
-        cardRace: '',
-        cardPower: '',
-        cardSet: '',
-        cardIllust: '',
-        cardSplash: '',
-        cardEffects: [],
-        windowWidth: window.innerWidth    
-    };
+  //Initial state
+  state = {
+    cardName: "",
+    cardIndex: "",
+    imageUrl: "",
+    cardNumber: "",
+    cardType: "",
+    cardElement: "",
+    cardCost: "",
+    cardRace: "",
+    cardPower: "",
+    cardRarity: "",
+    cardSet: "",
+    cardIllust: "",
+    cardSplash: "",
+    cardEffects: [],
+    windowWidth: window.innerWidth
+  };
 
-    async componentDidMount() {
-      let cardIndex = this.props.match.params.cardIndex;
-      const cardName = cardData['cards'][cardIndex].name;
-      const imageUrl = cardData['cards'][cardIndex].url;
-      const cardNumber = cardData['cards'][cardIndex].number;
-      const cardType = cardData['cards'][cardIndex].type;
-      const cardElement = cardData['cards'][cardIndex].element;
-      const cardCost = cardData['cards'][cardIndex].cost;
-      const cardRace = cardData['cards'][cardIndex].race;
-      const cardPower = cardData['cards'][cardIndex].power;
-      const cardSet = cardData['cards'][cardIndex].set;
-      const cardIllust = cardData['cards'][cardIndex].illust;
-      const cardSplash = cardData['cards'][cardIndex].splash;
-      const cardWholeEffect = cardData['cards'][cardIndex].effect;
-      const cardEffects = cardWholeEffect.split('^^');
-      this.setState({ cardName, imageUrl, cardNumber, cardType, cardElement, cardCost, cardRace,
-        cardPower, cardSet, cardIllust, cardSplash, cardEffects });
+  async componentDidMount() {
+    //Get all info for this card and set to state
+    let cardIndex = this.props.match.params.cardIndex;
+    const cardName = cardData["cards"][cardIndex].name;
+    const imageUrl = cardData["cards"][cardIndex].url;
+    const cardNumber = cardData["cards"][cardIndex].number;
+    const cardType = cardData["cards"][cardIndex].type;
+    const cardElement = cardData["cards"][cardIndex].element;
+    const cardCost = cardData["cards"][cardIndex].cost;
+    const cardRace = cardData["cards"][cardIndex].race;
+    const cardPower = cardData["cards"][cardIndex].power;
+    const cardRarity = cardData["cards"][cardIndex].rarity;
+    const cardSet = cardData["cards"][cardIndex].set;
+    const cardIllust = cardData["cards"][cardIndex].illust;
+    const cardSplash = cardData["cards"][cardIndex].splash;
+    const cardWholeEffect = cardData["cards"][cardIndex].effect;
+    const cardEffects = cardWholeEffect.split("^^");
+    this.setState({
+      cardName,
+      imageUrl,
+      cardNumber,
+      cardType,
+      cardElement,
+      cardCost,
+      cardRace,
+      cardPower,
+      cardRarity,
+      cardSet,
+      cardIllust,
+      cardSplash,
+      cardEffects
+    });
 
-      document.title = cardName;
-      }
-
-      componentWillMount() {
-        window.addEventListener('resize', this.handleWindowSizeChange);
-      }
-
-      componentWillUnmount() {
-        document.title = "Argent DB";
-      }
-
-  handleWindowSizeChange = () => {
-    this.setState({ windowWidth: window.innerWidth });
+    //Change page title to card name
+    document.title = cardName;
   }
 
-  printEffects () {
-        var effects = this.state.cardEffects;
-        var container = document.getElementById('effects');
-        var effectsExist = document.getElementsByClassName('effects-class');
-        if ( effectsExist.length > 0 ) { return; }
-        effects.forEach(function(effect) {
-          container.innerHTML += ('<span class="effects-class resp-text">' + effect + '</span>');
-        });
+  componentWillMount() {
+    //Listen for window resize events
+    window.addEventListener("resize", this.handleWindowSizeChange);
+  }
+
+  componentWillUnmount() {
+    //Reset page title on unmount
+    document.title = "Argent DB";
+  }
+
+  handleWindowSizeChange = () => {
+    //Update state with window width on resize event
+    this.setState({ windowWidth: window.innerWidth });
+  };
+
+  //Function to list all of a card's effects in different spans so that they are spaced out
+  printEffects() {
+    var effects = this.state.cardEffects;
+    var container = document.getElementById("effects");
+    var effectsExist = document.getElementsByClassName("effects-class");
+    //Prevent looping
+    if (effectsExist.length > 0) {
+      return;
+    }
+    effects.forEach(function(effect) {
+      container.innerHTML +=
+        '<span class="effects-class resp-text">' + effect + "</span>";
+    });
   }
 
   render() {
+    //Check for mobile screens and return layout accordingly
     const windowWidth = this.state.windowWidth;
     const isMobile = windowWidth <= 576;
-    if ( !isMobile ) {
+    if (!isMobile) {
       return (
         <div className="card" onClick={e => e.preventDefault()}>
           <div className="card-header">
             <div className="header">
-             <div className="row">
-              <div className="col-sm-auto my-auto">
-                <h2>{this.state.cardName}</h2>
-              </div>
-              <div className="col-sm-2 my-auto">
-                <h4>{this.state.cardNumber}</h4>
-              </div>
-              <div className="col-sm-1 ml-auto my-auto">
+              <div className="row">
+                <div className="col-sm-auto my-auto">
+                  <h2>{this.state.cardName}</h2>
+                </div>
+                <div className="col-sm-2 my-auto">
+                  <h4>{this.state.cardNumber}</h4>
+                </div>
+                <div className="col-sm-1 ml-auto my-auto">
                   <Link to="/">
-                    <img src={CloseIcon} className="close" alt="close window" /> 
+                    <img src={CloseIcon} className="close" alt="close window" />
                   </Link>
+                </div>
               </div>
-             </div> 
             </div>
           </div>
           <div className="card-body">
-          <div className="row">
+            <div className="row">
               <div className="col-md-7 col-lg-6 col-sm-6 col-6">
-                <img src={this.state.imageUrl} className="img-fluid cardImgRounded" alt="Card unavailable"></img>
+                <img
+                  src={this.state.imageUrl}
+                  className="img-fluid cardImgRounded"
+                  alt="Card unavailable"
+                />
               </div>
               <div className="col-md-5 col-lg-6 col-sm-6 col-6">
                 <ul className="list-group list-group-flush list-line">
@@ -110,7 +141,9 @@ export default class Cards extends Component {
                         <span className="faint-text">Element:</span>
                       </div>
                       <div className="col-md-7 col-lg-8 col-sm-8">
-                        <span className="resp-text">{this.state.cardElement}</span>
+                        <span className="resp-text">
+                          {this.state.cardElement}
+                        </span>
                       </div>
                     </div>
                   </li>
@@ -120,7 +153,9 @@ export default class Cards extends Component {
                         <span className="faint-text">Cost:</span>
                       </div>
                       <div className="col-md-7 col-lg-8 col-sm-8">
-                        <span className="resp-text">{this.state.cardCost || '-'}</span>
+                        <span className="resp-text">
+                          {this.state.cardCost || "-"}
+                        </span>
                       </div>
                     </div>
                   </li>
@@ -130,7 +165,9 @@ export default class Cards extends Component {
                         <span className="faint-text">Races:</span>
                       </div>
                       <div className="col-md-7 col-lg-8 col-sm-8">
-                      <span className="resp-text">{this.state.cardRace || '-'}</span>
+                        <span className="resp-text">
+                          {this.state.cardRace || "-"}
+                        </span>
                       </div>
                     </div>
                   </li>
@@ -140,7 +177,21 @@ export default class Cards extends Component {
                         <span className="faint-text">Power:</span>
                       </div>
                       <div className="col-md-7 col-lg-8 col-sm-8">
-                      <span className="resp-text">{this.state.cardPower || '-'}</span>
+                        <span className="resp-text">
+                          {this.state.cardPower || "-"}
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                  <li className="list-group-item">
+                    <div className="row">
+                      <div className="col-md-5 col-lg-4 col-sm-4">
+                        <span className="faint-text">Rarity:</span>
+                      </div>
+                      <div className="col-md-7 col-lg-8 col-sm-8">
+                        <span className="resp-text">
+                          {this.state.cardRarity || "-"}
+                        </span>
                       </div>
                     </div>
                   </li>
@@ -155,21 +206,24 @@ export default class Cards extends Component {
                     </div>
                   </li>
                   <li className="list-group-item item-inline">
-                  <div className="row">
-                    <div className="col-md-5 col-lg-4 col-sm-4">
-                      <span className="faint-text">Effects:</span>
+                    <div className="row">
+                      <div className="col-md-5 col-lg-4 col-sm-4">
+                        <span className="faint-text">Effects:</span>
+                      </div>
+                      <div
+                        id="effects"
+                        className="col-md-7 col-lg-8 col-sm-8 desktop-padding-1"
+                      >
+                        {this.printEffects()}
+                      </div>
                     </div>
-                    <div id="effects" className="col-md-7 col-lg-8 col-sm-8 desktop-padding-1">
-                      {this.printEffects()}
-                    </div>
-                  </div>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-      )
+      );
     } else {
       return (
         <div className="card" onClick={e => e.preventDefault()}>
@@ -183,9 +237,13 @@ export default class Cards extends Component {
                   <h4>{this.state.cardNumber}</h4>
                 </div>
                 <div className="col-sm-1 col-1 ml-auto mr-2">
-                    <Link to="/">
-                      <img src={CloseIcon} className="mobile-close" alt="close window" /> 
-                    </Link>
+                  <Link to="/">
+                    <img
+                      src={CloseIcon}
+                      className="mobile-close"
+                      alt="close window"
+                    />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -193,70 +251,89 @@ export default class Cards extends Component {
           <div className="card-body mobile-padding-2">
             <div className="row">
               <div className="col-12">
-                <img src={this.state.imageUrl} className="img-fluid cardImgRounded" alt="Card unavailable"></img>
+                <img
+                  src={this.state.imageUrl}
+                  className="img-fluid cardImgRounded"
+                  alt="Card unavailable"
+                />
               </div>
             </div>
             <ul className="list-group list-group-flush">
-            <li className="list-group-item less-padding no-top-border mobile-padding-3">
-            <div className="row">
-              <div className="col-5">
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item less-padding">
-                    <span className="faint-text">Card Type:</span>
-                    <br />
-                    <span className="resp-text">{this.state.cardType}</span>
-                  </li>
-                  <li className="list-group-item less-padding">
-                    <span className="faint-text">Element:</span>
-                    <br />
-                    <span className="resp-text">{this.state.cardElement}</span>
-                  </li>
-                  <li className="list-group-item less-padding">
-                    <span className="faint-text">Cost:</span>
-                    <br />
-                    <span className="resp-text">{this.state.cardCost || '-'}</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="col-7">
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item">
-                    <span className="faint-text">Races:</span>
-                    <br />
-                    <span className="resp-text">{this.state.cardRace || '-'}</span>
-                  </li>
-                  <li className="list-group-item">
-                    <span className="faint-text">Power:</span>
-                    <br />
-                    <span className="resp-text">{this.state.cardPower || '-'}</span>
-                  </li>
-                  <li className="list-group-item">
-                    <span className="faint-text">Set:</span>
-                    <br />
-                    <span className="resp-text">{this.state.cardSet}</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            </li>
-            <li className="list-group-item less-padding mobile-padding-3">
-            <div className="row">
-              <div className="col-3">
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item">
-                    <span className="faint-text">Effects:</span>
-                  </li>
-                </ul>
-              </div>
-              <div id="effects" className="col-9 mobile-padding-4">
-                {this.printEffects()}
-              </div>
-            </div>
-            </li>
+              <li className="list-group-item less-padding no-top-border mobile-padding-3">
+                <div className="row">
+                  <div className="col-5">
+                    <ul className="list-group list-group-flush">
+                      <li className="list-group-item less-padding">
+                        <span className="faint-text">Card Type:</span>
+                        <br />
+                        <span className="resp-text">{this.state.cardType}</span>
+                      </li>
+                      <li className="list-group-item less-padding">
+                        <span className="faint-text">Element:</span>
+                        <br />
+                        <span className="resp-text">
+                          {this.state.cardElement}
+                        </span>
+                      </li>
+                      <li className="list-group-item less-padding">
+                        <span className="faint-text">Cost:</span>
+                        <br />
+                        <span className="resp-text">
+                          {this.state.cardCost || "-"}
+                        </span>
+                      </li>
+                      <li className="list-group-item less-padding">
+                        <span className="faint-text">Rarity:</span>
+                        <br />
+                        <span className="resp-text">
+                          {this.state.cardRarity || "-"}
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="col-7">
+                    <ul className="list-group list-group-flush">
+                      <li className="list-group-item">
+                        <span className="faint-text">Races:</span>
+                        <br />
+                        <span className="resp-text">
+                          {this.state.cardRace || "-"}
+                        </span>
+                      </li>
+                      <li className="list-group-item">
+                        <span className="faint-text">Power:</span>
+                        <br />
+                        <span className="resp-text">
+                          {this.state.cardPower || "-"}
+                        </span>
+                      </li>
+                      <li className="list-group-item">
+                        <span className="faint-text">Set:</span>
+                        <br />
+                        <span className="resp-text">{this.state.cardSet}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li className="list-group-item less-padding mobile-padding-3">
+                <div className="row">
+                  <div className="col-3">
+                    <ul className="list-group list-group-flush">
+                      <li className="list-group-item">
+                        <span className="faint-text">Effects:</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div id="effects" className="col-9 mobile-padding-4">
+                    {this.printEffects()}
+                  </div>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
-      )
+      );
     }
   }
 }
