@@ -4,8 +4,8 @@ import CardCard from "./CardCard";
 import loadMoreImage from "../../loadMore.png";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import cardData from "../../CardDB.json";
-import Picky from 'react-picky';
-import 'react-picky/dist/picky.css'; // Include CSS
+import Picky from "react-picky";
+import "react-picky/dist/picky.css"; // Include CSS
 
 const Card = styled.div`
   background: rgba(198, 198, 198, 0.4);
@@ -77,8 +77,10 @@ export default class CardList extends Component {
     sTopper: false,
     sPromo: false,
     sAllSet: true,
-    setValues: [{id: 0, name: 'Intro Deck'}, {id: 1, name: 'Betrayal'}],
-    searchSetValue: []
+    setValues: [{ id: 0, name: "Intro Deck" }, { id: 1, name: "Betrayal" }],
+    searchSetValue: [],
+    sortNewest: true,
+    sortOldest: false
   };
 
   //Updates the search field onchange
@@ -92,12 +94,9 @@ export default class CardList extends Component {
   }
 
   handleSetSearch(value) {
-    this.setState({ searchSetValue: value});
+    this.setState({ searchSetValue: value });
     //Toggle Seach all sets off if one of the other buttons are clicked
-    if (
-      this.state.sAllSet &&
-      (value !== [])
-    ) {
+    if (this.state.sAllSet && value !== []) {
       this.setState({ sAllSet: false });
     }
   }
@@ -143,7 +142,7 @@ export default class CardList extends Component {
 
   //decrease the amount of card columns, resetting if invalid input
   decrementRows() {
-    console.log(this.state.searchSetValue)
+    console.log(this.state.searchSetValue);
     let i = this.state.cardsPerRow;
     if (isNaN(i)) {
       this.resetRows();
@@ -153,6 +152,26 @@ export default class CardList extends Component {
       i -= 1;
     }
     this.setState({ cardsPerRow: i });
+  }
+
+  functionSortNewest(a,b) {
+    if ( a.order > b.order ) {
+      return -1;
+    }
+    if ( a.order < b.order ){
+      return 1;
+    }
+    return 0;
+  }
+
+  functionSortOldest(a,b) {
+    if ( a.order < b.order ) {
+      return -1;
+    }
+    if ( a.order > b.order ){
+      return 1;
+    }
+    return 0;
   }
 
   //increase the amount of card columns, resetting if invalid input
@@ -307,10 +326,7 @@ export default class CardList extends Component {
       });
     }
     //Toggle the dropdown off if Seach all sets is clicked
-    if (
-      event.target.id === "sAllSet" &&
-      (this.state.searchSetValue !== [])
-    ) {
+    if (event.target.id === "sAllSet" && this.state.searchSetValue !== []) {
       this.setState({
         searchSetValue: []
       });
@@ -334,6 +350,30 @@ export default class CardList extends Component {
         sArgent: false,
         sTopper: false,
         sPromo: false
+      });
+    }
+
+    //Toggle display order buttons
+    if (event.target.id === "sortNewest" && !this.state.sortNewest) {
+      this.setState({
+        sortNewest: true,
+        sortOldest: false
+      });
+    } else if (event.target.id === "sortNewest") {
+      this.setState({
+        sortNewest: false,
+        sortOldest: true
+      });
+    }
+    if (event.target.id === "sortOldest" && !this.state.sortOldest) {
+      this.setState({
+        sortNewest: false,
+        sortOldest: true
+      });
+    } else if (event.target.id === "sortOldest") {
+      this.setState({
+        sortNewest: true,
+        sortOldest: false
       });
     }
   }
@@ -421,7 +461,7 @@ export default class CardList extends Component {
     }
     if (this.state.sAllSet === false) {
       if (this.state.searchSetValue.length === 0) {
-        this.setState({sAllSet: true})
+        this.setState({ sAllSet: true });
       }
     }
   }
@@ -652,6 +692,13 @@ export default class CardList extends Component {
           });
         }
       }
+
+      if ( this.state.sortNewest ) {
+        filteredCards.sort(this.functionSortNewest)
+      } else {
+        filteredCards.sort(this.functionSortOldest)
+      }
+
       //this.setState({ maxShowItems: filteredCards.length })
       filterMap = filteredCards.slice(0, this.state.showItems).map(card => (
         <div
@@ -664,11 +711,17 @@ export default class CardList extends Component {
             name={card.name}
             url={card.url}
             columns={this.state.cardsPerRow}
+            spoiler={card.spoiler}
           />
         </div>
       ));
     } else {
       filteredCards = this.state.cards;
+      if ( this.state.sortNewest ) {
+        filteredCards.sort(this.functionSortNewest)
+      } else {
+        filteredCards.sort(this.functionSortOldest)
+      }
       filterMap = filteredCards.slice(0, this.state.showItems).map(card => (
         <div
           key={"a" + card.index}
@@ -680,6 +733,7 @@ export default class CardList extends Component {
             name={card.name}
             url={card.url}
             columns={this.state.cardsPerRow}
+            spoiler={card.spoiler}
           />
         </div>
       ));
@@ -690,7 +744,7 @@ export default class CardList extends Component {
         <div className="foot-pad">
           {filteredCards ? (
             <div>
-              <span className="rft">
+              <div className="rft">
                 <div className="input-group mb-3 pd-cool">
                   <div className="input-group-prepend">
                     <button
@@ -721,7 +775,7 @@ export default class CardList extends Component {
                           <div className="col-md-2">
                             <div className="search-text-padded">Search In:</div>
                           </div>
-                          <div className="col-md-10">
+                          <div className="col-md-10 btn-row">
                             <button
                               type="button"
                               id="sAllText"
@@ -788,7 +842,7 @@ export default class CardList extends Component {
                           <div className="col-md-2">
                             <div className="search-text-padded">Card Type:</div>
                           </div>
-                          <div className="col-md-10">
+                          <div className="col-md-10 btn-row">
                             <button
                               type="button"
                               id="sAllTypes"
@@ -907,7 +961,7 @@ export default class CardList extends Component {
                           <div className="col-md-2">
                             <div className="search-text-padded">Card Cost:</div>
                           </div>
-                          <div className="col-md-10">
+                          <div className="col-md-10 btn-row">
                             <button
                               type="button"
                               id="sAllCost"
@@ -930,7 +984,7 @@ export default class CardList extends Component {
                                 type="button"
                                 id="sCost0"
                                 className={
-                                  "btn rft " +
+                                  "btn cost-button rft " +
                                   (this.state.sCost0
                                     ? "btn-secondary"
                                     : "btn-light")
@@ -943,7 +997,7 @@ export default class CardList extends Component {
                                 type="button"
                                 id="sCost1"
                                 className={
-                                  "btn rft " +
+                                  "btn cost-button rft " +
                                   (this.state.sCost1
                                     ? "btn-secondary"
                                     : "btn-light")
@@ -956,7 +1010,7 @@ export default class CardList extends Component {
                                 type="button"
                                 id="sCost2"
                                 className={
-                                  "btn rft " +
+                                  "btn cost-button rft " +
                                   (this.state.sCost2
                                     ? "btn-secondary"
                                     : "btn-light")
@@ -969,7 +1023,7 @@ export default class CardList extends Component {
                                 type="button"
                                 id="sCost3"
                                 className={
-                                  "btn rft " +
+                                  "btn cost-button rft " +
                                   (this.state.sCost3
                                     ? "btn-secondary"
                                     : "btn-light")
@@ -982,7 +1036,7 @@ export default class CardList extends Component {
                                 type="button"
                                 id="sCost4"
                                 className={
-                                  "btn rft " +
+                                  "btn cost-button rft " +
                                   (this.state.sCost4
                                     ? "btn-secondary"
                                     : "btn-light")
@@ -995,7 +1049,7 @@ export default class CardList extends Component {
                                 type="button"
                                 id="sCost5"
                                 className={
-                                  "btn rft " +
+                                  "btn cost-button rft " +
                                   (this.state.sCost5
                                     ? "btn-secondary"
                                     : "btn-light")
@@ -1008,7 +1062,7 @@ export default class CardList extends Component {
                                 type="button"
                                 id="sCost6"
                                 className={
-                                  "btn rft " +
+                                  "btn cost-button rft " +
                                   (this.state.sCost6
                                     ? "btn-secondary"
                                     : "btn-light")
@@ -1021,7 +1075,7 @@ export default class CardList extends Component {
                                 type="button"
                                 id="sCost7up"
                                 className={
-                                  "btn rft " +
+                                  "btn cost-button rft " +
                                   (this.state.sCost7up
                                     ? "btn-secondary"
                                     : "btn-light")
@@ -1039,7 +1093,7 @@ export default class CardList extends Component {
                           <div className="col-md-2">
                             <div className="search-text-padded">Element:</div>
                           </div>
-                          <div className="col-md-10">
+                          <div className="col-md-10 btn-row">
                             <button
                               type="button"
                               id="sAllElement"
@@ -1145,7 +1199,7 @@ export default class CardList extends Component {
                           <div className="col-md-2">
                             <div className="search-text-padded">Set:</div>
                           </div>
-                          <div className="col-md-10">
+                          <div className="col-md-10 btn-row">
                             <button
                               type="button"
                               id="sAllSet"
@@ -1161,7 +1215,7 @@ export default class CardList extends Component {
                             </button>
 
                             <Picky
-                              className="pickybox"
+                              className="pickybox rft"
                               options={this.state.setValues}
                               value={this.state.searchSetValue}
                               multiple={true}
@@ -1179,7 +1233,7 @@ export default class CardList extends Component {
                           <div className="col-md-2">
                             <div className="search-text-padded">Rarity:</div>
                           </div>
-                          <div className="col-md-10">
+                          <div className="col-md-10 btn-row">
                             <button
                               type="button"
                               id="sAllRarity"
@@ -1294,6 +1348,38 @@ export default class CardList extends Component {
                         </div>
                       </div>
                     </div>
+                    <div className="row mt-2">
+                      <div className="col-12 col-sm-12 center-wrap sort-margin">
+                        <div className="btn-group btn-group-wrap ">
+                          <button
+                            type="button"
+                            id="sortNewest"
+                            className={
+                              "btn rft " +
+                              (this.state.sortNewest
+                                ? "btn-secondary"
+                                : "btn-light")
+                            }
+                            onClick={this.buttonUpdateState}
+                          >
+                            Newest first
+                          </button>
+                          <button
+                            type="button"
+                            id="sortOldest"
+                            className={
+                              "btn rft " +
+                              (this.state.sortOldest
+                                ? "btn-secondary"
+                                : "btn-light")
+                            }
+                            onClick={this.buttonUpdateState}
+                          >
+                            Oldest first
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                     <br />
                     <div className="row">
                       <div className="col-4 col-sm-3">
@@ -1351,7 +1437,7 @@ export default class CardList extends Component {
                     </div>
                   )}
                 </div>
-              </span>
+              </div>
             </div>
           ) : (
             <h1>Loading Cards</h1>

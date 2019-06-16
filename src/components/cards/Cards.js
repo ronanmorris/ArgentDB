@@ -26,19 +26,26 @@ export default class Cards extends Component {
   async componentDidMount() {
     //Get all info for this card and set to state
     let cardIndex = this.props.match.params.cardIndex;
-    const cardName = cardData["cards"][cardIndex].name;
-    const imageUrl = cardData["cards"][cardIndex].url;
-    const cardNumber = cardData["cards"][cardIndex].number;
-    const cardType = cardData["cards"][cardIndex].type;
-    const cardElement = cardData["cards"][cardIndex].element;
-    const cardCost = cardData["cards"][cardIndex].cost;
-    const cardRace = cardData["cards"][cardIndex].race;
-    const cardPower = cardData["cards"][cardIndex].power;
-    const cardRarity = cardData["cards"][cardIndex].rarity;
-    const cardSet = cardData["cards"][cardIndex].set;
-    const cardIllust = cardData["cards"][cardIndex].illust;
-    const cardSplash = cardData["cards"][cardIndex].splash;
-    const cardWholeEffect = cardData["cards"][cardIndex].effect;
+    let thisCard;
+    for (let i = 0; i < cardData.cards.length; i++) {
+      let obj = cardData.cards[i];
+      if (obj.index === cardIndex) {
+        thisCard = obj;
+      }
+    }
+    const cardName = thisCard.name;
+    const imageUrl = thisCard.url;
+    const cardNumber = thisCard.number;
+    const cardType = thisCard.type;
+    const cardElement = thisCard.element;
+    const cardCost = thisCard.cost;
+    const cardRace = thisCard.race;
+    const cardPower = thisCard.power;
+    const cardRarity = thisCard.rarity;
+    const cardSet = thisCard.set;
+    const cardIllust = thisCard.illust;
+    const cardSplash = thisCard.splash;
+    const cardWholeEffect = thisCard.effect;
     const cardEffects = cardWholeEffect.split("^^");
     this.setState({
       cardName,

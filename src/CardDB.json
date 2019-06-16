@@ -12,6 +12,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Takashi Tan",
       "splash": null,
       "effect": "If you destroy an opponent's Tower, you can add one 'Gear' from your deck to your hand.\n^^Once per turn, during either player's turn, you can discard one 'Gear' from your hand: Target Unit gets +500 this turn."
@@ -28,6 +30,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Chunli Thien Nguyen",
       "splash": "8",
       "effect": "At the end of your turn, you can switch one of your Exhausted Units to active.\n^^During either player's turn, you can Soulburst: Put into play a Knight Unit token with Guardian (Unit • Knight/Light/2000)."
@@ -44,6 +48,8 @@
       "power": "2000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Tots",
       "splash": null,
       "effect": "Quickness\n^^Arrive - You can sacrifice a 'Gear' you control to destroy target Unit your opponent controls."
@@ -60,6 +66,8 @@
       "power": "2500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Leonardo Santanna",
       "splash": null,
       "effect": "Arrive - Target one 'Gear' in your discard zone and equip it to this card."
@@ -76,6 +84,8 @@
       "power": "1500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Vinh Pham",
       "splash": null,
       "effect": "Arrive - You can add one 'Gear' from your deck to your hand."
@@ -92,6 +102,8 @@
       "power": "1000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Justine Cruz",
       "splash": null,
       "effect": "Target Attack\n^^When this card attacks a Unit, it gets +500 this turn."
@@ -108,6 +120,8 @@
       "power": "1500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Vu Bui",
       "splash": null,
       "effect": "Guardian"
@@ -124,6 +138,8 @@
       "power": "1000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Chunli Thien Nguyen",
       "splash": null,
       "effect": "This Unit gets +500 for each 'Gear' equipped to it."
@@ -140,6 +156,8 @@
       "power": "1000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Thong Nguyen",
       "splash": null,
       "effect": "Ruined - Add one 'Gear' with cost 1 or less from your deck to your hand."
@@ -156,6 +174,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Paris Ioannou",
       "splash": null,
       "effect": "Instacast\n^^Destroy target attacking Unit."
@@ -172,6 +192,8 @@
       "power": "2500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Justine Cruz",
       "splash": null,
       "effect": "Quickness \n^^When this card attacks: You can equip a 'Gear' from your hand to this card."
@@ -188,6 +210,8 @@
       "power": "3000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Wizyakuza",
       "splash": null,
       "effect": "Guardian \n^^Arrive - If there is a destroyed Light Tower, switch up to two target Exhausted Light Units to Active."
@@ -204,6 +228,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Andy Belzark Tantowi",
       "splash": null,
       "effect": "Equip to target Unit.\n^^If it would take damage, you can sacrifice this card and prevent that damage instead. "
@@ -220,6 +246,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Chunli Thien Nguyen",
       "splash": null,
       "effect": "Equip to target Unit.\n^^It gains Guardian.\n^^When the equipped Unit uses Guardian, it gets +1000 this turn."
@@ -236,6 +264,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Ascary Lazos",
       "splash": null,
       "effect": "Equip to target Unit.\n^^It gets +500 and Target Attack (This Unit can attack any Unit.)."
@@ -252,6 +282,8 @@
       "power": "500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Andy Belzark Tantowi",
       "splash": null,
       "effect": "Arrive - Send one 'Gear' from your deck to the discard zone.\n^^Sacrifice this card: Target Light Unit gets +500 this turn."
@@ -268,6 +300,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Takashi Tan",
       "splash": null,
       "effect": "Exhaust, pay 1, discard one Fire Unit from your hand: Add one non-Legendary Dragon Unit from your deck to your hand."
@@ -284,6 +318,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Chunli Thien Nguyen",
       "splash": "8",
       "effect": "Once per turn, during your turn, you can discard one Fire Unit from your hand: Deal 500 to target Unit.\n^^During your turn you can Soulburst: Target Unit gains Quickness this turn."
@@ -300,6 +336,8 @@
       "power": "1500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Chunli Thien Nguyen",
       "splash": null,
       "effect": "Arrive - Target Dragon Unit gets +1000 this turn."
@@ -316,6 +354,8 @@
       "power": "1000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Vu Bui",
       "splash": null,
       "effect": "This Unit must attack each turn if able."
@@ -332,6 +372,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Wizyakuza",
       "splash": null,
       "effect": "Instacast\n^^As an additional cost to play this card, Exhaust any number of Dragon Units you control.\n^^Deal XOOO to up to 2 Units (X is the number of Dragons you Exhausted)."
@@ -348,6 +390,8 @@
       "power": "4000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Wizyakuza",
       "splash": null,
       "effect": "Destroyer\n^^Arrive - Sacrifice another Dragon Unit. Deal X to all opposing Units (X is the sacrificed Unit's power)."
@@ -364,6 +408,8 @@
       "power": "2000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Tots",
       "splash": null,
       "effect": "Arrive - Put into play from your hand one Dragon Unit with cost 2 or less."
@@ -380,6 +426,8 @@
       "power": "2500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Tots",
       "splash": null,
       "effect": "Arrive - Deal 1000 to target Unit."
@@ -396,6 +444,8 @@
       "power": "1500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Chunli Thien Nguyen",
       "splash": null,
       "effect": "Ruined - Deal 1000 to target Unit."
@@ -412,6 +462,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Justine Cruz",
       "splash": null,
       "effect": "Instacast\n^^Target Fire Unit gets +2000 this turn."
@@ -428,6 +480,8 @@
       "power": "2500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Andy Belzark Tantowi",
       "splash": null,
       "effect": "While you control two or more other Dragon Units, this card gains Quickness"
@@ -444,6 +498,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Ascary Lazos",
       "splash": null,
       "effect": "Expel target Unit whose power is less than the highest power of a Dragon Unit you control."
@@ -460,6 +516,8 @@
       "power": "1500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Andy Belzark Tantowi",
       "splash": null,
       "effect": "Arrive - Switch target Exhausted Dragon Unit to Active."
@@ -476,6 +534,8 @@
       "power": "2500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Andy Belzark Tantowi",
       "splash": null,
       "effect": "Ruined - Search your deck for a Dragon Unit with cost of 1 and put it into play."
@@ -492,6 +552,8 @@
       "power": "3000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Chunli Thien Nguyen",
       "splash": null,
       "effect": "Arrive - If there is a destroyed Fire Tower, destroy target Unit."
@@ -508,6 +570,8 @@
       "power": "3500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Chunli Thien Nguyen",
       "splash": null,
       "effect": "This Unit costs 2 less to play if a Dragon Unit was destroyed this turn."
@@ -524,6 +588,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Takashi Tan",
       "splash": null,
       "effect": "Once per turn, pay 1 and destroy a Unit you control: Put into play one Air Unit from your hand whose cost is 1 greater than the destroyed Unit."
@@ -540,6 +606,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Chunli Thien Nguyen",
       "splash": "8",
       "effect": "Once per turn, during your turn, discard one card: Return target Air Unit you control to its owner's hand and, if you do, switch one of your Exhausted shards to Active.\n^^Soulburst: Return target Unit with cost 3 or less to its owner's hand."
@@ -556,6 +624,8 @@
       "power": "1500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Thong Nguyen",
       "splash": null,
       "effect": "Arrive - Search your deck for a 'Kala' card and add it to your hand.\n^^Pay 1: Return this card to its owner's hand."
@@ -572,6 +642,8 @@
       "power": "1500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*MO",
       "splash": null,
       "effect": "Arrive - If there IS a destroyed Air Tower, you can exhaust target Unit and return another target Unit to its owner's hand."
@@ -588,6 +660,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*VB",
       "splash": null,
       "effect": "Instacast.\n^^As an additional cost to play this card, return an Air Unit from your field to its owner's hand.\n^^Destroy target Unit with cost 4 or less."
@@ -604,6 +678,8 @@
       "power": "1000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*MO",
       "splash": null,
       "effect": "If you control an 'Ariana' Unit, this card costs 1 less to play.\n^^If an 'Ariana' Unit would be destroyed, you can destroy this card instead."
@@ -620,6 +696,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Paris Ioannou",
       "splash": null,
       "effect": "Instacast.\n^^Change the target of a Spell or Ability to another legal target."
@@ -636,6 +714,8 @@
       "power": "500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Thong Nguyen",
       "splash": null,
       "effect": "Arrive - Add a 'Sky Recruit' from your deck to your hand."
@@ -652,6 +732,8 @@
       "power": "1000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Phrixel",
       "splash": null,
       "effect": "Exhaust: Return this card to its owner's hand, and, if you do, your Airship Units cost 1 less to play this turn."
@@ -668,6 +750,8 @@
       "power": "1000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*AL",
       "splash": null,
       "effect": "Exhaust: Return this Unit to its owner's hand, and, if you do, Airship Units you control gain +1000 this turn."
@@ -684,6 +768,8 @@
       "power": "2500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*CTN",
       "splash": null,
       "effect": "Cannot be targeted by Spells.\n^^Ruined - You can put target Skyraider Unit with cost 3 or less from your discard zone into play."
@@ -700,6 +786,8 @@
       "power": "2500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*CTN",
       "splash": null,
       "effect": "Guardian.\n^^Units in front of this card cannot attack."
@@ -716,6 +804,8 @@
       "power": "2000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*ABT",
       "splash": null,
       "effect": "Arrive - If two or more of your Air Units have returned to your hand this turn from the field, return target Unit to its owner's hand.\n^^When this card attacks - target Unit cannot use Guardian this turn."
@@ -732,6 +822,8 @@
       "power": "2000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*CTN",
       "splash": null,
       "effect": "Arrive - Exhaust target Unit.\n^^Ruined - You can put target Skyraider Unit with cost 2 or less from your discard zone into play."
@@ -748,6 +840,8 @@
       "power": "3000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*CTN",
       "splash": null,
       "effect": "Destroyer\n^^Arrive - Destroy target Unit with cost 4 or less.\n^^Ruined - You can put target Skyraider Unit or Airship Unit with cost 4 or less from your discard zone into play."
@@ -764,6 +858,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Wizyakuza",
       "splash": null,
       "effect": "Instacast\n^^Play only if an Air Unit returned to your hand from the field this turn.\n^^Deal 2000 to target Unit."
@@ -780,6 +876,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*TT",
       "splash": null,
       "effect": "Place one counter on this card for each Water Unit that comes into play on your field.\n^^Remove three counters from this card: Draw two cards then discard one card."
@@ -796,6 +894,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*CTN",
       "splash": "8",
       "effect": "Once per turn, during your turn, Shard Drain 1: Draw one card.\n^^During your turn, Soulburst: Draw one card."
@@ -812,6 +912,8 @@
       "power": "2000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*JC",
       "splash": null,
       "effect": "Guardian\n^^This Unit cannot attack."
@@ -828,6 +930,8 @@
       "power": "1000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*TN",
       "splash": null,
       "effect": "Arrive - Look at the top card of your deck and place it back at the top or bottom of your deck."
@@ -844,6 +948,8 @@
       "power": "",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*CTN",
       "splash": null,
       "effect": "Instacast\n^^If your Champion is 'Jemial, Cryptic Caster', you can remove four counters from that card instead of paying this card's cost.\n^^Target Unit cannot be targeted by Spells or Abilities this turn."
@@ -861,6 +967,8 @@
       "power": "",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*W",
       "splash": null,
       "effect": "Instacast.\n^^Return target Unit with cost 2 or less to its owner's hand."
@@ -877,6 +985,8 @@
       "power": "1500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*CTN",
       "splash": null,
       "effect": "Arrive - Exhaust target Unit.\n^^Ruined - Return target Unit to the top of its owner's deck."
@@ -893,6 +1003,8 @@
       "power": "3000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Phrixel",
       "splash": null,
       "effect": "Arrive - Reveal the top three cards of your deck. Add two of those cards to to your hand and send the other to your discard zone."
@@ -909,6 +1021,8 @@
       "power": "2500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*CTN",
       "splash": null,
       "effect": "Shard Drain 1: Target Unit or Augment loses all abilities this turn."
@@ -925,6 +1039,8 @@
       "power": "2500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*VP",
       "splash": null,
       "effect": "Arrive - If you have more destroyed Towers than your opponent, return target Unit to the top or bottom of its owner's deck."
@@ -941,6 +1057,8 @@
       "power": "2000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*MO",
       "splash": null,
       "effect": "Your Water Spell cards cost 1 less to play."
@@ -957,6 +1075,8 @@
       "power": "",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*VP",
       "splash": null,
       "effect": "Put two Illusion Unit Tokens into play with Guardian (Unit • Illusion/ Water /500). These Tokens cannot attack."
@@ -973,6 +1093,8 @@
       "power": "1000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*VP",
       "splash": null,
       "effect": "Arrive - Draw one card.\n^^Ruined - Discard one card."
@@ -989,6 +1111,8 @@
       "power": "",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*AL",
       "splash": null,
       "effect": "Instacast\n^^Exhaust ail Units your opponent controls."
@@ -1005,6 +1129,8 @@
       "power": "4000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*JC",
       "splash": null,
       "effect": "Destroyer\n^^Arrive - If there is a destroyed Water Tower, return up to two target Units your opponent controls to the bottom of their owner's deck in any order."
@@ -1021,6 +1147,8 @@
       "power": "1000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*VB",
       "splash": null,
       "effect": "Ruined - Return target Unit to its owner's hand."
@@ -1037,6 +1165,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Takashi Tan",
       "splash": null,
       "effect": "When you destroy a Tower or Unit in battle - Place one counter on this card.\n^^Remove three counters from this card: Put into play a Golem Token Unit (Unit • Golem/Dark/1500)."
@@ -1053,6 +1183,8 @@
       "power": null,
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*CTN",
       "splash": "8",
       "effect": "When you destroy a Tower or Unit in battle - Place one counter on this card.\n^^During your turn, remove three counters from this card: Your opponent discards one card.\n^^During your turn, Soulburst: Your opponent discards one card."
@@ -1069,6 +1201,8 @@
       "power": "",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*AL",
       "splash": null,
       "effect": "Instacast.\n^^You can play this card only if you control a Dark Unit.\n^^Target Unit gets -2500 this turn."
@@ -1085,6 +1219,8 @@
       "power": "1000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*MO",
       "splash": null,
       "effect": "Ruined - You can send one Golem Unit from your deck to the discard zone."
@@ -1101,6 +1237,8 @@
       "power": "500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*VB",
       "splash": null,
       "effect": "Arrive - Place one counter on your Champion if it is 'Hoenna, Immoral Conjurer'."
@@ -1117,6 +1255,8 @@
       "power": "1500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*ABT",
       "splash": null,
       "effect": "Arrive - Take control of target Unit with cost 1 or less. It cannot attack this turn."
@@ -1133,6 +1273,8 @@
       "power": "2500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*VP",
       "splash": null,
       "effect": "Arrive -  If you control another Golem Unit, your opponent sacrifices a Unit. Then, if they have more cards in their hand than you, they discard one card."
@@ -1149,6 +1291,8 @@
       "power": "2000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*P",
       "splash": null,
       "effect": "Arrive - If you control another Golem Unit, discard one random card from your opponent's hand."
@@ -1165,6 +1309,8 @@
       "power": "1000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*CTN",
       "splash": null,
       "effect": "Guardian.\n^^This card cannot deal damage.\n^^Ruined - Put a 'Golem of Devourment' from your deck into play."
@@ -1181,6 +1327,8 @@
       "power": "2500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Tots",
       "splash": null,
       "effect": "Target Attack\n^^This card can only attack Units.\n^^Arrive - You can discard one card. If you do, this turn this card gains +1000 and Quickness"
@@ -1197,6 +1345,8 @@
       "power": "1000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*ABT",
       "splash": null,
       "effect": "Arrive - If you control another Golem Unit, draw one card."
@@ -1213,6 +1363,8 @@
       "power": "4000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*JC",
       "splash": null,
       "effect": "Destroyer\n^^Arrive - Look at your opponent's hand and select one card, then your opponent discards that card. If you control two or more other Golem Units, select two cards instead."
@@ -1229,6 +1381,8 @@
       "power": "2000",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Tots",
       "splash": null,
       "effect": "Guardian\n^^Arrive - Target Unit cannot attack next turn."
@@ -1245,6 +1399,8 @@
       "power": "2500",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Tots",
       "splash": null,
       "effect": "Guardian\n^^Arrive - If there is a destroyed Dark Tower, target Unit gets -2000 this turn."
@@ -1261,6 +1417,8 @@
       "power": "",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "Phrixel",
       "splash": null,
       "effect": "Put into play up to two target Golem Units from your discard zone with combined cost 5 or less."
@@ -1277,6 +1435,8 @@
       "power": "",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*VP",
       "splash": null,
       "effect": "Look at the top four cards of your deck. You can reveal one Golem Unit among them and add it to your hand. Place the rest of the cards on the bottom of your deck in any order."
@@ -1293,6 +1453,8 @@
       "power": "",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*AL",
       "splash": null,
       "effect": "When this card is destroyed, you can put into play a Knight Token with Guardian (Unit • Knight/Light/2000)."
@@ -1309,6 +1471,8 @@
       "power": "",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*AL",
       "splash": null,
       "effect": "When this card is destroyed, you can destroy a Unit."
@@ -1325,6 +1489,8 @@
       "power": "",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*AL",
       "splash": null,
       "effect": "When this card is destroyed, you can return up to two Units from the field to their owner's hand."
@@ -1341,6 +1507,8 @@
       "power": "",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*AL",
       "splash": null,
       "effect": "When this card is destroyed, you can draw two cards."
@@ -1357,6 +1525,8 @@
       "power": "",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*AL",
       "splash": null,
       "effect": "When this card is destroyed, you can look at your opponent's hand and select one card, then your opponent discards that card."
@@ -1373,6 +1543,8 @@
       "power": "",
       "rarity": "Fixed",
       "set": "Intro Deck",
+      "order": 1,
+      "spoiler": false,
       "illust": "*CTN",
       "splash": null,
       "effect": "Exhaust: Produce 1."
@@ -1389,6 +1561,8 @@
       "power": null,
       "rarity": "Common",
       "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
       "illust": "*GR",
       "splash": null,
       "effect": "Instacast\n^^Destroy target unit that dealt damage this turn."
@@ -1405,6 +1579,8 @@
       "power": null,
       "rarity": "Common",
       "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
       "illust": "*HN",
       "splash": null,
       "effect": "Equip to target Unit.\n^^It cannot be targeted by Spells."
@@ -1421,6 +1597,8 @@
       "power": null,
       "rarity": "Common",
       "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
       "illust": "*GR",
       "splash": null,
       "effect": "Instacast\n^^Prevent all damage that would be dealt to target unit this turn."
@@ -1437,6 +1615,8 @@
       "power": null,
       "rarity": "Common",
       "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
       "illust": "*AZ",
       "splash": null,
       "effect": "Discard one Gear from your hand, then draw two cards."
@@ -1453,6 +1633,8 @@
       "power": null,
       "rarity": "Common",
       "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
       "illust": "*GR",
       "splash": null,
       "effect": "Choose one.\n^^• Add up to two target Gears from your discard zone to your hand.\n^^• Equip target Gear from your discard zone to target unit you control."
@@ -1469,6 +1651,8 @@
       "power": null,
       "rarity": "Common",
       "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
       "illust": "*TB",
       "splash": null,
       "effect": "Put two Knight unit Tokens into play (Unit • Knight/Light/1000)."
@@ -1485,6 +1669,8 @@
       "power": "1500",
       "rarity": "Common",
       "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
       "illust": "*VP",
       "splash": null,
       "effect": "Exhaust, discard one Gear from your hand: Deal 1000 to target unit."
@@ -1501,6 +1687,8 @@
       "power": null,
       "rarity": "Common",
       "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
       "illust": "*AL",
       "splash": null,
       "effect": "Your Gear cost 1 less to play.\n^^Exhaust, sacrifice this card: Equip target Gear from your discard zone to target unit you control."
@@ -1517,6 +1705,8 @@
       "power": null,
       "rarity": "Common",
       "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
       "illust": "*CTN",
       "splash": null,
       "effect": "Instacast\n^^As an additional cost to play this card, discard one Gear or sacrifice one Gear you control.\n^^Destroy target unit with cost 3 or less."
@@ -1533,9 +1723,191 @@
       "power": null,
       "rarity": "Common",
       "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
       "illust": "*GR",
       "splash": null,
       "effect": "Equip to target unit. \n^^It gets +500 and Quickness"
+    },
+    {
+      "index": "96",
+      "url": "/img/96.jpg",
+      "number": "76/116 - 2BET",
+      "name": "Rao Daredevil",
+      "type": "Unit",
+      "element": "Fire",
+      "cost": "4",
+      "race": "",
+      "power": "2500",
+      "rarity": "Common",
+      "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
+      "illust": "*TJ",
+      "splash": null,
+      "effect": "Arrive - Destroy all units with cost 1."
+    },
+    {
+      "index": "97",
+      "url": "/img/97.jpg",
+      "number": "77/116 - 2BET",
+      "name": "Rao Dragon Caller",
+      "type": "Unit",
+      "element": "Fire",
+      "cost": "3",
+      "race": "",
+      "power": "2000",
+      "rarity": "Common",
+      "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
+      "illust": "*JC",
+      "splash": null,
+      "effect": "Arrive - Add one Dragon unit that costs 2 or less from your deck to your hand."
+    },
+    {
+      "index": "98",
+      "url": "/img/98.jpg",
+      "number": "78/116 - 2BET",
+      "name": "Rao Dragon Priest",
+      "type": "Unit",
+      "element": "Fire",
+      "cost": "3",
+      "race": "",
+      "power": "1500",
+      "rarity": "Common",
+      "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
+      "illust": "*GR",
+      "splash": null,
+      "effect": "All Dragon Units you control get +1000."
+    },
+    {
+      "index": "99",
+      "url": "/img/99.jpg",
+      "number": "80/116 - 2BET",
+      "name": "Rao Scarlet Slayer",
+      "type": "Unit",
+      "element": "Fire",
+      "cost": "3",
+      "race": "",
+      "power": "1000",
+      "rarity": "Common",
+      "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
+      "illust": "Tots",
+      "splash": null,
+      "effect": "Quickness"
+    },
+    {
+      "index": "100",
+      "url": "/img/100.jpg",
+      "number": "93/116 - 2BET",
+      "name": "Scarlet Egg",
+      "type": "Unit",
+      "element": "Fire",
+      "cost": "1",
+      "race": "Dragon",
+      "power": "500",
+      "rarity": "Common",
+      "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
+      "illust": "*LS",
+      "splash": null,
+      "effect": "Guardian\n^^This Unit cannot attack.\n^^If you control two or more other Dragon Units, sacrifice this card: Search your deck fora Dragon Unit with cost 2 or less and put it into play"
+    },
+    {
+      "index": "101",
+      "url": "/img/101.jpg",
+      "number": "30/116 - 2BET",
+      "name": "Dragonic Zone",
+      "type": "Augment",
+      "element": "Fire",
+      "cost": "2",
+      "race": "",
+      "power": null,
+      "rarity": "Common",
+      "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
+      "illust": "*TT",
+      "splash": null,
+      "effect": "Exhaust: Target Fire unit gets +1000 this turn.\n^^Sacrifice this card: Return target Dragon unit from your discard zone to your hand."
+    },
+    {
+      "index": "102",
+      "url": "/img/102.jpg",
+      "number": "34/116 - 2BET",
+      "name": "Enraged Attack",
+      "type": "Spell",
+      "element": "Fire",
+      "cost": "3",
+      "race": "",
+      "power": null,
+      "rarity": "Common",
+      "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
+      "illust": "G.R.",
+      "splash": null,
+      "effect": "Put into play one unit with cost 3 or less from your hand, and, if you do, deal 1000 to target Unit."
+    },
+    {
+      "index": "103",
+      "url": "/img/103.jpg",
+      "number": "56/116 - 2BET",
+      "name": "Mechdragon Prototype",
+      "type": "Unit",
+      "element": "Fire",
+      "cost": "7",
+      "race": "Dragon ?",
+      "power": "4000",
+      "rarity": "Common",
+      "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
+      "illust": "G.R.",
+      "splash": null,
+      "effect": "Quickness\n^^While you have one or less cards in hand, this card has Destroyer"
+    },
+    {
+      "index": "104",
+      "url": "/img/104.jpg",
+      "number": "73/116 - 2BET",
+      "name": "Phoenix Flame Strike",
+      "type": "Spell",
+      "element": "Fire",
+      "cost": "3",
+      "race": "",
+      "power": null,
+      "rarity": "Common",
+      "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
+      "illust": "*CTN",
+      "splash": null,
+      "effect": "If you control a 'Raoyenna' unit, this card costs 1 less to play. Deal 1000 to all units your opponent controls."
+    },
+    {
+      "index": "105",
+      "url": "/img/105.jpg",
+      "number": "104/116 - 2BET",
+      "name": "Spitfire Dragon",
+      "type": "Unit",
+      "element": "Fire",
+      "cost": "5",
+      "race": "Dragon",
+      "power": "3000",
+      "rarity": "Common",
+      "set": "Betrayal",
+      "order": 2,
+      "spoiler": true,
+      "illust": "*JK",
+      "splash": null,
+      "effect": "When this card attacks - Deal 1000 to target unit."
     }
   ]
 }

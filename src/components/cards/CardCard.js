@@ -17,6 +17,8 @@ const Card = styled.div`
   -website-user-select: none;
   user-select: none;
   -o-user-select: none;
+  border-radius: 5px;
+  border: ${props => (props.spoiler ? "2px solid red" : "")};
 `;
 
 //Styled Link to remove any decoration
@@ -55,7 +57,7 @@ export default class CardCard extends Component {
       <div>
         <LazyLoadComponent>
           <StyledLink to={`cards/${this.state.cardIndex}`}>
-            <Card className="card">
+            <Card className="card" spoiler={this.props.spoiler}>
               <LazyLoadImage
                 className="card-img-top rounded mx-auto"
                 alt={this.state.name}
@@ -64,6 +66,13 @@ export default class CardCard extends Component {
                 draggable="false"
                 effect="blur"
               />
+              {this.props.spoiler ? (
+                <div className="badge-container">
+                  <span className="badge badge-danger spoiler-badge">
+                    Spoiler
+                  </span>
+                </div>
+              ) : null}
             </Card>
           </StyledLink>
         </LazyLoadComponent>
