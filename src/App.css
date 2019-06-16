@@ -222,6 +222,9 @@ h4 {
   .search-text-padded {
     padding-top: 6px;
   }
+  .btn-right-margin {
+    margin-right: 2%;
+  }
 }
 
 @media (min-width: 576px) {
@@ -278,9 +281,12 @@ h4 {
     font-size: 1rem;
   }
   .search-text-padded {
-    padding-top: 5.5% !important;
+    padding-top: 9px !important;
   }
-  
+  .btn-right-margin {
+    margin-right: 2%;
+    margin-top: 2px;
+  }
 }
 
 @media (min-width: 992px) {
@@ -379,9 +385,7 @@ h4 {
   margin-top: 1%;
 }
 
-.btn-right-margin {
-  margin-right: 2%;
-}
+
 
 .btn-light {
   background-color: #e5e5e5 !important;
