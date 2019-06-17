@@ -107,7 +107,7 @@ export default class CardList extends Component {
     let currentDeck = this.state.currentDeck;
     let exists = false;
     currentDeck.forEach(function(card) {
-      if (card.index === index) { 
+      if (card.index === index) {
         exists = true;
         if (card.quantity !== quantity) {
           card.quantity = quantity;
@@ -118,6 +118,7 @@ export default class CardList extends Component {
       currentDeck.push({index: index, quantity: quantity});
     }
     this.setState({currentDeck: currentDeck})
+    console.log(this.state.currentDeck);
   }
 
   //set the amount of initial columns based on window size
@@ -261,6 +262,7 @@ export default class CardList extends Component {
     let currentList = this.state.cards;
     let filteredCards = currentList;
     let filterMap;
+    let cardsPerRow = this.state.cardsPerRow.toString();
 
     if ( (this.state.search !== "") || !(this.state.sAllText) || !(this.state.sAllTypes) || !(this.state.sAllCost) || !(this.state.sAllElement) ) {
       console.log("hi");
@@ -418,7 +420,7 @@ export default class CardList extends Component {
       //this.setState({ maxShowItems: filteredCards.length })
       filterMap = filteredCards.slice(0, this.state.showItems).map(
         card => (
-          <div key={"a" + card.index} className={"width-" + this.state.cardsPerRow.toString()}>
+          <div key={"a" + card.index} className={"width-" + cardsPerRow}>
             <CardCard
               key={card.index}
               index={card.index}
@@ -433,13 +435,13 @@ export default class CardList extends Component {
       filteredCards = this.state.cards;
       filterMap = filteredCards.slice(0, this.state.showItems).map(
         card => (
-          <div key={"a" + card.index} className={"card-img width-" + this.state.cardsPerRow.toString()}>
+          <div key={"a" + card.index} className={"card-img width-" + cardsPerRow}>
             <div className="button-position">
-              <div className="btn-group btn-deck">
-                <button id={"0x" + card.index} type="button" className="btn btn-info" onClick={this.buttonAddToDeck}>x0</button>
-                <button id={"1x" + card.index} type="button" className="btn btn-info" onClick={this.buttonAddToDeck}>x1</button>
-                <button id={"2x" + card.index} type="button" className="btn btn-info" onClick={this.buttonAddToDeck}>x2</button>
-                <button id={"3x" + card.index} type="button" className="btn btn-info" onClick={this.buttonAddToDeck}>x3</button>
+              <div className={"btn-group btn-deck btn-deck-toppadding-" + cardsPerRow}>
+                <button id={"0x" + card.index} type="button" className={"btn btn-info deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x0</button>
+                <button id={"1x" + card.index} type="button" className={"btn btn-info deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x1</button>
+                <button id={"2x" + card.index} type="button" className={"btn btn-info deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x2</button>
+                <button id={"3x" + card.index} type="button" className={"btn btn-info deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x3</button>
               </div>
             </div>
             

@@ -247,7 +247,7 @@ h4 {
 }
 
 @media (min-width: 1200px) {
-  h4 { 
+  h4 {
     font-size: 1.25rem;
     margin-top: 0.5vh;
   }
@@ -436,18 +436,102 @@ h4 {
   width: 100%;
 }
 
-.btn-deck .btn {
-  flex: 1;
-}
-
 .btn-deck {
   position: absolute;
   display: none;
+  width: 90.5%;
   white-space: nowrap;
-  top: 1vh;
-  left: 4%;
+  left: 5%;
   z-index: 2;
 }
+
+.btn-deck-toppadding-1 {
+  top: 4vh;
+}
+
+.btn-deck-toppadding-2 {
+  top: 2vh;
+}
+
+.btn-deck-toppadding-3 {
+  top: 1.3vh;
+}
+
+.btn-deck-toppadding-4 {
+  top: 1.1vh;
+}
+
+.btn-deck-toppadding-5 {
+  top: 1vh;
+}
+
+.btn-deck-toppadding-6 {
+  top: 0.9vh;
+}
+
+.btn-deck-toppadding-7 {
+  top: 0.75vh;
+}
+
+.btn-deck-toppadding-8 {
+  top: 0.6vh;
+}
+
+.btn-deck-toppadding-9 {
+  top: 0.5vh;
+}
+
+.btn-deck-toppadding-10 {
+  top: 0.45vh;
+}
+
+.btn-deck .btn {
+  flex: 1;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.deck-btn-1 {
+  font-size: 300%;
+}
+
+.deck-btn-2 {
+  font-size: 250%;
+}
+
+.deck-btn-3 {
+  font-size: 180%;
+}
+
+.deck-btn-4 {
+  font-size: 140%;
+}
+
+.deck-btn-5 {
+  font-size: 110%;
+}
+
+.deck-btn-6 {
+  font-size: 80%;
+}
+
+.deck-btn-7 {
+  font-size: 70%;
+}
+
+.deck-btn-8 {
+  font-size: 65%;
+}
+
+.deck-btn-9 {
+  font-size: 65%;
+}
+
+.deck-btn-10 {
+  font-size: 65%;
+}
+
+
 
 
 .deck-builder-toggle {

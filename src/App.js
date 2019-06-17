@@ -27,7 +27,7 @@ class App extends Component {
               <div className="container">
                 <Route path="/" component={Dashboard} />
                 <ModalLink path="/cards/:cardIndex" component={Cards} />
-                <ModalLink path="/builder/:deckID?" component={DeckBuilder} />
+                <ModalLink path="/builder" component={DeckBuilder} />
               </div>
             </div>
           </div>
@@ -37,9 +37,7 @@ class App extends Component {
           </footer>
           <ModalContainer />
         </div>
-          
       </BrowserRouter>
-      
     );
   }
 }

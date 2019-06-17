@@ -14,7 +14,7 @@ export default class NavBar extends Component {
                 <Link to="/" className="nav-link">Home</Link>
               </li>
               <li className="nav-item-active">
-                <Link to="/builder/" className="nav-link">Deck Builder</Link>
+                <Link to="/builder" className="nav-link">Deck Builder</Link>
               </li>
             </ul> 
             <span className="navbar-brand ml-auto mr-auto">Argent DB</span>

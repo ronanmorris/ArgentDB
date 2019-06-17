@@ -18,7 +18,7 @@ export default class Cards extends Component {
         cardIllust: '',
         cardSplash: '',
         cardEffects: [],
-        windowWidth: window.innerWidth    
+        windowWidth: window.innerWidth
     };
 
     async componentDidMount() {
