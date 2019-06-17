@@ -114,11 +114,18 @@ export default class CardList extends Component {
         }
       }
     });
+
     if (!exists) {
       currentDeck.push({index: index, quantity: quantity});
     }
+
+    let i;
+    for(i = 0; i < currentDeck.length; i++) {
+      if (currentDeck[i].quantity === "0") {
+        currentDeck.splice(i, 1);
+      }
+    }
     this.setState({currentDeck: currentDeck})
-    console.log(this.state.currentDeck);
   }
 
   //set the amount of initial columns based on window size
@@ -147,6 +154,10 @@ export default class CardList extends Component {
     else if ( i >= 10 ) { i = 10 }
     else { i += 1 }
     this.setState({ cardsPerRow: i })
+  }
+
+  checkExistsInDeck(index) {
+    return index 
   }
 
   buttonUpdateState(event) {
@@ -265,7 +276,6 @@ export default class CardList extends Component {
     let cardsPerRow = this.state.cardsPerRow.toString();
 
     if ( (this.state.search !== "") || !(this.state.sAllText) || !(this.state.sAllTypes) || !(this.state.sAllCost) || !(this.state.sAllElement) ) {
-      console.log("hi");
       //Search Names, Races AND Text
       if ( this.state.sAllText ) {
         filteredCards = filteredCards.filter(card => {
@@ -417,34 +427,56 @@ export default class CardList extends Component {
           });
         }
       }
-      //this.setState({ maxShowItems: filteredCards.length })
-      filterMap = filteredCards.slice(0, this.state.showItems).map(
-        card => (
-          <div key={"a" + card.index} className={"width-" + cardsPerRow}>
-            <CardCard
-              key={card.index}
-              index={card.index}
-              name={card.name}
-              url={card.url}
-              columns={this.state.cardsPerRow}
-            />
-          </div>
-        )
-      )
     } else {
       filteredCards = this.state.cards;
+    }
+
+      let currentIndexArray = [];
+      let x;
+      for(x = 0; x < this.state.currentDeck.length; x++) {
+        currentIndexArray.push([this.state.currentDeck[x].index, this.state.currentDeck[x].quantity]);
+      }
+      let qtySelected;
       filterMap = filteredCards.slice(0, this.state.showItems).map(
         card => (
           <div key={"a" + card.index} className={"card-img width-" + cardsPerRow}>
-            <div className="button-position">
-              <div className={"btn-group btn-deck btn-deck-toppadding-" + cardsPerRow}>
-                <button id={"0x" + card.index} type="button" className={"btn btn-info deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x0</button>
-                <button id={"1x" + card.index} type="button" className={"btn btn-info deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x1</button>
-                <button id={"2x" + card.index} type="button" className={"btn btn-info deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x2</button>
-                <button id={"3x" + card.index} type="button" className={"btn btn-info deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x3</button>
+            {card.unique ? (
+              <div className="button-position">
+                <div className={"btn-group btn-deck btn-deck-toppadding-" + cardsPerRow}>
+                  <button id={"0x" + card.index} type="button"
+                    className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
+                      ((currentIndexArray.find(el2 => el2[1] === "0")) ? ("btn-danger"): ("btn-outline-danger"))
+                      : ("btn-danger")
+                      ) + " deck-btn-" + cardsPerRow}
+                    onClick={this.buttonAddToDeck}>x0</button>
+                  <button id={"1x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
+                      ((currentIndexArray.find(el2 => el2[1] === "1")) ? ("btn-info"): ("btn-outline-info"))
+                      : ("btn-outline-info")
+                      ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x1</button>
+                </div>
               </div>
-            </div>
-            
+            ) : (
+              <div className="button-position">
+                <div className={"btn-group btn-deck btn-deck-toppadding-" + cardsPerRow}>
+                  <button id={"0x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
+                      ((currentIndexArray.find(el2 => el2[1] === "0")) ? ("btn-danger"): ("btn-outline-danger"))
+                      : ("btn-danger")
+                      ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x0</button>
+                  <button id={"1x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
+                      ((currentIndexArray.find(el => el[0] === card.index && el[1] === "1")) ? ("btn-info"): ("btn-outline-info"))
+                      : ("btn-outline-info")
+                      ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x1</button>
+                  <button id={"2x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
+                      ((currentIndexArray.find(el => el[0] === card.index && el[1] === "2")) ? ("btn-info"): ("btn-outline-info"))
+                      : ("btn-outline-info")
+                      ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x2</button>
+                  <button id={"3x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
+                      ((currentIndexArray.find(el => el[0] === card.index && el[1] === "3")) ? ("btn-info"): ("btn-outline-info"))
+                      : ("btn-outline-info")
+                      ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x3</button>
+                </div>
+              </div>
+            )}
             <CardCard
               key={card.index}
               index={card.index}
@@ -452,13 +484,10 @@ export default class CardList extends Component {
               url={card.url}
               columns={this.state.cardsPerRow}
             >
-              
             </CardCard>
-            
           </div>
         )
       )
-    }
     
 
     return (
