@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import cardData from '../../CardDB.json';
+import cardDB from '../../CardDB.json';
 
 export default class DeckBuilder extends Component {
+    constructor(props) {
+      super(props);
+    }
     state = {
         deckName: 'UntitledDeck',
+        currentDeck: [],
+        cardData: [],
         championCardQty: 0,
         spiritCardQty: 0,
         mainDeckCardQty: 0,
@@ -31,13 +36,19 @@ export default class DeckBuilder extends Component {
     }
 
     componentDidMount() {
+      this.setState({ cardData: cardDB.cards, currentDeck: this.props.location.state.currentDeck });
     }
 
   render() {
-    
+    let cardData = this.state.cardData;
+    let currentDeck = this.state.currentDeck;
+    let deckDisplay = currentDeck.map(card => (
+      <h5 key={"key" + card.index.toString()}>{card.quantity}x {cardData[card.index].name}</h5>
+    ))
+
     return (
       <div>
-          
+        {deckDisplay}
       </div>
     )
   }

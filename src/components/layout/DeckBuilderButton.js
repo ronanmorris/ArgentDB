@@ -40,5 +40,5 @@ export default class DeckBuilder extends Component {
         </StyledLink>
       </div>
     )
-  } 
+  }
 }

@@ -445,13 +445,13 @@ export default class CardList extends Component {
                 <div className={"btn-group btn-deck btn-deck-toppadding-" + cardsPerRow}>
                   <button id={"0x" + card.index} type="button"
                     className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
-                      ((currentIndexArray.find(el2 => el2[1] === "0")) ? ("btn-danger"): ("btn-outline-danger"))
+                      ((currentIndexArray.find(el2 => el2[1] === "0")) ? ("btn-danger"): ("btn-bg-faint btn-outline-danger"))
                       : ("btn-danger")
                       ) + " deck-btn-" + cardsPerRow}
                     onClick={this.buttonAddToDeck}>x0</button>
                   <button id={"1x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
-                      ((currentIndexArray.find(el2 => el2[1] === "1")) ? ("btn-info"): ("btn-outline-info"))
-                      : ("btn-outline-info")
+                      ((currentIndexArray.find(el2 => el2[1] === "1")) ? ("btn-info"): ("btn-bg-faint btn-outline-info"))
+                      : ("btn-bg-faint btn-outline-info")
                       ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x1</button>
                 </div>
               </div>
@@ -459,20 +459,20 @@ export default class CardList extends Component {
               <div className="button-position">
                 <div className={"btn-group btn-deck btn-deck-toppadding-" + cardsPerRow}>
                   <button id={"0x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
-                      ((currentIndexArray.find(el2 => el2[1] === "0")) ? ("btn-danger"): ("btn-outline-danger"))
+                      ((currentIndexArray.find(el2 => el2[1] === "0")) ? ("btn-danger"): ("btn-bg-faint btn-outline-danger"))
                       : ("btn-danger")
                       ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x0</button>
                   <button id={"1x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
-                      ((currentIndexArray.find(el => el[0] === card.index && el[1] === "1")) ? ("btn-info"): ("btn-outline-info"))
-                      : ("btn-outline-info")
+                      ((currentIndexArray.find(el => el[0] === card.index && el[1] === "1")) ? ("btn-info"): ("btn-bg-faint btn-outline-info"))
+                      : ("btn-bg-faint btn-outline-info")
                       ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x1</button>
                   <button id={"2x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
-                      ((currentIndexArray.find(el => el[0] === card.index && el[1] === "2")) ? ("btn-info"): ("btn-outline-info"))
-                      : ("btn-outline-info")
+                      ((currentIndexArray.find(el => el[0] === card.index && el[1] === "2")) ? ("btn-info"): ("btn-bg-faint btn-outline-info"))
+                      : ("btn-bg-faint btn-outline-info")
                       ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x2</button>
                   <button id={"3x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
-                      ((currentIndexArray.find(el => el[0] === card.index && el[1] === "3")) ? ("btn-info"): ("btn-outline-info"))
-                      : ("btn-outline-info")
+                      ((currentIndexArray.find(el => el[0] === card.index && el[1] === "3")) ? ("btn-info"): ("btn-bg-faint btn-outline-info"))
+                      : ("btn-bg-faint btn-outline-info")
                       ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x3</button>
                 </div>
               </div>
@@ -602,17 +602,14 @@ export default class CardList extends Component {
                       </div>
                     </div>
                   </div>
-                
               </div>
             </div>
-            
-          
           <div className="row">
             {filterMap}
             {(this.state.showItems >= filteredCards.length) ? null : (
               <div className={"width-" + this.state.cardsPerRow.toString()}>
                 <Card className="card transparent-bg">
-                  <LazyLoadImage 
+                  <LazyLoadImage
                     className="card-img-top rounded mx-auto"
                     src={loadMoreImage}
                     draggable="false"
