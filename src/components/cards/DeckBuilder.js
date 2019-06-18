@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import cardDB from "../../CardDB.json";
 import MuuriGrid from "react-muuri";
 import "./MuuriGrid.css";
+import DeckCard from "./DeckCard.js";
 
 export default class DeckBuilder extends Component {
   state = {
     deckName: "UntitledDeck",
-    currentDeck: [],
+    currentDeck: this.props.location.state
+      ? this.props.location.state.currentDeck
+      : [],
     cardData: [],
     championCardQty: 0,
     spiritCardQty: 0,
@@ -18,6 +21,7 @@ export default class DeckBuilder extends Component {
     airTowerQty: 0,
     waterTowerQty: 0,
     darkTowerQty: 0,
+    gridUp: false,
     championCard: [],
     spiritCard: [],
     mainDeckCards: [],
@@ -31,96 +35,105 @@ export default class DeckBuilder extends Component {
       shard: [],
       side: [],
       towers: []
-    }
+    },
+    gridChildren: [],
+    counter: 0
   };
 
-  componentDidMount() {
-    if (this.props.location.state){
-      this.setState({
-        cardData: cardDB.cards,
-        currentDeck: this.props.location.state.currentDeck
+  componentDidUpdate() {
+    if (!this.state.gridUp) {
+      this.state.gridChildren.forEach((child, index) => {
+        this.grid.getMethod("add", this.gridElement.children[index]);
       });
+      this.setState({ gridUp: true });
     }
+  }
+
+  componentWillUnmount() {
+    this.grid.getMethod("destroy"); // Required: Destroy the grid when the component is unmounted.
+  }
+
+  componentDidMount() {
+    console.log("mount");
+    //setup card array for the grid if one is passed
+    if (this.props.location.state) {
+      let copyOfCardData = cardDB.cards;
+      let copyOfGridChildren = [];
+      let x;
+      this.state.currentDeck.forEach(card => {
+        for (x = 0; x < parseInt(card.quantity, 10); x++) {
+          copyOfGridChildren.push({
+            class: "box1",
+            src: copyOfCardData[card.index].url,
+            cardIndex: card.index
+          });
+        }
+      });
+      this.setState({
+        gridChildren: copyOfGridChildren,
+        cardData: cardDB.cards
+      });
+
+      this.state.currentDeck.forEach(card => {
+        console.log(card.type);
+        if (card.type === "Champion") {
+          if (this.state.championCard.length === 0) {
+            this.setState({ championCard: this.state.championCard.push(card) });
+          } else {
+            this.setState({
+              sideDeckCards: this.state.sideDeckCards.push(card)
+            });
+          }
+        }
+      });
+      console.log(this.state.championCard);
+    }
+
+    //Initiate MuuriGrid object
     this.grid = new MuuriGrid({
       node: this.gridElement,
       defaultOptions: {
-        dragEnabled: true ,
+        dragEnabled: true,
         layoutDuration: 75,
-        dragSortInterval: 5
+        dragSortInterval: 5,
+        layout: { rounding: false }
       }
     });
 
-    this.grid.getEvent('dragEnd');
+    this.grid.getEvent("dragEnd");
   }
 
-  removeElement () {
+  removeElement() {
     // An example of how to use `getMethod()` to remove an element from the grid.
     if (this.gridElement && this.gridElement.children.length) {
-      this.grid.getMethod('remove', this.gridElement.children[0], {removeElements: true});
+      this.grid.getMethod("remove", this.gridElement.children[0], {
+        removeElements: true
+      });
     }
   }
 
-  render() {
-    let cardData = this.state.cardData;
-    let currentDeck = this.state.currentDeck;
-    let deckDisplay = currentDeck.map(card => (
-      <h5 key={"key" + card.index.toString()}>
-        {card.quantity}x {cardData[card.index].name}
-      </h5>
-    ));
+  addElement() {
+    this.grid.getMethod("add", this.gridElement.children[0]);
+  }
 
+  render() {
     return (
       <div>
-        {/* Assign a ref to the grid container so the virtual DOM will ignore it for now (WIP). */}
-        <div ref={gridElement => this.gridElement = gridElement}>
-          {/* Required: `item` and `item-content` classNames */}
-          <div className="item box1">
-            <div className="item-content">
-              Card
-            </div>
-          </div>
-          <div className="item box2">
-            <div className="item-content">
-            Card
-            </div>
-          </div>
-          <div className="item box2">
-            <div className="item-content">
-            Card
-            </div>
-          </div>
-          <div className="item box2">
-            <div className="item-content">
-            Card
-            </div>
-          </div>
-          <div className="item box2">
-            <div className="item-content">
-            Card
-            </div>
-          </div>
-          <div className="item box2">
-            <div className="item-content">
-            Card
-            </div>
-          </div>
-          <div className="item box2">
-            <div className="item-content">
-            Card
-            </div>
-          </div>
-          <div className="item box2">
-            <div className="item-content">
-            Card
-            </div>
-          </div>
+        <div ref={gridElement => (this.gridElement = gridElement)}>
+          {this.state.gridChildren.map((item, index) => {
+            return (
+              <div key={index} className={`item ${item.class}`}>
+                <div className="item-content">
+                  <img
+                    className={"card-deck-img"}
+                    src={item.src}
+                    alt={item.class}
+                  ></img>
+                </div>
+              </div>
+            );
+          })}
         </div>
-        <button
-          className="button"
-          onClick={() => this.removeElement()}
-        >
-          Remove 1st Element
-        </button>
       </div>
     );
   }

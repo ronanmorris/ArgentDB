@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import {
+  LazyLoadImage,
+  LazyLoadComponent
+} from "react-lazy-load-image-component";
 
 const Card = styled.div`
   box-shadow: 0 4px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -16,47 +19,46 @@ const Card = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-text-decoration: none;
-color: black;
-&:focus,
-&:hover,
-&:visited,
-&:link,
-&:active {
   text-decoration: none;
-}
+  color: black;
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
 `;
 
 export default class CardCard extends Component {
-//Initialise state variables for card name, image file location, unique card index and if the image is loading
-state ={
-  name: '',
-  imageUrl: '',
-  cardIndex: '',
-  imageLoading: true
+  //Initialise state variables for card name, image file location, unique card index and if the image is loading
+  state = {
+    name: "",
+    imageUrl: "",
+    cardIndex: "",
+    imageLoading: true
   };
 
   //when the card mounts, pull the name, index and image location then update this cards state
-  componentDidMount () {
+  componentDidMount() {
     const name = this.props.name;
     const cardIndex = this.props.index;
     const imageUrl = this.props.url;
 
-    this.setState({name, imageUrl, cardIndex})
+    this.setState({ name, imageUrl, cardIndex });
   }
 
   render() {
-    
     return (
       <div>
         <LazyLoadComponent>
           <StyledLink to={`cards/${this.state.cardIndex}`}>
             <Card className="card">
-              <LazyLoadImage 
+              <LazyLoadImage
                 className="card-img-top rounded mx-auto"
                 alt={this.state.name}
                 src={this.state.imageUrl}
-                style={{display: "block"}}
+                style={{ display: "block" }}
                 draggable="false"
                 effect="blur"
               />
@@ -64,6 +66,6 @@ state ={
           </StyledLink>
         </LazyLoadComponent>
       </div>
-    )
+    );
   }
 }
