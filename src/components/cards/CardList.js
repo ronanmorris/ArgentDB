@@ -119,7 +119,7 @@ export default class CardList extends Component {
     });
 
     if (!exists) {
-      currentDeck.push({index: index, quantity: quantity, type: this.state.cards[index].type});
+      currentDeck.push({index: index, quantity: quantity, type: this.state.cards[index].type, element: this.state.cards[index].element});
     }
 
     let i;

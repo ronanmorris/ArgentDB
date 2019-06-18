@@ -27,7 +27,11 @@ export default class DeckBuilder extends Component {
     mainDeckCards: [],
     shardDeckCards: [],
     sideDeckCards: [],
-    towerCards: [],
+    lightTowerCards: [],
+    fireTowerCards: [],
+    airTowerCards: [],
+    waterTowerCards: [],
+    darkTowerCards: [],
     deck: {
       champion: [],
       spirit: [],
@@ -37,6 +41,11 @@ export default class DeckBuilder extends Component {
       towers: []
     },
     gridChildren: [],
+    championGridChildren: [],
+    spiritGridChildren: [],
+    shardsGridChildren: [],
+    towersGridChildren: [],
+    sideGridChildren: [],
     counter: 0
   };
 
@@ -84,7 +93,90 @@ export default class DeckBuilder extends Component {
               sideDeckCards: this.state.sideDeckCards.push(card)
             });
           }
-        }
+        } else if (card.type === "Spirit") {
+          if (this.state.spiritCard.length === 0) {
+            this.setState({ spiritCard: this.state.spiritCard.push(card) });
+          } else {
+            this.setState({
+              sideDeckCards: this.state.sideDeckCards.push(card)
+            });
+          }
+        } else if (card.type === "Shard") {
+          if (this.state.shardDeckCards.length < 10) {
+            this.setState({
+              shardDeckCards: this.state.shardDeckCards.push(card)
+            });
+          } else {
+            this.setState({
+              sideDeckCards: this.state.sideDeckCards.push(card)
+            });
+          }
+        } else if (card.type === "Tower") {
+          if (
+            this.state.lightTowerCards.length === 0 &&
+            card.element === "Light"
+          ) {
+            this.setState({
+              lightTowerCards: this.state.lightTowerCards.push(card)
+            });
+          } else {
+            this.setState({
+              sideDeckCards: this.state.sideDeckCards.push(card)
+            });
+          }
+          if (
+            this.state.fireTowerCards.length === 0 &&
+            card.element === "Fire"
+          ) {
+            this.setState({
+              fireTowerCards: this.state.fireTowerCards.push(card)
+            });
+          } else {
+            this.setState({
+              sideDeckCards: this.state.sideDeckCards.push(card)
+            });
+          }
+          if (this.state.airTowerCards.length === 0 && card.element === "Air") {
+            this.setState({
+              airTowerCards: this.state.airTowerCards.push(card)
+            });
+          } else {
+            this.setState({
+              sideDeckCards: this.state.sideDeckCards.push(card)
+            });
+          }
+          if (
+            this.state.waterTowerCards.length === 0 &&
+            card.element === "Water"
+          ) {
+            this.setState({
+              waterTowerCards: this.state.waterTowerCards.push(card)
+            });
+          } else {
+            this.setState({
+              sideDeckCards: this.state.sideDeckCards.push(card)
+            });
+          }
+          if (
+            this.state.darkTowerCards.length === 0 &&
+            card.element === "Dark"
+          ) {
+            this.setState({
+              darkTowerCards: this.state.darkTowerCards.push(card)
+            });
+          } else {
+            this.setState({
+              sideDeckCards: this.state.sideDeckCards.push(card)
+            });
+          }
+        } else if (this.state.mainDeckCards.length < 60) {
+          this.setState({
+            mainDeckCards: this.state.mainDeckCards.push(card)
+          });
+        } else
+          this.setState({
+            sideDeckCards: this.state.shardDeckCards.push(card)
+          });
       });
       console.log(this.state.championCard);
     }
@@ -119,8 +211,89 @@ export default class DeckBuilder extends Component {
   render() {
     return (
       <div>
+        Champion:
+        <div ref={gridElement2 => (this.gridElement2 = gridElement2)}>
+          {this.state.championGridChildren.map((item, index) => {
+            return (
+              <div key={index} className={`item ${item.class}`}>
+                <div className="item-content">
+                  <img
+                    className={"card-deck-img"}
+                    src={item.src}
+                    alt={item.class}
+                  ></img>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        Spirit:
+        <div ref={gridElement3 => (this.gridElement3 = gridElement3)}>
+          {this.state.spiritGridChildren.map((item, index) => {
+            return (
+              <div key={index} className={`item ${item.class}`}>
+                <div className="item-content">
+                  <img
+                    className={"card-deck-img"}
+                    src={item.src}
+                    alt={item.class}
+                  ></img>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        Main:
         <div ref={gridElement => (this.gridElement = gridElement)}>
           {this.state.gridChildren.map((item, index) => {
+            return (
+              <div key={index} className={`item ${item.class}`}>
+                <div className="item-content">
+                  <img
+                    className={"card-deck-img"}
+                    src={item.src}
+                    alt={item.class}
+                  ></img>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        Towers:
+        <div ref={gridElement4 => (this.gridElement4 = gridElement4)}>
+          {this.state.towersGridChildren.map((item, index) => {
+            return (
+              <div key={index} className={`item ${item.class}`}>
+                <div className="item-content">
+                  <img
+                    className={"card-deck-img"}
+                    src={item.src}
+                    alt={item.class}
+                  ></img>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        Shards:
+        <div ref={gridElement5 => (this.gridElement5 = gridElement5)}>
+          {this.state.shardsGridChildren.map((item, index) => {
+            return (
+              <div key={index} className={`item ${item.class}`}>
+                <div className="item-content">
+                  <img
+                    className={"card-deck-img"}
+                    src={item.src}
+                    alt={item.class}
+                  ></img>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        Sideboard:
+        <div ref={gridElement6 => (this.gridElement6 = gridElement6)}>
+          {this.state.sideGridChildren.map((item, index) => {
             return (
               <div key={index} className={`item ${item.class}`}>
                 <div className="item-content">
