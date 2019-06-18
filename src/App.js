@@ -4,7 +4,8 @@ import { ModalContainer, ModalLink } from 'react-router-modal';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
+import 'react-grid-layout/css/styles.css'
+import 'react-resizable/css/styles.css'
 
 import NavBar from "./components/layout/NavBar";
 import Dashboard from './components/layout/Dashboard';
