@@ -6,7 +6,6 @@ import deckIcon from '../../deckicon.svg';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import cardData from '../../CardDB.json';
 import DeckBuilderButton from '../layout/DeckBuilderButton';
-import Tippy from '@tippy.js/react';
 
 const Card = styled.div`
   background: rgba(198, 198, 198, 0.4);
@@ -482,8 +481,7 @@ export default class CardList extends Component {
             {this.state.windowWidth < 576 ? (
               <Tippy content={this.DeckBuilderButtons(card)} distance="5" interactive="true" trigger="click" className="tippy-width button-align">
               <button type="button" className={"btn btn-bg-faint btn-deck-mobile-toppadding-" + cardsPerRow + " btn-deck-mobile"}>
-                <h5>Hi</h5>
-                
+                <img src={deckIcon} className="deck-img-padding" alt="add to deck"/>
               </button>
               </Tippy>
             ) : (
