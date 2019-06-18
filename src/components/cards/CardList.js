@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import CardCard from './CardCard';
 import loadMoreImage from '../../loadMore.png';
+import deckIcon from '../../deckicon.svg';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import cardData from '../../CardDB.json';
 import DeckBuilderButton from '../layout/DeckBuilderButton';
+import Tippy from '@tippy.js/react';
 
 const Card = styled.div`
   background: rgba(198, 198, 198, 0.4);
@@ -67,7 +69,8 @@ export default class CardList extends Component {
       sAir: false,
       sWater: false,
       sDark: false,
-      sNeutral: false
+      sNeutral: false,
+      isPopoverOpen: false
     };
 
   //Updates the search field onchange
@@ -264,10 +267,52 @@ export default class CardList extends Component {
     }
   }
 
+  DeckBuilderButtons(card) {
+    let cardsPerRow = this.state.cardsPerRow.toString();
+    let currentIndexArray = [];
+      let x;
+      for(x = 0; x < this.state.currentDeck.length; x++) {
+        currentIndexArray.push([this.state.currentDeck[x].index, this.state.currentDeck[x].quantity]);
+      }
+    return (card.unique ? (
+      <div className={"btn-group btn-deck btn-deck-toppadding-" + cardsPerRow}>
+        <button id={"0x" + card.index} type="button"
+          className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
+            ((currentIndexArray.find(el2 => el2[1] === "0")) ? ("btn-danger"): ("btn-bg-faint btn-outline-danger"))
+            : ("btn-danger")
+            ) + " deck-btn-" + cardsPerRow}
+          onClick={this.buttonAddToDeck}>x0</button>
+        <button id={"1x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
+            ((currentIndexArray.find(el2 => el2[1] === "1")) ? ("btn-info"): ("btn-bg-faint btn-outline-info"))
+            : ("btn-bg-faint btn-outline-info")
+            ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x1</button>
+      </div>
+    ) : (
+      <div className={"btn-group btn-deck btn-deck-toppadding-" + cardsPerRow}>
+        <button id={"0x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
+            ((currentIndexArray.find(el2 => el2[1] === "0")) ? ("btn-danger"): ("btn-bg-faint btn-outline-danger"))
+            : ("btn-danger")
+            ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x0</button>
+        <button id={"1x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
+            ((currentIndexArray.find(el => el[0] === card.index && el[1] === "1")) ? ("btn-info"): ("btn-bg-faint btn-outline-info"))
+            : ("btn-bg-faint btn-outline-info")
+            ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x1</button>
+        <button id={"2x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
+            ((currentIndexArray.find(el => el[0] === card.index && el[1] === "2")) ? ("btn-info"): ("btn-bg-faint btn-outline-info"))
+            : ("btn-bg-faint btn-outline-info")
+            ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x2</button>
+        <button id={"3x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
+            ((currentIndexArray.find(el => el[0] === card.index && el[1] === "3")) ? ("btn-info"): ("btn-bg-faint btn-outline-info"))
+            : ("btn-bg-faint btn-outline-info")
+            ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x3</button>
+      </div>
+    ))
+  }
+
   render() {
     //variable for showing the filters dropdown
     const show = (this.state.filerShow) ? "show" : "" ;
-    
+
     //variables for filtering results
     const filter = this.state.search.toLowerCase();
     let currentList = this.state.cards;
@@ -430,53 +475,20 @@ export default class CardList extends Component {
     } else {
       filteredCards = this.state.cards;
     }
-
-      let currentIndexArray = [];
-      let x;
-      for(x = 0; x < this.state.currentDeck.length; x++) {
-        currentIndexArray.push([this.state.currentDeck[x].index, this.state.currentDeck[x].quantity]);
-      }
-      let qtySelected;
       filterMap = filteredCards.slice(0, this.state.showItems).map(
         card => (
           <div key={"a" + card.index} className={"card-img width-" + cardsPerRow}>
-            {card.unique ? (
-              <div className="button-position">
-                <div className={"btn-group btn-deck btn-deck-toppadding-" + cardsPerRow}>
-                  <button id={"0x" + card.index} type="button"
-                    className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
-                      ((currentIndexArray.find(el2 => el2[1] === "0")) ? ("btn-danger"): ("btn-bg-faint btn-outline-danger"))
-                      : ("btn-danger")
-                      ) + " deck-btn-" + cardsPerRow}
-                    onClick={this.buttonAddToDeck}>x0</button>
-                  <button id={"1x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
-                      ((currentIndexArray.find(el2 => el2[1] === "1")) ? ("btn-info"): ("btn-bg-faint btn-outline-info"))
-                      : ("btn-bg-faint btn-outline-info")
-                      ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x1</button>
-                </div>
-              </div>
+            <div className="button-position">
+            {this.state.windowWidth < 576 ? (
+              <Tippy content={this.DeckBuilderButtons(card)} distance="5" interactive="true" trigger="click" className="tippy-width button-align">
+              <button type="button" className={"btn btn-bg-faint btn-deck-mobile-toppadding-" + cardsPerRow + " btn-deck-mobile"}>
+                <img src={deckIcon} className="deck-img-padding" alt="add to deck"></img>
+              </button>
+              </Tippy>
             ) : (
-              <div className="button-position">
-                <div className={"btn-group btn-deck btn-deck-toppadding-" + cardsPerRow}>
-                  <button id={"0x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
-                      ((currentIndexArray.find(el2 => el2[1] === "0")) ? ("btn-danger"): ("btn-bg-faint btn-outline-danger"))
-                      : ("btn-danger")
-                      ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x0</button>
-                  <button id={"1x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
-                      ((currentIndexArray.find(el => el[0] === card.index && el[1] === "1")) ? ("btn-info"): ("btn-bg-faint btn-outline-info"))
-                      : ("btn-bg-faint btn-outline-info")
-                      ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x1</button>
-                  <button id={"2x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
-                      ((currentIndexArray.find(el => el[0] === card.index && el[1] === "2")) ? ("btn-info"): ("btn-bg-faint btn-outline-info"))
-                      : ("btn-bg-faint btn-outline-info")
-                      ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x2</button>
-                  <button id={"3x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
-                      ((currentIndexArray.find(el => el[0] === card.index && el[1] === "3")) ? ("btn-info"): ("btn-bg-faint btn-outline-info"))
-                      : ("btn-bg-faint btn-outline-info")
-                      ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x3</button>
-                </div>
-              </div>
+            this.DeckBuilderButtons(card)
             )}
+            </div>
             <CardCard
               key={card.index}
               index={card.index}
@@ -488,7 +500,6 @@ export default class CardList extends Component {
           </div>
         )
       )
-    
 
     return (
       <React.Fragment>
@@ -498,8 +509,8 @@ export default class CardList extends Component {
             <span className="rft">
             <div className="input-group mb-3 pd-cool">
               <div className="input-group-prepend">
-                <button className="btn btn-outline-secondary button-padded" type="button" data-toggle="button" 
-                onClick={ this.toggleFilter.bind(this) }> 
+                <button className="btn btn-outline-secondary button-padded" type="button" data-toggle="button"
+                onClick={ this.toggleFilter.bind(this) }>
                 { this.state.filterButtonClicked }
                 </button>
               </div>
@@ -567,6 +578,7 @@ export default class CardList extends Component {
                       <div className="row">
                         <div className="col-md-2">
                           <div className="search-text-padded">Element:</div>
+                          
                         </div>
                         <div className="col-md-10">
                         <button type="button" id="sAllElement" className={"btn-right-margin btn rft " + (this.state.sAllElement ? "btn-secondary" : "btn-light")} onClick={ this.buttonUpdateState }>All</button>

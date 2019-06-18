@@ -11,7 +11,6 @@ import Dashboard from './components/layout/Dashboard';
 import Cards from './components/cards/Cards.js';
 
 import backgroundImage from './pattern.png';
-import DeckBuilderButton from './components/layout/DeckBuilderButton';
 import DeckBuilder from './components/cards/DeckBuilder';
 
 

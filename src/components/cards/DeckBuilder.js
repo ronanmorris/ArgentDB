@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import cardDB from '../../CardDB.json';
 
 export default class DeckBuilder extends Component {
-    constructor(props) {
-      super(props);
-    }
     state = {
         deckName: 'UntitledDeck',
         currentDeck: [],

@@ -1,14 +1,12 @@
 .App {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: repeat;
-    background-color: #fafafa;
-    padding-top: 4rem;
-    min-height: 100vh;
-    padding-top: 0%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: repeat;
+  background-color: #fafafa;
+  padding-top: 4rem;
+  min-height: 100vh;
+  padding-top: 0%;
 }
-
-
 
 .fixed-botright {
   position: fixed;
@@ -33,7 +31,7 @@ transparent-bg {
   margin-top: 1.7%;
 }
 
-body { 
+body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -60,89 +58,85 @@ body {
   cursor: pointer;
 }
 
-
 /* added to the body element when shown; prevent scrolling */
 .react-router-modal__modal-open {
-    overflow: hidden;
-  }
-  
-  /* container that contains all modals and backdrops */
-  .react-router-modal__container {
-    position: fixed;
-    z-index: 1000
-  }
-  
-  /* wrapper that contains backdrop and modal */
-  /* setting this to absolute and setting a z-index creates a new stacking context */
-  .react-router-modal__wrapper {
+  overflow: hidden;
+}
+
+/* container that contains all modals and backdrops */
+.react-router-modal__container {
+  position: fixed;
+  z-index: 1000;
+}
+
+/* wrapper that contains backdrop and modal */
+/* setting this to absolute and setting a z-index creates a new stacking context */
+.react-router-modal__wrapper {
+  position: absolute;
+  z-index: 1;
+}
+
+/* backdrop shown behind each modal */
+.react-router-modal__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150vh;
+
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* modal element for the modal component */
+.react-router-modal__modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 55%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #777;
+  overflow-y: scroll;
+}
+
+/* mobile devices, particularly iOS, have some quirks to work around */
+@media only screen and (max-device-width: 1024px) {
+  .react-router-modal__modal-open {
     position: absolute;
-    z-index: 1;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
   }
-  
-  /* backdrop shown behind each modal */
-  .react-router-modal__backdrop {
+  .react-router-modal__container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 150vh;
-  
-    background-color: rgba(0,0,0,0.5)
+    height: 94vh;
+    transform: translate3d(0, 0, 0);
   }
-  
-  
-  /* modal element for the modal component */
   .react-router-modal__modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 55%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 5px;
-    border: 1px solid #777;
+    max-height: 84vh;
     overflow-y: scroll;
   }
-  
-  /* mobile devices, particularly iOS, have some quirks to work around */
-  @media only screen and (max-device-width: 1024px) {
-    .react-router-modal__modal-open {
-      position: absolute;
-      overflow: hidden;
-      -webkit-overflow-scrolling: touch;
-    }
-    .react-router-modal__container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 94vh;
-      transform: translate3d(0, 0, 0)
-    }
-    .react-router-modal__modal {
-      max-height: 84vh;
-      overflow-y: scroll;
-    }
-    .fixed-botright {
-      position: fixed;
-      left: 88vw;
-      top: 2vh;
-      z-index: 1000;
-    }
+  .fixed-botright {
+    position: fixed;
+    left: 88vw;
+    top: 2vh;
+    z-index: 1000;
   }
+}
 
-  
-h2 { 
-  font-size: 1rem; 
+h2 {
+  font-size: 1rem;
   padding-left: 2%;
   padding-top: 1%;
   white-space: nowrap;
   display: inline-block;
 }
 
-
-h4 { 
-  font-size: 1rem; 
+h4 {
+  font-size: 1rem;
   display: inline-block;
   vertical-align: middle;
   white-space: nowrap;
@@ -151,7 +145,7 @@ h4 {
 
 @media (max-width: 575px) {
   .img-fluid {
-    max-width: 70% !important; 
+    max-width: 70% !important;
     margin-left: 15%;
   }
   .list-group-item {
@@ -174,12 +168,13 @@ h4 {
   .react-router-modal__modal {
     width: 80%;
   }
-  
-  
+
   h4 {
     font-size: 0.6rem;
   }
-  h2 { font-size: 0.8rem; }
+  h2 {
+    font-size: 0.8rem;
+  }
 
   .rft {
     font-size: 0.8rem;
@@ -190,7 +185,9 @@ h4 {
   h4 {
     font-size: 0.65rem;
   }
-  h2 { font-size: 1.2rem; }
+  h2 {
+    font-size: 1.2rem;
+  }
 
   .react-router-modal__modal {
     width: 80%;
@@ -201,7 +198,7 @@ h4 {
   .resp-text {
     font-size: 0.7rem;
   }
-  
+
   .rft {
     font-size: 0.9rem;
   }
@@ -213,7 +210,9 @@ h4 {
     white-space: nowrap;
     margin-top: 0.5vh;
   }
-  h2 { font-size: 1.5rem; }
+  h2 {
+    font-size: 1.5rem;
+  }
   .react-router-modal__modal {
     width: 80%;
   }
@@ -234,7 +233,9 @@ h4 {
     font-size: 1rem;
     margin-top: 0.5vh;
   }
-  h2 { font-size: 2rem; }
+  h2 {
+    font-size: 2rem;
+  }
   .react-router-modal__modal {
     width: 70%;
   }
@@ -251,14 +252,16 @@ h4 {
     font-size: 1.25rem;
     margin-top: 0.5vh;
   }
-  h2 { font-size: 2.1rem; }
+  h2 {
+    font-size: 2.1rem;
+  }
   .react-router-modal__modal {
     width: 55%;
   }
 }
 
 .cardImgRounded {
-  border-radius:12px;
+  border-radius: 12px;
 }
 
 .tabbed-text {
@@ -288,8 +291,6 @@ h4 {
   padding-top: 3px;
 }
 
-
-
 .button-padded {
   background-color: #c9c9c9 !important;
 }
@@ -310,7 +311,6 @@ h4 {
   margin-top: 1%;
 }
 
-
 .btn-right-margin {
   margin-right: 2%;
 }
@@ -318,8 +318,6 @@ h4 {
 .btn-light {
   background-color: #e5e5e5 !important;
 }
-
-
 
 .search-text-padded {
   padding-top: 6%;
@@ -356,9 +354,8 @@ h4 {
 }
 
 .item-inline-block {
-  display: inline-block
+  display: inline-block;
 }
-
 
 .desktop-padding-1 {
   padding-top: 0.2%;
@@ -398,7 +395,7 @@ h4 {
   padding: 0.3rem;
 }
 .width-7 {
-  width:14.2%;
+  width: 14.2%;
   padding: 0.3rem;
 }
 .width-8 {
@@ -427,8 +424,18 @@ h4 {
   opacity: 0.9;
 }
 
-.card-img:hover div.btn-deck {
-  display: flex;
+@media (min-width: 567px) {
+  .card-img:hover div.btn-deck {
+    display: flex !important;
+  }
+  .btn-deck {
+    position: absolute;
+    display: none !important;
+    width: 90.5%;
+    white-space: nowrap;
+    left: 5%;
+    z-index: 2;
+  }
 }
 
 .button-position {
@@ -436,17 +443,39 @@ h4 {
   width: 100%;
 }
 
+.tippy-width {
+  width: 40vw;
+  height: 6vh;
+}
+
 .btn-deck {
   position: absolute;
-  display: none;
+  display: flex;
   width: 90.5%;
   white-space: nowrap;
   left: 5%;
   z-index: 2;
 }
 
+.btn-deck-mobile {
+  position: absolute;
+  display: flex;
+  white-space: nowrap;
+  right: 5%;
+  z-index: 2;
+  display: inline-block;
+  padding-left: 0%;
+  padding-right: 0%;
+}
+
 .btn-bg-faint {
-  background-color: rgba(1, 1, 1, 0.45);
+  background-color: rgba(1, 1, 1, 0.3);
+  border-color: rgba(1, 1, 1, 0.2);
+  color: white;
+}
+
+.deck-img-padding {
+  padding-bottom: 20px;
 }
 
 .btn-deck-toppadding-1 {
@@ -470,7 +499,7 @@ h4 {
 }
 
 .btn-deck-toppadding-6 {
-  top: 0.9vh;
+  top: 0.8vh;
 }
 
 .btn-deck-toppadding-7 {
@@ -536,8 +565,143 @@ h4 {
   font-size: 65%;
 }
 
+.button-align {
+  display: inline-block;
+}
 
+.btn-deck-mobile-toppadding-1 {
+  top: 2.1vh;
+  font-size: 1.4rem;
+  height: 60px;
+  width: 60px;
+}
+.btn-deck-mobile-toppadding-2 {
+  top: 1.1vh;
+  height: 42px;
+  width: 42px;
+}
+.btn-deck-mobile-toppadding-3 {
+  top: 0.8vh;
+  height: 40px;
+  width: 40px;
+}
+.btn-deck-mobile-toppadding-4 {
+  top: 0.6vh;
+  height: 38px;
+  width: 38px;
+}
+.btn-deck-mobile-toppadding-5 {
+  top: 0.5vh;
+  height: 35px;
+  width: 35px;
+}
+.btn-deck-mobile-toppadding-6 {
+  top: 0.4vh;
+  height: 32px;
+  width: 32px;
+}
+.btn-deck-mobile-toppadding-7 {
+  top: 0.35vh;
+  height: 32px;
+  width: 32px;
+}
+.btn-deck-mobile-toppadding-8 {
+  top: 0.34vh;
+  height: 32px;
+  width: 32px;
+}
+.btn-deck-mobile-toppadding-9 {
+  top: 0.34vh;
+  height: 30px;
+  width: 30px;
+}
+.btn-deck-mobile-toppadding-10 {
+  top: 0.31vh;
+  height: 26px;
+  width: 26px;
+}
 
+@media (max-width: 575px) {
+  .btn-deck-toppadding-1 {
+    top: 0.6vh;
+  }
+
+  .btn-deck-toppadding-2 {
+    top: 0.6vh;
+  }
+
+  .btn-deck-toppadding-3 {
+    top: 0.6vh;
+  }
+
+  .btn-deck-toppadding-4 {
+    top: 0.6vh;
+  }
+
+  .btn-deck-toppadding-5 {
+    top: 0.6vh;
+  }
+
+  .btn-deck-toppadding-6 {
+    top: 0.6vh;
+  }
+
+  .btn-deck-toppadding-7 {
+    top: 0.6vh;
+  }
+
+  .btn-deck-toppadding-8 {
+    top: 0.6vh;
+  }
+
+  .btn-deck-toppadding-9 {
+    top: 0.6vh;
+  }
+
+  .btn-deck-toppadding-10 {
+    top: 0.6vh;
+  }
+
+  .deck-btn-1 {
+    font-size: 100%;
+  }
+
+  .deck-btn-2 {
+    font-size: 100%;
+  }
+
+  .deck-btn-3 {
+    font-size: 100%;
+  }
+
+  .deck-btn-4 {
+    font-size: 100%;
+  }
+
+  .deck-btn-5 {
+    font-size: 100%;
+  }
+
+  .deck-btn-6 {
+    font-size: 100%;
+  }
+
+  .deck-btn-7 {
+    font-size: 100%;
+  }
+
+  .deck-btn-8 {
+    font-size: 100%;
+  }
+
+  .deck-btn-9 {
+    font-size: 100%;
+  }
+
+  .deck-btn-10 {
+    font-size: 100%;
+  }
+}
 
 .deck-builder-toggle {
   position: fixed !important;
