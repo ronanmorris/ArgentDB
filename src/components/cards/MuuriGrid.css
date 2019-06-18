@@ -21,6 +21,7 @@
 .box1 {
   background-color: orange; /* Go */
   margin: 5px;
+  top: auto !important;
 }
 
 .box2 {
@@ -43,7 +44,7 @@
 }
 
 .muuri {
-  width: 360px !important;
+  width: 900px !important;
   margin: 0% !important;
 }
 
