@@ -6,6 +6,7 @@ import deckIcon from '../../deckicon.svg';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import cardData from '../../CardDB.json';
 import DeckBuilderButton from '../layout/DeckBuilderButton';
+import Tippy from '@tippy.js/react';
 
 const Card = styled.div`
   background: rgba(198, 198, 198, 0.4);
