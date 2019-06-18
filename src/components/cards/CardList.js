@@ -482,7 +482,8 @@ export default class CardList extends Component {
             {this.state.windowWidth < 576 ? (
               <Tippy content={this.DeckBuilderButtons(card)} distance="5" interactive="true" trigger="click" className="tippy-width button-align">
               <button type="button" className={"btn btn-bg-faint btn-deck-mobile-toppadding-" + cardsPerRow + " btn-deck-mobile"}>
-                <img src={deckIcon} className="deck-img-padding" alt="add to deck"></img>
+                <h5>Hi</h5>
+                
               </button>
               </Tippy>
             ) : (
