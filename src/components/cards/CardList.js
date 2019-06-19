@@ -301,10 +301,18 @@ export default class CardList extends Component {
             ((currentIndexArray.find(el => el[0] === card.index && el[1] === "2")) ? ("btn-info"): ("btn-bg-faint btn-outline-info"))
             : ("btn-bg-faint btn-outline-info")
             ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x2</button>
-        <button id={"3x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
-            ((currentIndexArray.find(el => el[0] === card.index && el[1] === "3")) ? ("btn-info"): ("btn-bg-faint btn-outline-info"))
-            : ("btn-bg-faint btn-outline-info")
-            ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x3</button>
+        {card.name === "Argent Shard" ? (
+          <button id={"10x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
+          ((currentIndexArray.find(el => el[0] === card.index && el[1] === "10")) ? ("btn-info"): ("btn-bg-faint btn-outline-info"))
+          : ("btn-bg-faint btn-outline-info")
+          ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x10</button>
+        ) : (
+          <button id={"3x" + card.index} type="button" className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
+          ((currentIndexArray.find(el => el[0] === card.index && el[1] === "3")) ? ("btn-info"): ("btn-bg-faint btn-outline-info"))
+          : ("btn-bg-faint btn-outline-info")
+          ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x3</button>
+        )}
+        
       </div>
     ))
   }

@@ -3,6 +3,7 @@ import cardDB from "../../CardDB.json";
 import MuuriGrid from "react-muuri";
 import "./MuuriGrid.css";
 import DeckCard from "./DeckCard.js";
+import ReactDOM from "react-dom";
 
 export default class DeckBuilder extends Component {
   state = {
@@ -46,7 +47,13 @@ export default class DeckBuilder extends Component {
     towersGridChildren: [],
     shardsGridChildren: [],
     sideGridChildren: [],
-    counter: 0
+    counter: 0,
+    gridRef: null,
+    champGridRef: null,
+    spiritGridRef: null,
+    towerGridRef: null,
+    shardsGridRef: null,
+    sideGridRef: null
   };
 
   componentDidUpdate() {
@@ -78,7 +85,6 @@ export default class DeckBuilder extends Component {
   }
 
   componentDidMount() {
-    console.log("mount");
     //setup card array for the grid if one is passed
     if (this.props.location.state) {
       //Working copys to be set to state later
@@ -93,14 +99,13 @@ export default class DeckBuilder extends Component {
 
       this.state.currentDeck.forEach(card => {
         for (x = 0; x < parseInt(card.quantity, 10); x++) {
-          console.log(card.type);
           if (card.type === "Champion") {
             if (this.state.championCard.length === 0) {
               this.setState({
                 championCard: this.state.championCard.push(card)
               });
               copyOfChampionGridChildren.push({
-                class: "box1",
+                class: "box1 card-champion",
                 src: copyOfCardData[card.index].url,
                 cardIndex: card.index
               });
@@ -109,7 +114,7 @@ export default class DeckBuilder extends Component {
                 sideDeckCards: this.state.sideDeckCards.push(card)
               });
               copyOfSideGridChildren.push({
-                class: "box1",
+                class: "box1 card-champion",
                 src: copyOfCardData[card.index].url,
                 cardIndex: card.index
               });
@@ -118,7 +123,7 @@ export default class DeckBuilder extends Component {
             if (this.state.spiritCard.length === 0) {
               this.setState({ spiritCard: this.state.spiritCard.push(card) });
               copyOfSpiritGridChildren.push({
-                class: "box1",
+                class: "box1 card-spirt",
                 src: copyOfCardData[card.index].url,
                 cardIndex: card.index
               });
@@ -127,7 +132,7 @@ export default class DeckBuilder extends Component {
                 sideDeckCards: this.state.sideDeckCards.push(card)
               });
               copyOfSideGridChildren.push({
-                class: "box1",
+                class: "box1 card-spirit",
                 src: copyOfCardData[card.index].url,
                 cardIndex: card.index
               });
@@ -138,7 +143,7 @@ export default class DeckBuilder extends Component {
                 shardDeckCards: this.state.shardDeckCards.push(card)
               });
               copyOfShardsGridChildren.push({
-                class: "box1",
+                class: "box1 card-shard",
                 src: copyOfCardData[card.index].url,
                 cardIndex: card.index
               });
@@ -147,7 +152,7 @@ export default class DeckBuilder extends Component {
                 sideDeckCards: this.state.sideDeckCards.push(card)
               });
               copyOfSideGridChildren.push({
-                class: "box1",
+                class: "box1 card-shard",
                 src: copyOfCardData[card.index].url,
                 cardIndex: card.index
               });
@@ -161,7 +166,7 @@ export default class DeckBuilder extends Component {
                 lightTowerCards: this.state.lightTowerCards.push(card)
               });
               copyOfTowersGridChildren.push({
-                class: "box1",
+                class: "box1 card-tower",
                 src: copyOfCardData[card.index].url,
                 cardIndex: card.index
               });
@@ -170,7 +175,7 @@ export default class DeckBuilder extends Component {
                 sideDeckCards: this.state.sideDeckCards.push(card)
               });
               copyOfSideGridChildren.push({
-                class: "box1",
+                class: "box1 card-tower",
                 src: copyOfCardData[card.index].url,
                 cardIndex: card.index
               });
@@ -183,7 +188,7 @@ export default class DeckBuilder extends Component {
                 fireTowerCards: this.state.fireTowerCards.push(card)
               });
               copyOfTowersGridChildren.push({
-                class: "box1",
+                class: "box1 card-tower",
                 src: copyOfCardData[card.index].url,
                 cardIndex: card.index
               });
@@ -192,7 +197,7 @@ export default class DeckBuilder extends Component {
                 sideDeckCards: this.state.sideDeckCards.push(card)
               });
               copyOfSideGridChildren.push({
-                class: "box1",
+                class: "box1 card-tower",
                 src: copyOfCardData[card.index].url,
                 cardIndex: card.index
               });
@@ -205,7 +210,7 @@ export default class DeckBuilder extends Component {
                 airTowerCards: this.state.airTowerCards.push(card)
               });
               copyOfTowersGridChildren.push({
-                class: "box1",
+                class: "box1 card-tower",
                 src: copyOfCardData[card.index].url,
                 cardIndex: card.index
               });
@@ -214,7 +219,7 @@ export default class DeckBuilder extends Component {
                 sideDeckCards: this.state.sideDeckCards.push(card)
               });
               copyOfSideGridChildren.push({
-                class: "box1",
+                class: "box1 card-tower",
                 src: copyOfCardData[card.index].url,
                 cardIndex: card.index
               });
@@ -227,7 +232,7 @@ export default class DeckBuilder extends Component {
                 waterTowerCards: this.state.waterTowerCards.push(card)
               });
               copyOfTowersGridChildren.push({
-                class: "box1",
+                class: "box1 card-tower",
                 src: copyOfCardData[card.index].url,
                 cardIndex: card.index
               });
@@ -236,7 +241,7 @@ export default class DeckBuilder extends Component {
                 sideDeckCards: this.state.sideDeckCards.push(card)
               });
               copyOfSideGridChildren.push({
-                class: "box1",
+                class: "box1 card-tower",
                 src: copyOfCardData[card.index].url,
                 cardIndex: card.index
               });
@@ -249,7 +254,7 @@ export default class DeckBuilder extends Component {
                 darkTowerCards: this.state.darkTowerCards.push(card)
               });
               copyOfTowersGridChildren.push({
-                class: "box1",
+                class: "box1 card-tower",
                 src: copyOfCardData[card.index].url,
                 cardIndex: card.index
               });
@@ -258,7 +263,7 @@ export default class DeckBuilder extends Component {
                 sideDeckCards: this.state.sideDeckCards.push(card)
               });
               copyOfSideGridChildren.push({
-                class: "box1",
+                class: "box1 card-tower",
                 src: copyOfCardData[card.index].url,
                 cardIndex: card.index
               });
@@ -268,7 +273,7 @@ export default class DeckBuilder extends Component {
               mainDeckCards: this.state.mainDeckCards.push(card)
             });
             copyOfGridChildren.push({
-              class: "box1",
+              class: "box1 card-main",
               src: copyOfCardData[card.index].url,
               cardIndex: card.index
             });
@@ -277,7 +282,7 @@ export default class DeckBuilder extends Component {
               sideDeckCards: this.state.shardDeckCards.push(card)
             });
             copyOfSideGridChildren.push({
-              class: "box1",
+              class: "box1 card-main",
               src: copyOfCardData[card.index].url,
               cardIndex: card.index
             });
@@ -295,8 +300,6 @@ export default class DeckBuilder extends Component {
         sideGridChildren: copyOfSideGridChildren,
         cardData: cardDB.cards
       });
-
-      console.log(this.state.championCard);
     }
 
     //Initiate MuuriGrid objects
@@ -305,8 +308,7 @@ export default class DeckBuilder extends Component {
       defaultOptions: {
         dragEnabled: true,
         layoutDuration: 75,
-        dragSortInterval: 5,
-        layout: { rounding: false }
+        dragSortInterval: 5
       }
     });
     this.gridChamp = new MuuriGrid({
@@ -314,8 +316,7 @@ export default class DeckBuilder extends Component {
       defaultOptions: {
         dragEnabled: true,
         layoutDuration: 75,
-        dragSortInterval: 5,
-        layout: { rounding: false }
+        dragSortInterval: 5
       }
     });
     this.gridSpirit = new MuuriGrid({
@@ -323,8 +324,7 @@ export default class DeckBuilder extends Component {
       defaultOptions: {
         dragEnabled: true,
         layoutDuration: 75,
-        dragSortInterval: 5,
-        layout: { rounding: false }
+        dragSortInterval: 5
       }
     });
     this.gridTowers = new MuuriGrid({
@@ -332,8 +332,7 @@ export default class DeckBuilder extends Component {
       defaultOptions: {
         dragEnabled: true,
         layoutDuration: 75,
-        dragSortInterval: 5,
-        layout: { rounding: false }
+        dragSortInterval: 5
       }
     });
     this.gridShards = new MuuriGrid({
@@ -341,8 +340,7 @@ export default class DeckBuilder extends Component {
       defaultOptions: {
         dragEnabled: true,
         layoutDuration: 75,
-        dragSortInterval: 5,
-        layout: { rounding: false }
+        dragSortInterval: 5
       }
     });
     this.gridSide = new MuuriGrid({
@@ -350,9 +348,17 @@ export default class DeckBuilder extends Component {
       defaultOptions: {
         dragEnabled: true,
         layoutDuration: 75,
-        dragSortInterval: 5,
-        layout: { rounding: false }
+        dragSortInterval: 5
       }
+    });
+
+    this.setState({
+      gridRef: this.grid,
+      champGridRef: this.gridChamp,
+      spiritGridRef: this.gridSpirit,
+      towerGridRef: this.gridTowers,
+      shardsGridRef: this.gridShards,
+      sideGridRef: this.gridSide
     });
 
     this.grid.getEvent("dragEnd");
@@ -378,102 +384,145 @@ export default class DeckBuilder extends Component {
 
   render() {
     return (
-      <div>
-        Champion:
-        <div ref={gridElement2 => (this.gridElement2 = gridElement2)}>
-          {this.state.championGridChildren.map((item, index) => {
-            return (
-              <div key={index} className={`item ${item.class}`}>
-                <div className="item-content">
-                  <img
-                    className={"card-deck-img"}
-                    src={item.src}
-                    alt={item.class}
-                  ></img>
-                </div>
+      <div ref={deckBuilderRef => (this.deckBuilderRef = deckBuilderRef)}>
+        <div className="row">
+          <div className="col deck-col ml-3">
+            <div className="alert alert-secondary" role="alert">
+              Champion
+            </div>
+            <div ref={gridElement2 => (this.gridElement2 = gridElement2)}>
+              {this.state.championGridChildren.map((item, index) => {
+                return (
+                  <div key={index} className={`item champ-slot ${item.class}`}>
+                    <div className="item-content">
+                      <img
+                        className={"card-deck-img"}
+                        src={item.src}
+                        alt={item.class}
+                      ></img>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="col deck-col">
+            <div className="alert alert-secondary" role="alert">
+              Spirit
+            </div>
+            <div ref={gridElement3 => (this.gridElement3 = gridElement3)}>
+              {this.state.spiritGridChildren.map((item, index) => {
+                return (
+                  <div key={index} className={`item spirit-slot ${item.class}`}>
+                    <div className="item-content">
+                      <img
+                        className={"card-deck-img"}
+                        src={item.src}
+                        alt={item.class}
+                      ></img>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="col deck-col-tower">
+            <div className="alert alert-secondary alert-towers" role="alert">
+              Towers
+            </div>
+            <div className="tower-container">
+              <div ref={gridElement4 => (this.gridElement4 = gridElement4)}>
+                {this.state.towersGridChildren.map((item, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className={`item towers-slot ${item.class}`}
+                    >
+                      <div className="item-content">
+                        <img
+                          className={"card-deck-img"}
+                          src={item.src}
+                          alt={item.class}
+                        ></img>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
+            </div>
+          </div>
         </div>
-        Spirit:
-        <div ref={gridElement3 => (this.gridElement3 = gridElement3)}>
-          {this.state.spiritGridChildren.map((item, index) => {
-            return (
-              <div key={index} className={`item ${item.class}`}>
-                <div className="item-content">
-                  <img
-                    className={"card-deck-img"}
-                    src={item.src}
-                    alt={item.class}
-                  ></img>
-                </div>
+        <div className="row">
+          <div className="col ml-3 deck-col-main">
+            <div className="alert alert-secondary alert-main" role="alert">
+              Main Deck
+            </div>
+            <div className="main-container">
+              <div ref={gridElement => (this.gridElement = gridElement)}>
+                {this.state.gridChildren.map((item, index) => {
+                  return (
+                    <div key={index} className={`item ${item.class}`}>
+                      <div className="item-content">
+                        <img
+                          className={"card-deck-img"}
+                          src={item.src}
+                          alt={item.class}
+                        ></img>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
+            </div>
+          </div>
         </div>
-        Main:
-        <div ref={gridElement => (this.gridElement = gridElement)}>
-          {this.state.gridChildren.map((item, index) => {
-            return (
-              <div key={index} className={`item ${item.class}`}>
-                <div className="item-content">
-                  <img
-                    className={"card-deck-img"}
-                    src={item.src}
-                    alt={item.class}
-                  ></img>
-                </div>
+        <div className="row">
+          <div className="col ml-3 deck-col-shards">
+            <div className="alert alert-secondary alert-main" role="alert">
+              Shards
+            </div>
+            <div className="main-container">
+              <div ref={gridElement5 => (this.gridElement5 = gridElement5)}>
+                {this.state.shardsGridChildren.map((item, index) => {
+                  return (
+                    <div key={index} className={`item ${item.class}`}>
+                      <div className="item-content">
+                        <img
+                          className={"card-deck-img"}
+                          src={item.src}
+                          alt={item.class}
+                        ></img>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
+            </div>
+          </div>
         </div>
-        Towers:
-        <div ref={gridElement4 => (this.gridElement4 = gridElement4)}>
-          {this.state.towersGridChildren.map((item, index) => {
-            return (
-              <div key={index} className={`item ${item.class}`}>
-                <div className="item-content">
-                  <img
-                    className={"card-deck-img"}
-                    src={item.src}
-                    alt={item.class}
-                  ></img>
-                </div>
+        <div className="row">
+          <div className="col ml-3 deck-col-side">
+            <div className="alert alert-secondary alert-main" role="alert">
+              Sideboard
+            </div>
+            <div className="main-container">
+              <div ref={gridElement6 => (this.gridElement6 = gridElement6)}>
+                {this.state.sideGridChildren.map((item, index) => {
+                  return (
+                    <div key={index} className={`item ${item.class}`}>
+                      <div className="item-content">
+                        <img
+                          className={"card-deck-img"}
+                          src={item.src}
+                          alt={item.class}
+                        ></img>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
-        </div>
-        Shards:
-        <div ref={gridElement5 => (this.gridElement5 = gridElement5)}>
-          {this.state.shardsGridChildren.map((item, index) => {
-            return (
-              <div key={index} className={`item ${item.class}`}>
-                <div className="item-content">
-                  <img
-                    className={"card-deck-img"}
-                    src={item.src}
-                    alt={item.class}
-                  ></img>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-        Sideboard:
-        <div ref={gridElement6 => (this.gridElement6 = gridElement6)}>
-          {this.state.sideGridChildren.map((item, index) => {
-            return (
-              <div key={index} className={`item ${item.class}`}>
-                <div className="item-content">
-                  <img
-                    className={"card-deck-img"}
-                    src={item.src}
-                    alt={item.class}
-                  ></img>
-                </div>
-              </div>
-            );
-          })}
+            </div>
+          </div>
         </div>
       </div>
     );
