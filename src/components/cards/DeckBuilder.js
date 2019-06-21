@@ -4,6 +4,9 @@ import MuuriGrid from "react-muuri";
 import "./MuuriGrid.css";
 import DeckCard from "./DeckCard.js";
 import ReactDOM from "react-dom";
+import { GoX } from "react-icons/go";
+import { MdContentCopy } from "react-icons/md";
+import { IconContext } from "react-icons";
 
 export default class DeckBuilder extends Component {
   state = {
@@ -308,7 +311,13 @@ export default class DeckBuilder extends Component {
       defaultOptions: {
         dragEnabled: true,
         layoutDuration: 75,
-        dragSortInterval: 5
+        dragSortInterval: 5,
+        dragStartPredicate: function(item, e) {
+          if (e.target.matches("svg") || e.target.matches("path")) {
+            return false;
+          }
+          return true;
+        }
       }
     });
     this.gridChamp = new MuuriGrid({
@@ -316,7 +325,13 @@ export default class DeckBuilder extends Component {
       defaultOptions: {
         dragEnabled: true,
         layoutDuration: 75,
-        dragSortInterval: 5
+        dragSortInterval: 5,
+        dragStartPredicate: function(item, e) {
+          if (e.target.matches("svg") || e.target.matches("path")) {
+            return false;
+          }
+          return true;
+        }
       }
     });
     this.gridSpirit = new MuuriGrid({
@@ -324,7 +339,13 @@ export default class DeckBuilder extends Component {
       defaultOptions: {
         dragEnabled: true,
         layoutDuration: 75,
-        dragSortInterval: 5
+        dragSortInterval: 5,
+        dragStartPredicate: function(item, e) {
+          if (e.target.matches("svg") || e.target.matches("path")) {
+            return false;
+          }
+          return true;
+        }
       }
     });
     this.gridTowers = new MuuriGrid({
@@ -332,7 +353,13 @@ export default class DeckBuilder extends Component {
       defaultOptions: {
         dragEnabled: true,
         layoutDuration: 75,
-        dragSortInterval: 5
+        dragSortInterval: 5,
+        dragStartPredicate: function(item, e) {
+          if (e.target.matches("svg") || e.target.matches("path")) {
+            return false;
+          }
+          return true;
+        }
       }
     });
     this.gridShards = new MuuriGrid({
@@ -340,7 +367,13 @@ export default class DeckBuilder extends Component {
       defaultOptions: {
         dragEnabled: true,
         layoutDuration: 75,
-        dragSortInterval: 5
+        dragSortInterval: 5,
+        dragStartPredicate: function(item, e) {
+          if (e.target.matches("svg") || e.target.matches("path")) {
+            return false;
+          }
+          return true;
+        }
       }
     });
     this.gridSide = new MuuriGrid({
@@ -348,7 +381,13 @@ export default class DeckBuilder extends Component {
       defaultOptions: {
         dragEnabled: true,
         layoutDuration: 75,
-        dragSortInterval: 5
+        dragSortInterval: 5,
+        dragStartPredicate: function(item, e) {
+          if (e.target.matches("svg") || e.target.matches("path")) {
+            return false;
+          }
+          return true;
+        }
       }
     });
 
@@ -369,13 +408,59 @@ export default class DeckBuilder extends Component {
     this.gridSide.getEvent("dragEnd");
   }
 
-  removeElement() {
-    // An example of how to use `getMethod()` to remove an element from the grid.
-    if (this.gridElement && this.gridElement.children.length) {
-      this.grid.getMethod("remove", this.gridElement.children[0], {
+  dragPredicateFunction(item, e) {}
+
+  removeElement(grid, index) {
+    if (grid === "main") {
+      console.log(this.gridElement.children);
+      this.grid.getMethod("remove", this.gridElement.children[index], {
+        removeElements: true
+      });
+      console.log(this.gridElement.children);
+    }
+    if (grid === "champ") {
+      this.gridChamp.getMethod("remove", this.gridElement2.children[index], {
         removeElements: true
       });
     }
+    if (grid === "spirit") {
+      this.gridSpirit.getMethod("remove", this.gridElement3.children[index], {
+        removeElements: true
+      });
+    }
+    if (grid === "tower") {
+      this.gridTowers.getMethod("remove", this.gridElement4.children[index], {
+        removeElements: true
+      });
+    }
+    if (grid === "shard") {
+      this.gridShards.getMethod("remove", this.gridElement5.children[index], {
+        removeElements: true
+      });
+    }
+    if (grid === "side") {
+      this.gridSide.getMethod("remove", this.gridElement6.children[index], {
+        removeElements: true
+      });
+    }
+  }
+
+  copyElement(grid, index) {
+    if (grid === "main") {
+      let copy = this.state.gridChildren[index];
+      let current = this.state.gridChildren;
+      current.push(copy);
+      this.setState({ gridChildren: current, gridUp: false });
+    }
+    if (grid === "shard") {
+      let copy = this.gridElement5.children[index];
+      this.gridShards.getMethod("add", copy);
+    }
+    if (grid === "side") {
+      let copy = this.gridElement6.children[index];
+      this.gridSide.getMethod("add", copy);
+    }
+    console.log(this.gridElement.children);
   }
 
   addElement() {
@@ -395,11 +480,24 @@ export default class DeckBuilder extends Component {
                 return (
                   <div key={index} className={`item champ-slot ${item.class}`}>
                     <div className="item-content">
-                      <img
-                        className={"card-deck-img"}
-                        src={item.src}
-                        alt={item.class}
-                      ></img>
+                      <div className="card-deck-img-container">
+                        <IconContext.Provider
+                          value={{
+                            color: "black",
+                            className: "deck-delete-btn"
+                          }}
+                        >
+                          <GoX
+                            onClick={() => this.removeElement("champ", index)}
+                          />
+                        </IconContext.Provider>
+
+                        <img
+                          className={"card-deck-img"}
+                          src={item.src}
+                          alt={item.class}
+                        ></img>
+                      </div>
                     </div>
                   </div>
                 );
@@ -415,11 +513,24 @@ export default class DeckBuilder extends Component {
                 return (
                   <div key={index} className={`item spirit-slot ${item.class}`}>
                     <div className="item-content">
-                      <img
-                        className={"card-deck-img"}
-                        src={item.src}
-                        alt={item.class}
-                      ></img>
+                      <div className="card-deck-img-container">
+                        <IconContext.Provider
+                          value={{
+                            color: "black",
+                            className: "deck-delete-btn"
+                          }}
+                        >
+                          <GoX
+                            onClick={() => this.removeElement("spirit", index)}
+                          />
+                        </IconContext.Provider>
+
+                        <img
+                          className={"card-deck-img"}
+                          src={item.src}
+                          alt={item.class}
+                        ></img>
+                      </div>
                     </div>
                   </div>
                 );
@@ -439,11 +550,24 @@ export default class DeckBuilder extends Component {
                       className={`item towers-slot ${item.class}`}
                     >
                       <div className="item-content">
-                        <img
-                          className={"card-deck-img"}
-                          src={item.src}
-                          alt={item.class}
-                        ></img>
+                        <div className="card-deck-img-container">
+                          <IconContext.Provider
+                            value={{
+                              color: "black",
+                              className: "deck-delete-btn"
+                            }}
+                          >
+                            <GoX
+                              onClick={() => this.removeElement("tower", index)}
+                            />
+                          </IconContext.Provider>
+
+                          <img
+                            className={"card-deck-img"}
+                            src={item.src}
+                            alt={item.class}
+                          ></img>
+                        </div>
                       </div>
                     </div>
                   );
@@ -463,11 +587,34 @@ export default class DeckBuilder extends Component {
                   return (
                     <div key={index} className={`item ${item.class}`}>
                       <div className="item-content">
-                        <img
-                          className={"card-deck-img"}
-                          src={item.src}
-                          alt={item.class}
-                        ></img>
+                        <div className="card-deck-img-container">
+                          <IconContext.Provider
+                            value={{
+                              color: "black",
+                              className: "deck-delete-btn"
+                            }}
+                          >
+                            <GoX
+                              onClick={() => this.removeElement("main", index)}
+                            />
+                          </IconContext.Provider>
+                          <IconContext.Provider
+                            value={{
+                              color: "white",
+                              className: "deck-copy-btn"
+                            }}
+                          >
+                            <MdContentCopy
+                              onClick={() => this.copyElement("main", index)}
+                            />
+                          </IconContext.Provider>
+
+                          <img
+                            className={"card-deck-img"}
+                            src={item.src}
+                            alt={item.class}
+                          ></img>
+                        </div>
                       </div>
                     </div>
                   );
@@ -487,11 +634,34 @@ export default class DeckBuilder extends Component {
                   return (
                     <div key={index} className={`item ${item.class}`}>
                       <div className="item-content">
-                        <img
-                          className={"card-deck-img"}
-                          src={item.src}
-                          alt={item.class}
-                        ></img>
+                        <div className="card-deck-img-container">
+                          <IconContext.Provider
+                            value={{
+                              color: "black",
+                              className: "deck-delete-btn"
+                            }}
+                          >
+                            <GoX
+                              onClick={() => this.removeElement("shard", index)}
+                            />
+                          </IconContext.Provider>
+                          <IconContext.Provider
+                            value={{
+                              color: "white",
+                              className: "deck-copy-btn"
+                            }}
+                          >
+                            <MdContentCopy
+                              onClick={() => this.copyElement("shard", index)}
+                            />
+                          </IconContext.Provider>
+
+                          <img
+                            className={"card-deck-img"}
+                            src={item.src}
+                            alt={item.class}
+                          ></img>
+                        </div>
                       </div>
                     </div>
                   );
@@ -511,11 +681,34 @@ export default class DeckBuilder extends Component {
                   return (
                     <div key={index} className={`item ${item.class}`}>
                       <div className="item-content">
-                        <img
-                          className={"card-deck-img"}
-                          src={item.src}
-                          alt={item.class}
-                        ></img>
+                        <div className="card-deck-img-container">
+                          <IconContext.Provider
+                            value={{
+                              color: "black",
+                              className: "deck-delete-btn"
+                            }}
+                          >
+                            <GoX
+                              onClick={() => this.removeElement("side", index)}
+                            />
+                          </IconContext.Provider>
+                          <IconContext.Provider
+                            value={{
+                              color: "white",
+                              className: "deck-copy-btn"
+                            }}
+                          >
+                            <MdContentCopy
+                              onClick={() => this.copyElement("side", index)}
+                            />
+                          </IconContext.Provider>
+
+                          <img
+                            className={"card-deck-img"}
+                            src={item.src}
+                            alt={item.class}
+                          ></img>
+                        </div>
                       </div>
                     </div>
                   );

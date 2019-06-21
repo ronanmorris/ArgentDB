@@ -710,3 +710,11 @@ h4 {
   top: 5px !important;
   font-size: 1.2rem;
 }
+
+.sortable-deck {
+  cursor: crosshair;
+}
+
+.my-handle {
+  cursor: pointer;
+}

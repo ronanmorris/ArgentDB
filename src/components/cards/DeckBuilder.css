@@ -1,56 +1,14 @@
-.item {
-  color: white;
-  cursor: pointer;
-  height: 110px;
-  margin: 20px;
-  position: absolute; /* Required by Muuri */
+.deck-card-holder {
   width: 80px;
-}
-.muuri-item-dragging {
-  z-index: 3; /* Required by Muuri */
-}
-
-.muuri-item-releasing {
-  z-index: 2; /* Required by Muuri */
-}
-
-.muuri-item-hidden {
-  z-index: 0; /* Required by Muuri */
-}
-
-.box1 {
-  background-color: orange; /* Go */
-  margin: 5px;
-  top: auto !important;
-}
-
-.box2 {
-  background-color: blue; /* Gators */
-  margin: 5px;
-}
-
-.button {
-  background-color: gray;
-  border: none;
-  color: white;
-  cursor: pointer;
   display: inline-block;
-  font-size: 16px;
-  margin: 20px;
-  padding: 15px;
-  text-align: center;
+}
+
+.deck-card-holder:hover {
   text-decoration: none;
-  width: 200px;
 }
 
-.muuri {
-  width: 900px !important;
-  margin: 0% !important;
-}
-
-.card-deck-img {
+.deck-card {
   width: 100%;
-  height: 100%;
 }
 
 .champ-slot {
@@ -79,17 +37,17 @@
 }
 
 .deck-col-main {
-  width: 110%;
+  width: 100%;
   flex-grow: unset;
 }
 
 .deck-col-shards {
-  width: 110%;
+  width: 100%;
   flex-grow: unset;
 }
 
 .deck-col-side {
-  width: 110%;
+  width: 100%;
   flex-grow: unset;
 }
 
@@ -107,7 +65,7 @@
 
 .main-container {
   margin-left: 1%;
-  width: 920px;
+  width: 840px;
   margin-top: 10px;
   transform: translateX(0px);
   transform: translateY(0px);
@@ -126,5 +84,33 @@
 }
 
 .deck-builder-modal {
-  height: 90%;
+  height: 98%;
+}
+
+.card-deck-img-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.deck-delete-btn {
+  position: absolute;
+  display: flex;
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  z-index: 4;
+  background-color: rgba(217, 52, 69, 0.6);
+  border-radius: 7px;
+}
+
+.deck-copy-btn {
+  position: absolute;
+  display: flex;
+  top: 80%;
+  width: 20px;
+  height: 20px;
+  z-index: 4;
+  background-color: rgba(37, 156, 174, 0.6);
+  border-radius: 7px;
 }

@@ -12,7 +12,7 @@ import Dashboard from "./components/layout/Dashboard";
 import Cards from "./components/cards/Cards.js";
 
 import backgroundImage from "./pattern.png";
-import DeckBuilder from "./components/cards/DeckBuilder";
+import DeckBuilderNext from "./components/cards/DeckBuilderNext";
 
 class App extends Component {
   render() {
@@ -34,7 +34,7 @@ class App extends Component {
                   modalClassName={
                     "react-router-modal__modal deck-builder-modal"
                   }
-                  component={DeckBuilder}
+                  component={DeckBuilderNext}
                 />
               </div>
             </div>
