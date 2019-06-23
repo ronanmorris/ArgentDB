@@ -154,21 +154,21 @@ export default class CardList extends Component {
     this.setState({ cardsPerRow: i });
   }
 
-  functionSortNewest(a,b) {
-    if ( a.order > b.order ) {
+  functionSortNewest(a, b) {
+    if (a.order > b.order) {
       return -1;
     }
-    if ( a.order < b.order ){
+    if (a.order < b.order) {
       return 1;
     }
     return 0;
   }
 
-  functionSortOldest(a,b) {
-    if ( a.order < b.order ) {
+  functionSortOldest(a, b) {
+    if (a.order < b.order) {
       return -1;
     }
-    if ( a.order > b.order ){
+    if (a.order > b.order) {
       return 1;
     }
     return 0;
@@ -693,10 +693,10 @@ export default class CardList extends Component {
         }
       }
 
-      if ( this.state.sortNewest ) {
-        filteredCards.sort(this.functionSortNewest)
+      if (this.state.sortNewest) {
+        filteredCards.sort(this.functionSortNewest);
       } else {
-        filteredCards.sort(this.functionSortOldest)
+        filteredCards.sort(this.functionSortOldest);
       }
 
       //this.setState({ maxShowItems: filteredCards.length })
@@ -717,10 +717,10 @@ export default class CardList extends Component {
       ));
     } else {
       filteredCards = this.state.cards;
-      if ( this.state.sortNewest ) {
-        filteredCards.sort(this.functionSortNewest)
+      if (this.state.sortNewest) {
+        filteredCards.sort(this.functionSortNewest);
       } else {
-        filteredCards.sort(this.functionSortOldest)
+        filteredCards.sort(this.functionSortOldest);
       }
       filterMap = filteredCards.slice(0, this.state.showItems).map(card => (
         <div
