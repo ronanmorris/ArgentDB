@@ -1,12 +1,29 @@
 import React, { Component } from "react";
 import uniqueId from "lodash/uniqueId";
 import cardDB from "../../CardDB.json";
-import ReactSortable from "react-sortablejs";
 import "./DeckBuilder.css";
+import { sortableContainer, sortableElement } from "react-sortable-hoc";
+import arrayMove from "array-move";
 import {
   LazyLoadImage,
   LazyLoadComponent
 } from "react-lazy-load-image-component";
+import Tippy from "@tippy.js/react";
+
+const SortableItem = sortableElement(({ value, index }) => (
+  <div className="deck-card-holder">
+    {console.log(index)}
+    <img
+      className="deck-card"
+      src={cardDB.cards[value].url}
+      alt={"card index of " + value}
+    />
+  </div>
+));
+
+const SortableContainer = sortableContainer(({ children }) => {
+  return <div>{children}</div>;
+});
 
 export default class DeckBuilderNext extends Component {
   state = {
@@ -36,123 +53,124 @@ export default class DeckBuilderNext extends Component {
     airTowerCards: [],
     waterTowerCards: [],
     darkTowerCards: [],
-    deck: {
-      champion: [],
-      spirit: [],
-      main: [],
-      shard: [],
-      side: [],
-      lightTower: [],
-      fireTower: [],
-      airTower: [],
-      waterTower: [],
-      darkTower: []
-    }
+    deckChampion: [],
+    deckSpirit: [],
+    deckMain: [],
+    deckShard: [],
+    deckSide: [],
+    deckLightTower: [],
+    deckFireTower: [],
+    deckAirTower: [],
+    deckWaterTower: [],
+    deckDarkTower: [],
+    selectedItems: []
+  };
+
+  onSortEndMain = ({ oldIndex, newIndex }) => {
+    this.setState(({ deckMain }) => ({
+      deckMain: arrayMove(deckMain, oldIndex, newIndex)
+    }));
+  };
+
+  onSortEndShard = ({ oldIndex, newIndex }) => {
+    this.setState(({ deckShard }) => ({
+      deckShard: arrayMove(deckShard, oldIndex, newIndex)
+    }));
   };
 
   componentDidMount() {
-    let temp;
     ////Sort each card from the incoming deck into its designated deck zones
     this.state.currentDeck.forEach(card => {
       //Working copy of deck
-      temp = this.state.deck;
       let x;
       //For each card passed
       for (x = 0; x < parseInt(card.quantity, 10); x++) {
         //If card type is X, Check if going to designate slot or sideboard
-        if (card.type === "Champion" && this.state.deck.champion.length === 0) {
-          temp.champion.push(card);
+        if (card.type === "Champion" && this.state.deckChampion.length === 0) {
+          this.setState(prevState => ({
+            deckChampion: [...prevState.deckChampion, card]
+          }));
         } else if (
           card.type === "Spirit" &&
-          this.state.deck.spirit.length === 0
+          this.state.deckSpirit.length === 0
         ) {
-          temp.spirit.push(card);
-        } else if (card.type === "Shard" && this.state.deck.shard.length < 10) {
-          temp.shard.push(card);
+          this.setState(prevState => ({
+            deckSpirit: [...prevState.deckSpirit, card]
+          }));
+        } else if (card.type === "Shard" && this.state.deckShard.length < 10) {
+          this.setState(prevState => ({
+            deckShard: [...prevState.deckShard, card]
+          }));
         } else if (
           card.type === "Tower" &&
-          this.state.deck.lightTower.length === 0 &&
+          this.state.deckLightTower.length === 0 &&
           card.element === "Light"
         ) {
-          temp.lightTower.push(card);
+          this.setState(prevState => ({
+            deckLightTower: [...prevState.deckLightTower, card]
+          }));
         } else if (
           card.type === "Tower" &&
-          this.state.deck.fireTower.length === 0 &&
+          this.state.deckFireTower.length === 0 &&
           card.element === "Fire"
         ) {
-          temp.fireTower.push(card);
+          this.setState(prevState => ({
+            deckFireTower: [...prevState.deckFireTower, card]
+          }));
         } else if (
           card.type === "Tower" &&
-          this.state.deck.airTower.length === 0 &&
+          this.state.deckAirTower.length === 0 &&
           card.element === "Air"
         ) {
-          temp.airTower.push(card);
+          this.setState(prevState => ({
+            deckAirTower: [...prevState.deckAirTower, card]
+          }));
         } else if (
           card.type === "Tower" &&
-          this.state.deck.waterTower.length === 0 &&
+          this.state.deckWaterTower.length === 0 &&
           card.element === "Water"
         ) {
-          temp.waterTower.push(card);
+          this.setState(prevState => ({
+            deckWaterTower: [...prevState.deckWaterTower, card]
+          }));
         } else if (
           card.type === "Tower" &&
-          this.state.deck.darkTower.length === 0 &&
+          this.state.deckDarkTower.length === 0 &&
           card.element === "Dark"
         ) {
-          temp.darkTower.push(card);
+          this.setState(prevState => ({
+            deckDarkTower: [...prevState.deckDarkTower, card]
+          }));
         } else if (
           (card.type === "Unit" || "Augment" || "Spell") &&
-          this.state.deck.main.length < 60
+          this.state.deckMain.length < 60
         ) {
-          temp.main.push(card);
+          this.setState(prevState => ({
+            deckMain: [...prevState.deckMain, card]
+          }));
         } else {
-          temp.side.push(card);
+          this.setState(prevState => ({
+            deckSide: [...prevState.deckSide, card]
+          }));
         }
-        //Push to state, to be pulled again in next iteration of the loop
-        this.setState({
-          deck: temp
-        });
       }
     });
 
-    ////change deck into numbers representing the index of the cards.
-    //For each [key, value] pair in the deck, representing each deck zone
-    for (let [key, value] of Object.entries(this.state.deck)) {
-      //working copy of deck from state
-      let temp = this.state.deck;
-      let holder;
-      //Iterate each deck zone, replacing each card object with its index, as a number
-      value.forEach((cardInDeck, index, deckArray) => {
-        deckArray[index] = cardInDeck.index;
-        holder = deckArray;
-      });
-      //Replace undefined with empty array
-      if (typeof holder === "undefined") {
-        holder = [];
-      }
-      //update state
-      temp[key] = holder;
-      this.setState({ deck: temp });
-    }
+    this.setState(state => ({
+      deckChampion: state.deckChampion.map(card => card.index),
+      deckSpirit: state.deckSpirit.map(card => card.index),
+      deckMain: state.deckMain.map(card => card.index),
+      deckShard: state.deckShard.map(card => card.index),
+      deckShard: state.deckShard.map(card => card.index),
+      deckAirTower: state.deckAirTower.map(card => card.index),
+      deckFireTower: state.deckFireTower.map(card => card.index),
+      deckLightTower: state.deckLightTower.map(card => card.index),
+      deckWaterTower: state.deckWaterTower.map(card => card.index),
+      deckDarkTower: state.deckDarkTower.map(card => card.index)
+    }));
   }
 
   render() {
-    const PrintMain =
-      this.state.deck.main.length > 0
-        ? this.state.deck.main.map(cardIndex => (
-            <div
-              className={"deck-card-holder"}
-              key={uniqueId()}
-              data-id={cardIndex}
-            >
-              <img
-                className="deck-card"
-                src={cardDB.cards[cardIndex].url}
-                alt={"card index of " + cardIndex}
-              />
-            </div>
-          ))
-        : null;
-
     return (
       <div>
         <div className="row">
@@ -179,22 +197,18 @@ export default class DeckBuilderNext extends Component {
               Main Deck
             </div>
             <div className="main-container">
-              <ReactSortable
-                options={{
-                  animation: 50,
-                  swapThreshold: 0.001,
-                  direction: "horizontal",
-                  invertSwap: true
-                }}
-                tag="div"
-                onChange={(order, sortable, evt) => {
-                  let temp = this.state.deck;
-                  temp.main = order;
-                  this.setState({ deck: temp });
-                }}
-              >
-                {PrintMain}
-              </ReactSortable>
+              {this.state.deckMain ? (
+                <SortableContainer onSortEnd={this.onSortEndMain} axis="xy">
+                  {this.state.deckMain.map((value, index) => (
+                    <SortableItem
+                      key={`item-${index}`}
+                      index={index}
+                      value={value}
+                      deck={"main"}
+                    />
+                  ))}
+                </SortableContainer>
+              ) : null}
             </div>
           </div>
         </div>
@@ -203,7 +217,19 @@ export default class DeckBuilderNext extends Component {
             <div className="alert alert-secondary alert-main" role="alert">
               Shards
             </div>
-            <div className="main-container"></div>
+            <div className="main-container">
+              {this.state.deckShard ? (
+                <SortableContainer onSortEnd={this.onSortEndShard} axis="xy">
+                  {this.state.deckShard.map((value, index) => (
+                    <SortableItem
+                      key={`item-${index}`}
+                      index={index}
+                      value={value}
+                    />
+                  ))}
+                </SortableContainer>
+              ) : null}
+            </div>
           </div>
         </div>
         <div className="row">
