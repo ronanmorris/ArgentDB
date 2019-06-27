@@ -15,6 +15,18 @@
   z-index: 1000;
 }
 
+.close-button {
+  position: absolute;
+  right: 15px;
+  top: 40%;
+}
+
+.close-button-mobile {
+  position: absolute;
+  right: 15px;
+  top: 30%;
+}
+
 footer {
   text-align: center;
 }
@@ -55,7 +67,7 @@ body {
   top: 0;
   width: 100%;
   z-index: 1;
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
 }
 
 .content {
@@ -78,9 +90,6 @@ body {
 .close:hover {
   cursor: pointer;
 }
-
-
-
 
 /* added to the body element when shown; prevent scrolling */
 .react-router-modal__modal-open {
@@ -116,8 +125,8 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 55%;
-  max-width: 960px;
+  width: 60%;
+  max-width: 1000px;
   transform: translate(-50%, -50%);
   background-color: white;
   border-radius: 5px;
@@ -150,7 +159,6 @@ body {
     top: 2vh;
     z-index: 1000;
   }
-
 }
 
 h2 {
@@ -165,7 +173,7 @@ h4 {
   font-size: 1rem;
   display: inline-block;
   vertical-align: middle;
-  white-space: nowrap;
+  white-space: initial;
   padding-left: 5%;
 }
 
@@ -236,7 +244,7 @@ h4 {
   }
 
   .react-router-modal__modal {
-    width: 80%;
+    width: 86%;
   }
   .faint-text {
     font-size: 0.7rem;
@@ -259,7 +267,7 @@ h4 {
 @media (min-width: 768px) {
   h4 {
     font-size: 0.9rem;
-    white-space: nowrap;
+    white-space: initial;
     margin-top: 0.5vh;
   }
   h2 {
@@ -298,7 +306,7 @@ h4 {
     font-size: 2rem;
   }
   .react-router-modal__modal {
-    width: 70%;
+    width: 80%;
   }
   .faint-text {
     font-size: 1rem;
@@ -320,7 +328,7 @@ h4 {
     font-size: 2.1rem;
   }
   .react-router-modal__modal {
-    width: 55%;
+    width: 75%;
   }
   .cardImgRounded {
     width: 80% !important;
@@ -385,13 +393,9 @@ h4 {
   margin-top: 1%;
 }
 
-
-
 .btn-light {
   background-color: #e5e5e5 !important;
 }
-
-
 
 .btn-group-wrap {
   display: inline;
@@ -427,7 +431,7 @@ h4 {
 }
 
 .pickybox {
-  display: inline-block ;
+  display: inline-block;
   width: 50% !important;
   vertical-align: middle;
 }

@@ -10,6 +10,7 @@ export default class Cards extends Component {
     cardIndex: "",
     imageUrl: "",
     cardNumber: "",
+    longNumber: false,
     cardType: "",
     cardElement: "",
     cardCost: "",
@@ -36,6 +37,7 @@ export default class Cards extends Component {
     const cardName = thisCard.name;
     const imageUrl = thisCard.url;
     const cardNumber = thisCard.number;
+    const longNumber = thisCard.number.length > 15;
     const cardType = thisCard.type;
     const cardElement = thisCard.element;
     const cardCost = thisCard.cost;
@@ -51,6 +53,7 @@ export default class Cards extends Component {
       cardName,
       imageUrl,
       cardNumber,
+      longNumber,
       cardType,
       cardElement,
       cardCost,
@@ -110,14 +113,14 @@ export default class Cards extends Component {
                 <div className="col-sm-auto my-auto">
                   <h2>{this.state.cardName}</h2>
                 </div>
-                <div className="col-sm-2 my-auto">
+                <div className="col-sm-4 my-auto">
                   <h4>{this.state.cardNumber}</h4>
                 </div>
-                <div className="col-sm-1 ml-auto my-auto">
-                  <Link to="/">
+                <Link to="/">
+                  <div className="close-button">
                     <img src={CloseIcon} className="close" alt="close window" />
-                  </Link>
-                </div>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -235,25 +238,52 @@ export default class Cards extends Component {
       return (
         <div className="card" onClick={e => e.preventDefault()}>
           <div className="card-header mobile-padding">
-            <div className="header">
-              <div className="row">
-                <div className="col-sm-auto col-auto my-auto">
-                  <h2>{this.state.cardName}</h2>
-                </div>
-                <div className="col-sm-2 col-2 mt-1">
-                  <h4>{this.state.cardNumber}</h4>
-                </div>
-                <div className="col-sm-1 col-1 ml-auto mr-2">
-                  <Link to="/">
-                    <img
-                      src={CloseIcon}
-                      className="mobile-close"
-                      alt="close window"
-                    />
-                  </Link>
+            {!this.state.longNumber ? (
+              <div className="header">
+                <div className="row">
+                  <div className="col-sm-auto col-auto my-auto">
+                    <h2>{this.state.cardName}</h2>
+                  </div>
+                  <div className="col-sm-3 col-3 mt-1">
+                    <h4 style={{ whiteSpace: "nowrap" }}>
+                      {this.state.cardNumber}
+                    </h4>
+                  </div>
+                  <div className="col-sm-1 col-1 ml-auto mr-2">
+                    <Link to="/">
+                      <img
+                        src={CloseIcon}
+                        className="mobile-close"
+                        alt="close window"
+                      />
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className="header">
+                <div className="row">
+                  <div className="col-sm-auto col-auto my-auto">
+                    <h2>{this.state.cardName}</h2>
+                  </div>
+
+                  <Link to="/">
+                    <div className="close-button-mobile">
+                      <img
+                        src={CloseIcon}
+                        className="mobile-close"
+                        alt="close window"
+                      />
+                    </div>
+                  </Link>
+                </div>
+                <div className="row">
+                  <div className="col-sm-10 col-10 ml-0 pl-1">
+                    <h4>{this.state.cardNumber}</h4>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           <div className="card-body mobile-padding-2">
             <div className="row">

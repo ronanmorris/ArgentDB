@@ -61,6 +61,7 @@ export default class CardList extends Component {
     sCost5: false,
     sCost6: false,
     sCost7up: false,
+    sCostX: false,
     sAllElement: true,
     sLight: false,
     sFire: false,
@@ -75,9 +76,12 @@ export default class CardList extends Component {
     sSuper: false,
     sArgent: false,
     sTopper: false,
-    sPromo: false,
     sAllSet: true,
-    setValues: [{ id: 0, name: "Intro Deck" }, { id: 1, name: "Betrayal" }],
+    setValues: [
+      { id: 0, name: "Intro Deck" },
+      { id: 1, name: "Betrayal" },
+      { id: 2, name: "Not-In-Set Promos" }
+    ],
     searchSetValue: [],
     sortNewest: true,
     sortOldest: false
@@ -222,7 +226,8 @@ export default class CardList extends Component {
         "sCost4" ||
         "sCost5" ||
         "sCost6" ||
-        "sCost7up")
+        "sCost7up" ||
+        "sCostX")
     ) {
       this.setState({ sAllCost: false });
     }
@@ -246,8 +251,7 @@ export default class CardList extends Component {
         "sRare" ||
         "sSuper" ||
         "sArgent" ||
-        "sTopper" ||
-        "sPromo")
+        "sTopper")
     ) {
       this.setState({ sAllRarity: false });
     }
@@ -293,7 +297,8 @@ export default class CardList extends Component {
         this.state.sCost4 ||
         this.state.sCost5 ||
         this.state.sCost6 ||
-        this.state.sCost7up)
+        this.state.sCost7up ||
+        this.state.sCostX)
     ) {
       this.setState({
         sCost0: false,
@@ -303,7 +308,8 @@ export default class CardList extends Component {
         sCost4: false,
         sCost5: false,
         sCost6: false,
-        sCost7up: false
+        sCost7up: false,
+        sCostX: false
       });
     }
     //Toggle the other buttons off if Seach all Elements is clicked
@@ -339,8 +345,7 @@ export default class CardList extends Component {
         this.state.sRare ||
         this.state.sSuper ||
         this.state.sArgent ||
-        this.state.sTopper ||
-        this.state.sPromo)
+        this.state.sTopper)
     ) {
       this.setState({
         sFixed: false,
@@ -348,8 +353,7 @@ export default class CardList extends Component {
         sRare: false,
         sSuper: false,
         sArgent: false,
-        sTopper: false,
-        sPromo: false
+        sTopper: false
       });
     }
 
@@ -427,7 +431,8 @@ export default class CardList extends Component {
         !this.state.sCost4 &&
         !this.state.sCost5 &&
         !this.state.sCost6 &&
-        !this.state.sCost7up
+        !this.state.sCost7up &&
+        !this.state.sCostX
       ) {
         this.setState({ sAllCost: true });
       }
@@ -453,8 +458,7 @@ export default class CardList extends Component {
         !this.state.sRare &&
         !this.state.sSuper &&
         !this.state.sArgent &&
-        !this.state.sTopper &&
-        !this.state.sPromo
+        !this.state.sTopper
       ) {
         this.setState({ sAllRarity: true });
       }
@@ -595,12 +599,27 @@ export default class CardList extends Component {
         }
         if (!this.state.sCost7up) {
           filteredCards = filteredCards.filter(card => {
-            return (
-              card.cost !== "7" ||
-              card.cost !== "8" ||
-              card.cost !== "9" ||
-              card.cost !== "10"
-            );
+            return card.cost !== "7";
+          });
+        }
+        if (!this.state.sCost7up) {
+          filteredCards = filteredCards.filter(card => {
+            return card.cost !== "8";
+          });
+        }
+        if (!this.state.sCost7up) {
+          filteredCards = filteredCards.filter(card => {
+            return card.cost !== "9";
+          });
+        }
+        if (!this.state.sCost7up) {
+          filteredCards = filteredCards.filter(card => {
+            return card.cost !== "10";
+          });
+        }
+        if (!this.state.sCostX) {
+          filteredCards = filteredCards.filter(card => {
+            return card.cost !== "X";
           });
         }
       }
@@ -653,6 +672,11 @@ export default class CardList extends Component {
             return card.set !== "Betrayal";
           });
         }
+        if (!filterSets.includes("Not-In-Set Promos")) {
+          filteredCards = filteredCards.filter(card => {
+            return card.set !== "Not-In-Set Promos";
+          });
+        }
       }
       //Filter out card Rarities if they are not selected
       if (!this.state.sAllRarity) {
@@ -684,11 +708,6 @@ export default class CardList extends Component {
         if (!this.state.sTopper) {
           filteredCards = filteredCards.filter(card => {
             return card.rarity !== "Box Topper";
-          });
-        }
-        if (!this.state.sPromo) {
-          filteredCards = filteredCards.filter(card => {
-            return card.rarity !== "Promo";
           });
         }
       }
@@ -1084,6 +1103,19 @@ export default class CardList extends Component {
                               >
                                 7+
                               </button>
+                              <button
+                                type="button"
+                                id="sCostX"
+                                className={
+                                  "btn cost-button rft " +
+                                  (this.state.sCostX
+                                    ? "btn-secondary"
+                                    : "btn-light")
+                                }
+                                onClick={this.buttonUpdateState}
+                              >
+                                X
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -1329,19 +1361,6 @@ export default class CardList extends Component {
                                 onClick={this.buttonUpdateState}
                               >
                                 Box Topper
-                              </button>
-                              <button
-                                type="button"
-                                id="sPromo"
-                                className={
-                                  "btn rft " +
-                                  (this.state.sPromo
-                                    ? "btn-secondary"
-                                    : "btn-light")
-                                }
-                                onClick={this.buttonUpdateState}
-                              >
-                                Promo
                               </button>
                             </div>
                           </div>
