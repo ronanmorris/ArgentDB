@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ModalContainer, ModalLink } from "react-router-modal";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,7 +12,7 @@ import Dashboard from "./components/layout/Dashboard";
 import Cards from "./components/cards/Cards.js";
 
 import backgroundImage from "./pattern.png";
-import DeckBuilderNext from "./components/cards/DeckBuilderNext";
+import DeckBuilder from "./components/deckbuilder/DeckBuilder";
 
 class App extends Component {
   render() {
@@ -25,17 +25,14 @@ class App extends Component {
               className="App"
               style={{ background: `url(${backgroundImage})` }}
             >
-              <Route exact path="/" component={NavBar} />
+              <Route path="/" component={NavBar} />
               <div className="container">
-                <Route path="/" component={Dashboard} />
+                <Switch>
+                  <Route path="/builder" component={DeckBuilder} />
+                  <Route path="/" component={Dashboard} />
+                </Switch>
+
                 <ModalLink path="/cards/:cardIndex" component={Cards} />
-                <ModalLink
-                  path="/builder"
-                  modalClassName={
-                    "react-router-modal__modal deck-builder-modal"
-                  }
-                  component={DeckBuilderNext}
-                />
               </div>
             </div>
           </div>
