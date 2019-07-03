@@ -15,6 +15,7 @@ import { DragDropContext } from "react-beautiful-dnd";
 export default class DeckBuilder extends Component {
   state = {
     deckName: "UntitledDeck",
+    windowWidth: window.innerWidth,
     currentDeck: this.props.location.state
       ? this.props.location.state.currentDeck
       : [],
@@ -127,6 +128,14 @@ export default class DeckBuilder extends Component {
   deckTitleChange = e => {
     this.setState({ deckTitle: e.target.value });
   };
+
+  componentWillMount() {
+    //Event listener to update state value when window is resized
+    window.addEventListener("resize", () => {
+      console.log(window.innerWidth);
+      this.setState({ windowWidth: window.innerWidth });
+    });
+  }
 
   componentDidMount() {
     this.setState(state => ({
@@ -344,6 +353,7 @@ export default class DeckBuilder extends Component {
 
   render() {
     console.log(this.state);
+    let isMobile = this.state.windowWidth <= 576;
     let PrintMain = this.PrintMain();
     let PrintShard = this.PrintShard();
     let PrintSide = this.PrintSide();
@@ -357,7 +367,8 @@ export default class DeckBuilder extends Component {
 
     return (
       <div>
-        <div className="row">
+        {!isMobile ? (
+          <div className="row">
           <div className="col-6">
             <div className="input-group">
               <div className="input-group-prepend">
@@ -390,6 +401,8 @@ export default class DeckBuilder extends Component {
             <div className="col-4">hoi</div>
           </div>
         </DragDropContext>
+        ) : ()}
+        
       </div>
     );
   }
