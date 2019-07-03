@@ -398,6 +398,9 @@ export default class CardList extends Component {
       maxShowItems: cardData["cards"].length
     });
     this.resetRows();
+
+    //Focus on search box on page load
+    this.searchRef.focus();
   }
 
   componentDidUpdate() {
@@ -779,6 +782,9 @@ export default class CardList extends Component {
                     type="text"
                     id="searchbox"
                     name="search"
+                    ref={input => {
+                      this.searchRef = input;
+                    }}
                     className="form-control"
                     value={this.state.search}
                     onChange={this.handleChange.bind(this)}
