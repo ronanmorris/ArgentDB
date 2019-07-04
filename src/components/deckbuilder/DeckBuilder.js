@@ -412,39 +412,37 @@ export default class DeckBuilder extends Component {
 
     return (
       <div>
-        {!isMobile ? (
-          <div className="">
-            <div className="row">
-              <div className="col-8 col-md-10 col-lg-8 ml-auto mr-auto mt-3 mb-2">
-                <div className="input-group">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text">Deck Title:</span>
-                  </div>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={this.state.deckTitle}
-                    onChange={this.deckTitleChange}
-                  />
+        <div className="">
+          <div className="row">
+            <div className="col-8 col-md-10 col-lg-8 ml-auto mr-auto mt-3 mb-2">
+              <div className="input-group">
+                <div className="input-group-prepend">
+                  <span className="input-group-text">Deck Title:</span>
                 </div>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={this.state.deckTitle}
+                  onChange={this.deckTitleChange}
+                />
               </div>
             </div>
-            <DragDropContext onDragEnd={this.onDragEnd}>
-              <div className="row">
-                <div className="col-6 col-md-6 col-lg-5 ml-auto">
-                  {PrintChamp}
-                  {PrintMain}
-                </div>
-                <div className="col-6 col-md-6 col-lg-5 mr-auto">
-                  {PrintSpirit}
-                  {PrintTower}
-                  {PrintSide}
-                </div>
-                <div className="col-4"></div>
-              </div>
-            </DragDropContext>
           </div>
-        ) : null}
+          <DragDropContext onDragEnd={this.onDragEnd}>
+            <div className="row">
+              <div className="col-6 col-md-6 col-lg-5 ml-auto">
+                {PrintChamp}
+                {PrintMain}
+              </div>
+              <div className="col-6 col-md-6 col-lg-5 mr-auto">
+                {PrintSpirit}
+                {PrintTower}
+                {PrintSide}
+              </div>
+              <div className="col-4"></div>
+            </div>
+          </DragDropContext>
+        </div>
       </div>
     );
   }
