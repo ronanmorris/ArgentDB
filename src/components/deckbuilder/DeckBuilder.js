@@ -96,29 +96,9 @@ export default class DeckBuilder extends Component {
         title: "Side Deck",
         cards: []
       },
-      deckLightTower: {
-        id: "deckLightTower",
-        title: "Light Tower",
-        cards: []
-      },
-      deckFireTower: {
-        id: "deckFireTower",
-        title: "Fire Tower",
-        cards: []
-      },
-      deckAirTower: {
-        id: "deckAirTower",
-        title: "Air Tower",
-        cards: []
-      },
-      deckWaterTower: {
-        id: "deckWaterTower",
-        title: "Water Tower",
-        cards: []
-      },
-      deckDarkTower: {
-        id: "deckDarkTower",
-        title: "Dark Tower",
+      deckTower: {
+        id: "deckTower",
+        title: "Towers",
         cards: []
       }
     },
@@ -321,32 +301,8 @@ export default class DeckBuilder extends Component {
     return <DeckZone deck={deck} cards={cards} />;
   };
 
-  PrintLight = () => {
-    const deck = this.state.decks["deckLightTower"];
-    const cards = deck.cards.map(card => this.state.testData[card]);
-    return <DeckZone deck={deck} cards={cards} />;
-  };
-
-  PrintFire = () => {
-    const deck = this.state.decks["deckFireTower"];
-    const cards = deck.cards.map(card => this.state.testData[card]);
-    return <DeckZone deck={deck} cards={cards} />;
-  };
-
-  PrintAir = () => {
-    const deck = this.state.decks["deckAirTower"];
-    const cards = deck.cards.map(card => this.state.testData[card]);
-    return <DeckZone deck={deck} cards={cards} />;
-  };
-
-  PrintWater = () => {
-    const deck = this.state.decks["deckWaterTower"];
-    const cards = deck.cards.map(card => this.state.testData[card]);
-    return <DeckZone deck={deck} cards={cards} />;
-  };
-
-  PrintDark = () => {
-    const deck = this.state.decks["deckDarkTower"];
+  PrintTower = () => {
+    const deck = this.state.decks["deckTower"];
     const cards = deck.cards.map(card => this.state.testData[card]);
     return <DeckZone deck={deck} cards={cards} />;
   };
@@ -359,50 +315,43 @@ export default class DeckBuilder extends Component {
     let PrintSide = this.PrintSide();
     let PrintChamp = this.PrintChamp();
     let PrintSpirit = this.PrintSpirit();
-    let PrintLight = this.PrintLight();
-    let PrintFire = this.PrintFire();
-    let PrintAir = this.PrintAir();
-    let PrintWater = this.PrintWater();
-    let PrintDark = this.PrintDark();
+    let PrintTower = this.PrintTower();
 
     return (
       <div>
         {!isMobile ? (
-          <div className="row">
-          <div className="col-6">
-            <div className="input-group">
-              <div className="input-group-prepend">
-                <span className="input-group-text">Deck Title:</span>
+          <div className="">
+            <div className="row">
+              <div className="col-6">
+                <div className="input-group">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text">Deck Title:</span>
+                  </div>
+                  <input
+                    type="text"
+                    className="form-control"
+                    value={this.state.deckTitle}
+                    onChange={this.deckTitleChange}
+                  />
+                </div>
               </div>
-              <input
-                type="text"
-                className="form-control"
-                value={this.state.deckTitle}
-                onChange={this.deckTitleChange}
-              />
             </div>
+            <DragDropContext onDragEnd={this.onDragEnd}>
+              <div className="row">
+                <div className="col-6">
+                  {PrintChamp}
+                  {PrintMain}
+                </div>
+                <div className="col-6">
+                  {PrintSpirit}
+                  {PrintTower}
+                  {PrintSide}
+                </div>
+                <div className="col-4"></div>
+              </div>
+            </DragDropContext>
           </div>
-        </div>
-        <DragDropContext onDragEnd={this.onDragEnd}>
-          <div className="row">
-            <div className="col-4">
-              {PrintChamp}
-              {PrintMain}
-            </div>
-            <div className="col-4">
-              {PrintSpirit}
-              {PrintLight}
-              {PrintFire}
-              {PrintAir}
-              {PrintWater}
-              {PrintDark}
-              {PrintSide}
-            </div>
-            <div className="col-4">hoi</div>
-          </div>
-        </DragDropContext>
-        ) : ()}
-        
+        ) : null}
       </div>
     );
   }
