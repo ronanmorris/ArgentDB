@@ -68,6 +68,14 @@ export default class DeckBuilder extends Component {
         quantity: "1",
         type: "Unit",
         element: "Light"
+      },
+      12: {
+        id: "12",
+        index: "80",
+        name: "Tower of Light",
+        quantity: "1",
+        type: "Tower",
+        element: "Light"
       }
     },
     decks: {
@@ -99,7 +107,7 @@ export default class DeckBuilder extends Component {
       deckTower: {
         id: "deckTower",
         title: "Towers",
-        cards: []
+        cards: [12]
       }
     },
     deckTitle: ""
@@ -112,7 +120,6 @@ export default class DeckBuilder extends Component {
   componentWillMount() {
     //Event listener to update state value when window is resized
     window.addEventListener("resize", () => {
-      console.log(window.innerWidth);
       this.setState({ windowWidth: window.innerWidth });
     });
   }
@@ -271,58 +278,144 @@ export default class DeckBuilder extends Component {
     this.setState(newState);
   };
 
-  PrintMain = () => {
+  PrintMain = breakPoint => {
     const deck = this.state.decks["deckMain"];
     const cards = deck.cards.map(card => this.state.testData[card]);
-    return <DeckZone deck={deck} cards={cards} />;
+    let amount = cards
+      .map(card => card.quantity)
+      .reduce((a, b) => a + Number(b), 0);
+    return (
+      <DeckZone
+        deck={deck}
+        cards={cards}
+        breakPoint={breakPoint}
+        amount={amount}
+      />
+    );
   };
 
-  PrintShard = () => {
+  PrintShard = breakPoint => {
     const deck = this.state.decks["deckShard"];
     const cards = deck.cards.map(card => this.state.testData[card]);
-    return <DeckZone deck={deck} cards={cards} />;
+    let amount = cards
+      .map(card => card.quantity)
+      .reduce((a, b) => a + Number(b), 0);
+    return (
+      <DeckZone
+        deck={deck}
+        cards={cards}
+        breakPoint={breakPoint}
+        amount={amount}
+      />
+    );
   };
 
-  PrintSide = () => {
+  PrintSide = breakPoint => {
     const deck = this.state.decks["deckSide"];
     const cards = deck.cards.map(card => this.state.testData[card]);
-    return <DeckZone deck={deck} cards={cards} />;
+    let amount = cards
+      .map(card => card.quantity)
+      .reduce((a, b) => a + Number(b), 0);
+    return (
+      <DeckZone
+        deck={deck}
+        cards={cards}
+        breakPoint={breakPoint}
+        amount={amount}
+      />
+    );
   };
 
-  PrintChamp = () => {
+  PrintChamp = breakPoint => {
     const deck = this.state.decks["deckChampion"];
     const cards = deck.cards.map(card => this.state.testData[card]);
-    return <DeckZone deck={deck} cards={cards} />;
+    let amount = cards
+      .map(card => card.quantity)
+      .reduce((a, b) => a + Number(b), 0);
+    return (
+      <DeckZone
+        deck={deck}
+        cards={cards}
+        breakPoint={breakPoint}
+        amount={amount}
+      />
+    );
   };
 
-  PrintSpirit = () => {
+  PrintSpirit = breakPoint => {
     const deck = this.state.decks["deckSpirit"];
     const cards = deck.cards.map(card => this.state.testData[card]);
-    return <DeckZone deck={deck} cards={cards} />;
+    let amount = cards
+      .map(card => card.quantity)
+      .reduce((a, b) => a + Number(b), 0);
+    return (
+      <DeckZone
+        deck={deck}
+        cards={cards}
+        breakPoint={breakPoint}
+        amount={amount}
+      />
+    );
   };
 
-  PrintTower = () => {
+  PrintTower = breakPoint => {
     const deck = this.state.decks["deckTower"];
+    const amountLight = deck.cards.filter(
+      x => this.state.testData[x].element === "Light"
+    ).length;
+    const amountFire = deck.cards.filter(
+      x => this.state.testData[x].element === "Fire"
+    ).length;
+    const amountAir = deck.cards.filter(
+      x => this.state.testData[x].element === "Air"
+    ).length;
+    const amountWater = deck.cards.filter(
+      x => this.state.testData[x].element === "Water"
+    ).length;
+    const amountDark = deck.cards.filter(
+      x => this.state.testData[x].element === "Dark"
+    ).length;
     const cards = deck.cards.map(card => this.state.testData[card]);
-    return <DeckZone deck={deck} cards={cards} />;
+    return (
+      <DeckZone
+        deck={deck}
+        cards={cards}
+        breakPoint={breakPoint}
+        amountLight={amountLight}
+        amountFire={amountFire}
+        amountAir={amountAir}
+        amountWater={amountWater}
+        amountDark={amountDark}
+      />
+    );
   };
 
   render() {
-    console.log(this.state);
-    let isMobile = this.state.windowWidth <= 576;
-    let PrintMain = this.PrintMain();
-    let PrintShard = this.PrintShard();
-    let PrintSide = this.PrintSide();
-    let PrintChamp = this.PrintChamp();
-    let PrintSpirit = this.PrintSpirit();
-    let PrintTower = this.PrintTower();
+    let windowWidth = this.state.windowWidth;
+    let isMobile = windowWidth <= 576;
+    let breakPoint =
+      windowWidth < 576
+        ? "xs"
+        : windowWidth < 768
+        ? "sm"
+        : windowWidth < 992
+        ? "md"
+        : windowWidth < 1200
+        ? "lg"
+        : "xl";
+    let PrintMain = this.PrintMain(breakPoint);
+    let PrintShard = this.PrintShard(breakPoint);
+    let PrintSide = this.PrintSide(breakPoint);
+    let PrintChamp = this.PrintChamp(breakPoint);
+    let PrintSpirit = this.PrintSpirit(breakPoint);
+    let PrintTower = this.PrintTower(breakPoint);
 
     return (
       <div>
         {!isMobile ? (
           <div className="">
             <div className="row">
-              <div className="col-6">
+              <div className="col-8 col-md-10 col-lg-8 ml-auto mr-auto mt-3 mb-2">
                 <div className="input-group">
                   <div className="input-group-prepend">
                     <span className="input-group-text">Deck Title:</span>
@@ -338,11 +431,11 @@ export default class DeckBuilder extends Component {
             </div>
             <DragDropContext onDragEnd={this.onDragEnd}>
               <div className="row">
-                <div className="col-6">
+                <div className="col-6 col-md-6 col-lg-5 ml-auto">
                   {PrintChamp}
                   {PrintMain}
                 </div>
-                <div className="col-6">
+                <div className="col-6 col-md-6 col-lg-5 mr-auto">
                   {PrintSpirit}
                   {PrintTower}
                   {PrintSide}
