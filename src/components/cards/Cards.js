@@ -24,14 +24,14 @@ export default class Cards extends Component {
     windowWidth: window.innerWidth
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     //Get all info for this card and set to state
     let cardIndex = this.props.match.params.cardIndex;
+    let cardIndexInt = parseInt(cardIndex);
     let thisCard;
     for (let i = 0; i < cardData.cards.length; i++) {
-      let obj = cardData.cards[i];
-      if (obj.index === cardIndex) {
-        thisCard = obj;
+      if (cardData.cards[i].index === cardIndexInt) {
+        thisCard = cardData.cards[i];
       }
     }
     const cardName = thisCard.name;

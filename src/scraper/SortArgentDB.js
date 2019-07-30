@@ -131,7 +131,8 @@ function runSort() {
 
   fs.renameSync("./src/backup/newImg", "./public/img");
   let cardsFile = { cards: cards };
-  fs.writeFileSync("./src/CardDB.json", JSON.stringify(cardsFile));
+  const JSONString = JSON.stringify(cardsFile, null, 2);
+  fs.writeFileSync("./src/CardDB.json", JSONString);
 }
 
 runSort();
