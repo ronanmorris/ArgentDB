@@ -31,7 +31,7 @@ class App extends Component {
           </div>
           <footer>
             <span className="nav-link">
-              v1.3.2
+              v1.3.3
               <br />
               All Images, Art and Card information are the properties and
               copyright of Alter Reality, LLC.
