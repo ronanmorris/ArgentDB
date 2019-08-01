@@ -655,7 +655,7 @@ export default class CardList extends Component {
         }
         if (!this.state.sNeutral) {
           filteredCards = filteredCards.filter(card => {
-            return card.element !== "Neutral";
+            return card.element !== "Argent";
           });
         }
       }

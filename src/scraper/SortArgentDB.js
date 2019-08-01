@@ -58,6 +58,14 @@ function sortFunc(a, b) {
     return 1;
   }
 
+  // Sort out Box Toppers to the end
+  if (a.rarity === "Box Topper") {
+    return 1;
+  }
+  if (b.rarity === "Box Topper") {
+    return -1;
+  }
+
   // Sort by Element
   if (order2.indexOf(a.element) < order2.indexOf(b.element)) {
     return -1;
