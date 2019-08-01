@@ -48,7 +48,7 @@ export default class DeckBuilder extends Component {
       6: {
         id: "6",
         index: "6",
-        name: "Corum Phalanx",
+        name: "Yuki, the Lightning Flash",
         quantity: "2",
         type: "Unit",
         element: "Light"
@@ -360,32 +360,16 @@ export default class DeckBuilder extends Component {
 
   PrintTower = breakPoint => {
     const deck = this.state.decks["deckTower"];
-    const amountLight = deck.cards.filter(
-      x => this.state.testData[x].element === "Light"
-    ).length;
-    const amountFire = deck.cards.filter(
-      x => this.state.testData[x].element === "Fire"
-    ).length;
-    const amountAir = deck.cards.filter(
-      x => this.state.testData[x].element === "Air"
-    ).length;
-    const amountWater = deck.cards.filter(
-      x => this.state.testData[x].element === "Water"
-    ).length;
-    const amountDark = deck.cards.filter(
-      x => this.state.testData[x].element === "Dark"
-    ).length;
     const cards = deck.cards.map(card => this.state.testData[card]);
+    let amount = cards
+      .map(card => card.quantity)
+      .reduce((a, b) => a + Number(b), 0);
     return (
       <DeckZone
         deck={deck}
         cards={cards}
         breakPoint={breakPoint}
-        amountLight={amountLight}
-        amountFire={amountFire}
-        amountAir={amountAir}
-        amountWater={amountWater}
-        amountDark={amountDark}
+        amount={amount}
       />
     );
   };
@@ -430,11 +414,11 @@ export default class DeckBuilder extends Component {
           </div>
           <DragDropContext onDragEnd={this.onDragEnd}>
             <div className="row">
-              <div className="col-6 col-md-6 col-lg-5 ml-auto">
+              <div className="col-6 col-sm-6 col-md-6 col-lg-5 ml-auto pr-1">
                 {PrintChamp}
                 {PrintMain}
               </div>
-              <div className="col-6 col-md-6 col-lg-5 mr-auto">
+              <div className="col-6 col-sm-6 col-md-6 col-lg-5 mr-auto pl-1">
                 {PrintSpirit}
                 {PrintTower}
                 {PrintSide}

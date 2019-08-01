@@ -12,9 +12,9 @@ const Container = styled.div`
   );
   border-radius: 4px;
   margin-bottom: 8px;
-  font-size: 0.8rem;
+  font-size: "1rem";
   width: 100%;
-  height: 100%;
+  height: 40px;
   overflow: hidden;
   display: flex;
 `;
@@ -22,11 +22,11 @@ const Container = styled.div`
 const ImageHolder = styled.div`
   width: ${props =>
     props.breakPoint === "xs"
-      ? "110%;"
+      ? "140%;"
       : props.breakPoint === "sm"
       ? "110%;"
       : "100%;"}
-  height: 80px;
+  height: 90px;
   top: -30px;
   right: -100px;
   border-radius: 4px;
@@ -62,7 +62,7 @@ const CardName = styled.div`
   background: rgb(68,68,68);
   background: ${props =>
     props.breakPoint === "xs"
-      ? ""
+      ? "linear-gradient(90deg, rgba(68,68,68,1) 47%, rgba(75,75,75,0.6887009803921569) 60%, rgba(131,131,131,0) 80%);"
       : props.breakPoint === "sm"
       ? "linear-gradient(90deg, rgba(68,68,68,1) 47%, rgba(75,75,75,0.6887009803921569) 60%, rgba(131,131,131,0) 80%);"
       : props.breakPoint === "md"
@@ -74,16 +74,16 @@ const CardName = styled.div`
   margin-left: 6px;
   font-size: ${props =>
     props.breakPoint === "xs"
-      ? ""
+      ? "0.6rem"
       : props.breakPoint === "sm"
       ? "0.75rem"
       : props.breakPoint === "md"
       ? "0.9rem;"
       : props.breakPoint === "lg"
       ? "1rem"
-      : "1.1rem;"}
+      : "1.2rem;"}
   color: rgb(230, 230, 230);
-  line-height: 30px;
+  line-height: 39px;
   text-shadow: -1px -1px 0 #3f3f3f, 1px -1px 0 #3f3f3f, -1px 1px 0 #3f3f3f,
     1px 1px 0 #3f3f3f;
 `;
@@ -92,7 +92,7 @@ const Quantity = styled.div`
   z-index: 2;
   border-radius: 2px;
   background-color: rgb(250, 250, 250);
-  height: 30px;
+  height: 40px;
   width: 35px;
   font-size: ${props =>
     props.breakPoint === "xs"
@@ -107,7 +107,7 @@ const Quantity = styled.div`
   font-weight: 600;
   text-align: center;
   vertical-align: middle;
-  line-height: 30px;
+  line-height: 40px;
   margin-left: 0px;
   margin-right: 0px;
 `;
@@ -123,6 +123,7 @@ export default class CardInDeck extends Component {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             isDragging={snapshot.isDragging}
+            breakPoint={this.props.breakPoint}
           >
             <ImageHolder
               imageUrl={"/img/" + this.props.card.index + ".jpg"}

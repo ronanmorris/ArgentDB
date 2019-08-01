@@ -31,44 +31,9 @@ export default class DeckZone extends Component {
         <Title>
           {this.props.deck.title}
           <div className="div" style={{ marginTop: "-1px" }}>
-            {this.props.deck.title === "Towers" ? (
-              <div className="">
-                <span
-                  className="badge badge-warning"
-                  style={{ marginLeft: "6px" }}
-                >
-                  {this.props.amountLight}
-                </span>
-                <span
-                  className="badge badge-danger"
-                  style={{ marginLeft: "6px" }}
-                >
-                  {this.props.amountFire}
-                </span>
-                <span
-                  className="badge badge-success"
-                  style={{ marginLeft: "6px" }}
-                >
-                  {this.props.amountAir}
-                </span>
-                <span
-                  className="badge badge-info"
-                  style={{ marginLeft: "6px" }}
-                >
-                  {this.props.amountWater}
-                </span>
-                <span
-                  className="badge badge-dark"
-                  style={{ marginLeft: "6px" }}
-                >
-                  {this.props.amountDark}
-                </span>
-              </div>
-            ) : (
-              <span className="badge badge-dark" style={{ marginLeft: "6px" }}>
-                {this.props.amount}
-              </span>
-            )}
+            <span className="badge badge-dark" style={{ marginLeft: "6px" }}>
+              {this.props.amount}
+            </span>
           </div>
         </Title>
         <Droppable droppableId={this.props.deck.id}>
