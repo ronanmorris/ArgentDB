@@ -13,7 +13,7 @@ const Container = styled.div`
 `;
 const Title = styled.h3`
   padding: 8px;
-  background-color: beige;
+  background-color: rgba(220, 220, 220, 1);
   display: flex;
 `;
 const CardList = styled.div`

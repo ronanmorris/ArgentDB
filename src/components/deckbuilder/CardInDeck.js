@@ -114,7 +114,6 @@ const Quantity = styled.div`
 
 export default class CardInDeck extends Component {
   render() {
-    console.log(this.props.breakPoint);
     return (
       <Draggable draggableId={this.props.card.id} index={this.props.index}>
         {(provided, snapshot) => (

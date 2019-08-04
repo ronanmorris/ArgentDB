@@ -19,7 +19,7 @@ export default class DeckBuilder extends Component {
     currentDeck: this.props.location.state
       ? this.props.location.state.currentDeck
       : [],
-    cardData: [],
+    cardData: {},
     testData: {
       3: {
         id: "3",
@@ -125,21 +125,24 @@ export default class DeckBuilder extends Component {
   }
 
   componentDidMount() {
-    this.setState(state => ({
-      currentDeck: Object.assign(
-        {},
-        ...state.currentDeck.map(card => ({
-          [card.index]: {
-            id: card.index,
-            index: card.index,
-            name: card.name,
-            quantity: card.quantity,
-            type: card.type,
-            element: card.element
-          }
-        }))
-      )
-    }));
+    this.setState(prevState => {
+      return {
+        currentDeck: Object.assign(
+          {},
+          ...prevState.currentDeck.map((card, index) => ({
+            [index]: {
+              id: index,
+              index: card.index,
+              name: card.name,
+              quantity: card.quantity,
+              type: card.type,
+              element: card.element
+            }
+          }))
+        )
+      };
+    });
+
     /*
 
     ////Sort each card from the incoming deck into its designated deck zones
