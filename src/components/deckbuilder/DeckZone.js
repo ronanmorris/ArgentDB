@@ -19,13 +19,15 @@ const Title = styled.h3`
 const CardList = styled.div`
   padding: 8px;
   transition: background-color 0.25s ease;
-  background-color: ${props => (props.isDraggingOver ? "lightblue" : "white")};
+  background-color: ${props =>
+    props.isDraggingOver ? "rgba(235,235,235,1)" : "white"};
   flex-grow: 1;
   min-height: 50px;
 `;
 
 export default class DeckZone extends Component {
   render() {
+    console.log(this.props.deck.title, this.props.cards);
     return (
       <Container>
         <Title>

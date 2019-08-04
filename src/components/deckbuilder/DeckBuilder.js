@@ -17,9 +17,20 @@ export default class DeckBuilder extends Component {
     deckName: "UntitledDeck",
     windowWidth: window.innerWidth,
     currentDeck: this.props.location.state
-      ? this.props.location.state.currentDeck
-      : [],
-    cardData: {},
+      ? Object.assign(
+          {},
+          ...this.props.location.state.currentDeck.map((card, index) => ({
+            [index]: {
+              id: index.toString(),
+              index: card.index,
+              name: card.name,
+              quantity: card.quantity,
+              type: card.type,
+              element: card.element
+            }
+          }))
+        )
+      : {},
     testData: {
       3: {
         id: "3",
@@ -92,7 +103,7 @@ export default class DeckBuilder extends Component {
       deckMain: {
         id: "deckMain",
         title: "Main Deck",
-        cards: [3, 4, 5, 6, 7, 8]
+        cards: [0, 1, 2]
       },
       deckShard: {
         id: "deckShard",
@@ -107,7 +118,7 @@ export default class DeckBuilder extends Component {
       deckTower: {
         id: "deckTower",
         title: "Towers",
-        cards: [12]
+        cards: []
       }
     },
     deckTitle: ""
@@ -125,24 +136,6 @@ export default class DeckBuilder extends Component {
   }
 
   componentDidMount() {
-    this.setState(prevState => {
-      return {
-        currentDeck: Object.assign(
-          {},
-          ...prevState.currentDeck.map((card, index) => ({
-            [index]: {
-              id: index,
-              index: card.index,
-              name: card.name,
-              quantity: card.quantity,
-              type: card.type,
-              element: card.element
-            }
-          }))
-        )
-      };
-    });
-
     /*
 
     ////Sort each card from the incoming deck into its designated deck zones
@@ -283,7 +276,7 @@ export default class DeckBuilder extends Component {
 
   PrintMain = breakPoint => {
     const deck = this.state.decks["deckMain"];
-    const cards = deck.cards.map(card => this.state.testData[card]);
+    const cards = deck.cards.map(card => this.state.currentDeck[card]);
     let amount = cards
       .map(card => card.quantity)
       .reduce((a, b) => a + Number(b), 0);
@@ -299,7 +292,7 @@ export default class DeckBuilder extends Component {
 
   PrintShard = breakPoint => {
     const deck = this.state.decks["deckShard"];
-    const cards = deck.cards.map(card => this.state.testData[card]);
+    const cards = deck.cards.map(card => this.state.currentDeck[card]);
     let amount = cards
       .map(card => card.quantity)
       .reduce((a, b) => a + Number(b), 0);
@@ -315,7 +308,7 @@ export default class DeckBuilder extends Component {
 
   PrintSide = breakPoint => {
     const deck = this.state.decks["deckSide"];
-    const cards = deck.cards.map(card => this.state.testData[card]);
+    const cards = deck.cards.map(card => this.state.currentDeck[card]);
     let amount = cards
       .map(card => card.quantity)
       .reduce((a, b) => a + Number(b), 0);
@@ -331,7 +324,7 @@ export default class DeckBuilder extends Component {
 
   PrintChamp = breakPoint => {
     const deck = this.state.decks["deckChampion"];
-    const cards = deck.cards.map(card => this.state.testData[card]);
+    const cards = deck.cards.map(card => this.state.currentDeck[card]);
     let amount = cards
       .map(card => card.quantity)
       .reduce((a, b) => a + Number(b), 0);
@@ -347,7 +340,7 @@ export default class DeckBuilder extends Component {
 
   PrintSpirit = breakPoint => {
     const deck = this.state.decks["deckSpirit"];
-    const cards = deck.cards.map(card => this.state.testData[card]);
+    const cards = deck.cards.map(card => this.state.currentDeck[card]);
     let amount = cards
       .map(card => card.quantity)
       .reduce((a, b) => a + Number(b), 0);
@@ -363,7 +356,7 @@ export default class DeckBuilder extends Component {
 
   PrintTower = breakPoint => {
     const deck = this.state.decks["deckTower"];
-    const cards = deck.cards.map(card => this.state.testData[card]);
+    const cards = deck.cards.map(card => this.state.currentDeck[card]);
     let amount = cards
       .map(card => card.quantity)
       .reduce((a, b) => a + Number(b), 0);
@@ -378,6 +371,7 @@ export default class DeckBuilder extends Component {
   };
 
   render() {
+    console.log(this.state.currentDeck);
     let windowWidth = this.state.windowWidth;
     let isMobile = windowWidth <= 576;
     let breakPoint =
