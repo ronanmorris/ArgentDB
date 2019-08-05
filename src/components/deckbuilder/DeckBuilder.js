@@ -16,21 +16,7 @@ export default class DeckBuilder extends Component {
   state = {
     deckName: "UntitledDeck",
     windowWidth: window.innerWidth,
-    currentDeck: this.props.location.state
-      ? Object.assign(
-          {},
-          ...this.props.location.state.currentDeck.map((card, index) => ({
-            [index]: {
-              id: index.toString(),
-              index: card.index,
-              name: card.name,
-              quantity: card.quantity,
-              type: card.type,
-              element: card.element
-            }
-          }))
-        )
-      : {},
+    currentDeck: this.props.currentDeck,
     testData: {
       3: {
         id: "3",
@@ -89,38 +75,7 @@ export default class DeckBuilder extends Component {
         element: "Light"
       }
     },
-    decks: {
-      deckChampion: {
-        id: "deckChampion",
-        title: "Champion",
-        cards: []
-      },
-      deckSpirit: {
-        id: "deckSpirit",
-        title: "Spirit",
-        cards: []
-      },
-      deckMain: {
-        id: "deckMain",
-        title: "Main Deck",
-        cards: [0, 1, 2]
-      },
-      deckShard: {
-        id: "deckShard",
-        title: "Shard Deck",
-        cards: []
-      },
-      deckSide: {
-        id: "deckSide",
-        title: "Side Deck",
-        cards: []
-      },
-      deckTower: {
-        id: "deckTower",
-        title: "Towers",
-        cards: []
-      }
-    },
+    decks: this.props.decks,
     deckTitle: ""
   };
 
@@ -133,81 +88,34 @@ export default class DeckBuilder extends Component {
     window.addEventListener("resize", () => {
       this.setState({ windowWidth: window.innerWidth });
     });
-  }
-
-  componentDidMount() {
-    /*
-
-    ////Sort each card from the incoming deck into its designated deck zones
-    this.state.currentDeck.forEach(card => {
-      //If card type is X, Check if going to designate slot or sideboard
-      if (card.type === "Champion" && this.state.deckChampion.length === 0) {
-        this.setState(prevState => ({
-          deckChampion: [...prevState.deckChampion, card]
-        }));
-      } else if (card.type === "Spirit" && this.state.deckSpirit.length === 0) {
-        this.setState(prevState => ({
-          deckSpirit: [...prevState.deckSpirit, card]
-        }));
-      } else if (card.type === "Shard" && this.state.deckShard.length < 10) {
-        this.setState(prevState => ({
-          deckShard: [...prevState.deckShard, card]
-        }));
-      } else if (
-        card.type === "Tower" &&
-        this.state.deckLightTower.length === 0 &&
-        card.element === "Light"
-      ) {
-        this.setState(prevState => ({
-          deckLightTower: [...prevState.deckLightTower, card]
-        }));
-      } else if (
-        card.type === "Tower" &&
-        this.state.deckFireTower.length === 0 &&
-        card.element === "Fire"
-      ) {
-        this.setState(prevState => ({
-          deckFireTower: [...prevState.deckFireTower, card]
-        }));
-      } else if (
-        card.type === "Tower" &&
-        this.state.deckAirTower.length === 0 &&
-        card.element === "Air"
-      ) {
-        this.setState(prevState => ({
-          deckAirTower: [...prevState.deckAirTower, card]
-        }));
-      } else if (
-        card.type === "Tower" &&
-        this.state.deckWaterTower.length === 0 &&
-        card.element === "Water"
-      ) {
-        this.setState(prevState => ({
-          deckWaterTower: [...prevState.deckWaterTower, card]
-        }));
-      } else if (
-        card.type === "Tower" &&
-        this.state.deckDarkTower.length === 0 &&
-        card.element === "Dark"
-      ) {
-        this.setState(prevState => ({
-          deckDarkTower: [...prevState.deckDarkTower, card]
-        }));
-      } else if (
-        (card.type === "Unit" || "Augment" || "Spell") &&
-        this.state.deckMain.length < 60
-      ) {
-        this.setState(prevState => ({
-          deckMain: [...prevState.deckMain, card]
-        }));
-      } else {
-        this.setState(prevState => ({
-          deckSide: [...prevState.deckSide, card]
-        }));
+    let currentDeck = this.state.currentDeck;
+    let decks = this.state.decks;
+    Object.entries(currentDeck).forEach(([key, val]) => {
+      if (val.deck === "unsorted") {
+        if (val.type === "Champion") {
+          val.deck = "deckChampion";
+          decks.deckChampion.cards.push(key);
+        } else if (val.type === "Spirit") {
+          val.deck = "deckSpirit";
+          decks.deckSpirit.cards.push(key);
+        } else if (val.type === "Tower") {
+          val.deck = "deckTower";
+          decks.deckTower.cards.push(key);
+        } else if (val.type === "Shard") {
+          val.deck = "deckShard";
+          decks.deckShard.cards.push(key);
+        } else {
+          val.deck = "deckMain";
+          decks.deckMain.cards.push(key);
+        }
       }
     });
-    */
+    this.props.updateDeckOrder(decks);
   }
+
+  componentWillUnmount() {}
+
+  componentDidMount() {}
 
   onDragEnd = result => {
     const { destination, source, draggableId } = result;
@@ -245,6 +153,7 @@ export default class DeckBuilder extends Component {
       };
 
       this.setState(newState);
+      this.props.updateDeckOrder(newState.decks);
       return;
     }
 
@@ -272,6 +181,7 @@ export default class DeckBuilder extends Component {
       }
     };
     this.setState(newState);
+    this.props.updateDeckOrder(newState.decks);
   };
 
   PrintMain = breakPoint => {
@@ -371,7 +281,8 @@ export default class DeckBuilder extends Component {
   };
 
   render() {
-    console.log(this.state.currentDeck);
+    console.log("currentDeck", this.state.currentDeck);
+    console.log("decks", this.state.decks);
     let windowWidth = this.state.windowWidth;
     let isMobile = windowWidth <= 576;
     let breakPoint =

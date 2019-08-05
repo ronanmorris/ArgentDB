@@ -15,6 +15,58 @@ import backgroundImage from "./pattern.png";
 import DeckBuilder from "./components/deckbuilder/DeckBuilder";
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      currentDeck: {},
+      decks: {
+        deckChampion: {
+          id: "deckChampion",
+          title: "Champion",
+          cards: []
+        },
+        deckSpirit: {
+          id: "deckSpirit",
+          title: "Spirit",
+          cards: []
+        },
+        deckMain: {
+          id: "deckMain",
+          title: "Main Deck",
+          cards: []
+        },
+        deckShard: {
+          id: "deckShard",
+          title: "Shard Deck",
+          cards: []
+        },
+        deckSide: {
+          id: "deckSide",
+          title: "Side Deck",
+          cards: []
+        },
+        deckTower: {
+          id: "deckTower",
+          title: "Towers",
+          cards: []
+        }
+      }
+    };
+  }
+
+  updateDeck = newDeck => {
+    this.setState({
+      currentDeck: newDeck
+    });
+  };
+
+  updateDeckBuilderDecks = newDecks => {
+    this.setState({
+      decks: newDecks
+    });
+  };
+
   render() {
     document.title = "Argent DB";
     return (
@@ -28,8 +80,28 @@ class App extends Component {
               <Route path="/" component={NavBar} />
               <div className="container">
                 <Switch>
-                  <Route path="/builder" component={DeckBuilder} />
-                  <Route path="/" component={Dashboard} />
+                  <Route
+                    path="/builder"
+                    render={props => (
+                      <DeckBuilder
+                        {...props}
+                        currentDeck={this.state.currentDeck}
+                        updateDeck={this.updateDeck.bind(this)}
+                        decks={this.state.decks}
+                        updateDeckOrder={this.updateDeckBuilderDecks.bind(this)}
+                      />
+                    )}
+                  />
+                  <Route
+                    path="/"
+                    render={props => (
+                      <Dashboard
+                        {...props}
+                        currentDeck={this.state.currentDeck}
+                        updateDeck={this.updateDeck.bind(this)}
+                      />
+                    )}
+                  />
                 </Switch>
 
                 <ModalLink path="/cards/:cardIndex" component={Cards} />

@@ -27,7 +27,6 @@ const CardList = styled.div`
 
 export default class DeckZone extends Component {
   render() {
-    console.log(this.props.deck.title, this.props.cards);
     return (
       <Container>
         <Title>

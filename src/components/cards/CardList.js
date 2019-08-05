@@ -33,7 +33,7 @@ export default class CardList extends Component {
     state = {
       url: './CardDB.json',
       cards: [],
-      currentDeck: [],
+      currentDeck: this.props.currentDeck,
       search: "",
       filerShow: true,
       filterButtonClicked: 'Hide Filters',
@@ -109,26 +109,29 @@ export default class CardList extends Component {
     let index = split[1];
     let currentDeck = this.state.currentDeck;
     let exists = false;
-    currentDeck.forEach(function(card) {
-      if (card.index === index) {
+    Object.entries(currentDeck).forEach(([key, val]) => {
+      console.log("key", key);
+      console.log("val", val);
+      if (val.index === index) {
         exists = true;
-        if (card.quantity !== quantity) {
-          card.quantity = quantity;
+        if (val.quantity !== quantity) {
+          val.quantity = quantity;
         }
       }
-    });
+    })
 
     if (!exists) {
-      currentDeck.push({index: index, quantity: quantity, name: this.state.cards[index].name, type: this.state.cards[index].type, element: this.state.cards[index].element});
+      let nextNum = Object.keys(currentDeck).length;
+      currentDeck[nextNum] = {id: nextNum.toString(), index: index, quantity: quantity, name: this.state.cards[index].name, type: this.state.cards[index].type, element: this.state.cards[index].element, deck: "unsorted"}
     }
 
-    let i;
-    for(i = 0; i < currentDeck.length; i++) {
-      if (currentDeck[i].quantity === "0") {
-        currentDeck.splice(i, 1);
+    Object.entries(currentDeck).forEach(([key, val]) => {
+      if (val.quantity === "0") {
+        delete currentDeck[key];
       }
-    }
-    this.setState({currentDeck: currentDeck})
+    })
+
+    this.props.updateDeck(currentDeck);
   }
 
   //set the amount of initial columns based on window size
@@ -270,11 +273,10 @@ export default class CardList extends Component {
   DeckBuilderButtons(card) {
     let cardsPerRow = this.state.cardsPerRow.toString();
     let currentIndexArray = [];
-      let x;
-      for(x = 0; x < this.state.currentDeck.length; x++) {
-        currentIndexArray.push([this.state.currentDeck[x].index, this.state.currentDeck[x].quantity]);
-      }
-    return (card.unique ? (
+    Object.entries(this.state.currentDeck).forEach(([key, val]) => {
+      currentIndexArray.push([this.state.currentDeck[key].index, this.state.currentDeck[key].quantity])
+    });
+    return (card.type === "Champion" || card.type === "Spirit" || card.type === "Tower" || card.race.includes("Legendary") ? (
       <div className={"btn-group btn-deck btn-deck-toppadding-" + cardsPerRow}>
         <button id={"0x" + card.index} type="button"
           className={"btn " + ((currentIndexArray.find(el => el[0] === card.index)) ?
@@ -312,7 +314,6 @@ export default class CardList extends Component {
           : ("btn-bg-faint btn-outline-info")
           ) + " deck-btn-" + cardsPerRow} onClick={this.buttonAddToDeck}>x3</button>
         )}
-        
       </div>
     ))
   }
@@ -639,7 +640,7 @@ export default class CardList extends Component {
               </div>
             )}
           </div>
-          <DeckBuilderButton currentDeck={this.state.currentDeck} />
+          <DeckBuilderButton />
           </span>
         </div>
         ) : (
