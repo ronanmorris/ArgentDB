@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { useEffect, Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ModalContainer, ModalLink } from "react-router-modal";
+import Cookies from "js-cookie";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -18,40 +19,54 @@ class App extends Component {
   constructor() {
     super();
 
+    const deckExists = localStorage.getItem("currentDeck");
+    let deckJSON;
+    if (deckExists) {
+      deckJSON = JSON.parse(deckExists);
+    }
+
+    const deckOrderExists = localStorage.getItem("deckOrder");
+    let deckOrderJSON;
+    if (deckOrderExists) {
+      deckOrderJSON = JSON.parse(deckOrderExists);
+    }
+
     this.state = {
-      currentDeck: {},
-      decks: {
-        deckChampion: {
-          id: "deckChampion",
-          title: "Champion",
-          cards: []
-        },
-        deckSpirit: {
-          id: "deckSpirit",
-          title: "Spirit",
-          cards: []
-        },
-        deckMain: {
-          id: "deckMain",
-          title: "Main Deck",
-          cards: []
-        },
-        deckShard: {
-          id: "deckShard",
-          title: "Shard Deck",
-          cards: []
-        },
-        deckSide: {
-          id: "deckSide",
-          title: "Side Deck",
-          cards: []
-        },
-        deckTower: {
-          id: "deckTower",
-          title: "Towers",
-          cards: []
-        }
-      }
+      currentDeck: deckExists ? deckJSON : {},
+      decks: deckOrderExists
+        ? deckOrderJSON
+        : {
+            deckChampion: {
+              id: "deckChampion",
+              title: "Champion",
+              cards: []
+            },
+            deckSpirit: {
+              id: "deckSpirit",
+              title: "Spirit",
+              cards: []
+            },
+            deckMain: {
+              id: "deckMain",
+              title: "Main Deck",
+              cards: []
+            },
+            deckShard: {
+              id: "deckShard",
+              title: "Shard Deck",
+              cards: []
+            },
+            deckSide: {
+              id: "deckSide",
+              title: "Side Deck",
+              cards: []
+            },
+            deckTower: {
+              id: "deckTower",
+              title: "Towers",
+              cards: []
+            }
+          }
     };
   }
 
@@ -59,16 +74,20 @@ class App extends Component {
     this.setState({
       currentDeck: newDeck
     });
+    localStorage.setItem("currentDeck", JSON.stringify(newDeck));
   };
 
   updateDeckBuilderDecks = newDecks => {
     this.setState({
       decks: newDecks
     });
+    localStorage.setItem("deckOrder", JSON.stringify(newDecks));
   };
 
   render() {
     document.title = "Argent DB";
+    console.log("Stae Deck", this.state.currentDeck);
+    console.log("State Deck order", this.state.decks);
     return (
       <BrowserRouter>
         <div>

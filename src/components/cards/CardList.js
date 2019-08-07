@@ -122,7 +122,14 @@ export default class CardList extends Component {
 
     if (!exists) {
       let nextNum = Object.keys(currentDeck).length;
-      currentDeck[nextNum] = {id: nextNum.toString(), index: index, quantity: quantity, name: this.state.cards[index].name, type: this.state.cards[index].type, element: this.state.cards[index].element, deck: "unsorted"}
+      currentDeck[nextNum] = {
+        id: nextNum.toString(),
+        index: index,
+        quantity: quantity,
+        name: this.state.cards[index].name,
+        type: this.state.cards[index].type,
+        element: this.state.cards[index].element,
+        deck: "unsorted"}
     }
 
     Object.entries(currentDeck).forEach(([key, val]) => {

@@ -17,64 +17,6 @@ export default class DeckBuilder extends Component {
     deckName: "UntitledDeck",
     windowWidth: window.innerWidth,
     currentDeck: this.props.currentDeck,
-    testData: {
-      3: {
-        id: "3",
-        index: "3",
-        name: "Corum Blademaster",
-        quantity: "3",
-        type: "Unit",
-        element: "Light"
-      },
-      4: {
-        id: "4",
-        index: "4",
-        name: "Corum Craftsman",
-        quantity: "3",
-        type: "Unit",
-        element: "Light"
-      },
-      5: {
-        id: "5",
-        index: "5",
-        name: "Corum Lancer",
-        quantity: "1",
-        type: "Unit",
-        element: "Light"
-      },
-      6: {
-        id: "6",
-        index: "6",
-        name: "Yuki, the Lightning Flash",
-        quantity: "2",
-        type: "Unit",
-        element: "Light"
-      },
-      7: {
-        id: "7",
-        index: "7",
-        name: "Corum Rampart",
-        quantity: "3",
-        type: "Unit",
-        element: "Light"
-      },
-      8: {
-        id: "8",
-        index: "8",
-        name: "Corum Squire",
-        quantity: "1",
-        type: "Unit",
-        element: "Light"
-      },
-      12: {
-        id: "12",
-        index: "80",
-        name: "Tower of Light",
-        quantity: "1",
-        type: "Tower",
-        element: "Light"
-      }
-    },
     decks: this.props.decks,
     deckTitle: ""
   };
@@ -88,6 +30,7 @@ export default class DeckBuilder extends Component {
     window.addEventListener("resize", () => {
       this.setState({ windowWidth: window.innerWidth });
     });
+
     let currentDeck = this.state.currentDeck;
     let decks = this.state.decks;
     Object.entries(currentDeck).forEach(([key, val]) => {
@@ -110,6 +53,7 @@ export default class DeckBuilder extends Component {
         }
       }
     });
+    this.props.updateDeck(currentDeck);
     this.props.updateDeckOrder(decks);
   }
 
@@ -281,8 +225,6 @@ export default class DeckBuilder extends Component {
   };
 
   render() {
-    console.log("currentDeck", this.state.currentDeck);
-    console.log("decks", this.state.decks);
     let windowWidth = this.state.windowWidth;
     let isMobile = windowWidth <= 576;
     let breakPoint =

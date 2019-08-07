@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
+import Tippy from "@tippy.js/react";
 
 const Container = styled.div`
   position: relative;
@@ -113,6 +114,27 @@ const Quantity = styled.div`
 `;
 
 export default class CardInDeck extends Component {
+  QuantityButtons = id => {
+    return (
+      <div className="btn-group">
+        <button
+          type="button"
+          className="btn btn-danger"
+          onClick={this.props.adjustQuantity(id, "decrease")}
+        >
+          -
+        </button>
+        <button
+          type="button"
+          className="btn btn-info"
+          onClick={this.props.adjustQuantity(id, "increase")}
+        >
+          +
+        </button>
+      </div>
+    );
+  };
+
   render() {
     return (
       <Draggable draggableId={this.props.card.id} index={this.props.index}>
