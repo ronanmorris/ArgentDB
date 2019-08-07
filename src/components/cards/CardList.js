@@ -84,7 +84,8 @@ export default class CardList extends Component {
     ],
     searchSetValue: [],
     sortNewest: true,
-    sortOldest: false
+    sortOldest: false,
+    sortNumerical: false
   };
 
   //Updates the search field onchange
@@ -176,6 +177,28 @@ export default class CardList extends Component {
       return 1;
     }
     return 0;
+  }
+
+  functionSortNumerical(a, b) {
+    if (!a.inSetNumber) {
+      return 1;
+    }
+    if (!b.inSetNumber) {
+      return -1;
+    }
+
+    if (a.numOrder < b.numOrder) {
+      return -1;
+    }
+    if (a.numOrder > b.numOrder) {
+      return 1;
+    }
+
+    if (a.inSetNumber < b.inSetNumber) {
+      return -1;
+    } else if (a.inSetNumber > b.inSetNumber) {
+      return 1;
+    }
   }
 
   //increase the amount of card columns, resetting if invalid input
@@ -361,23 +384,40 @@ export default class CardList extends Component {
     if (event.target.id === "sortNewest" && !this.state.sortNewest) {
       this.setState({
         sortNewest: true,
-        sortOldest: false
+        sortOldest: false,
+        sortNumerical: false
       });
     } else if (event.target.id === "sortNewest") {
       this.setState({
         sortNewest: false,
-        sortOldest: true
+        sortOldest: true,
+        sortNumerical: false
       });
     }
     if (event.target.id === "sortOldest" && !this.state.sortOldest) {
       this.setState({
         sortNewest: false,
-        sortOldest: true
+        sortOldest: true,
+        sortNumerical: false
       });
     } else if (event.target.id === "sortOldest") {
       this.setState({
         sortNewest: true,
-        sortOldest: false
+        sortOldest: false,
+        sortNumerical: false
+      });
+    }
+    if (event.target.id === "sortNumerical" && !this.state.sortNumerical) {
+      this.setState({
+        sortNewest: false,
+        sortOldest: false,
+        sortNumerical: true
+      });
+    } else if (event.target.id === "sortNumerical") {
+      this.setState({
+        sortNewest: true,
+        sortOldest: false,
+        sortNumerical: false
       });
     }
   }
@@ -717,8 +757,10 @@ export default class CardList extends Component {
 
       if (this.state.sortNewest) {
         filteredCards.sort(this.functionSortNewest);
-      } else {
+      } else if (this.state.sortOldest) {
         filteredCards.sort(this.functionSortOldest);
+      } else {
+        filteredCards.sort(this.functionSortNumerical);
       }
 
       //this.setState({ maxShowItems: filteredCards.length })
@@ -741,8 +783,10 @@ export default class CardList extends Component {
       filteredCards = this.state.cards;
       if (this.state.sortNewest) {
         filteredCards.sort(this.functionSortNewest);
-      } else {
+      } else if (this.state.sortOldest) {
         filteredCards.sort(this.functionSortOldest);
+      } else {
+        filteredCards.sort(this.functionSortNumerical);
       }
       filterMap = filteredCards.slice(0, this.state.showItems).map(card => (
         <div
@@ -1401,6 +1445,19 @@ export default class CardList extends Component {
                             onClick={this.buttonUpdateState}
                           >
                             Oldest first
+                          </button>
+                          <button
+                            type="button"
+                            id="sortNumerical"
+                            className={
+                              "btn rft " +
+                              (this.state.sortNumerical
+                                ? "btn-secondary"
+                                : "btn-light")
+                            }
+                            onClick={this.buttonUpdateState}
+                          >
+                            Pure Numerical
                           </button>
                         </div>
                       </div>
