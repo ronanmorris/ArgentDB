@@ -1,7 +1,6 @@
-import React, { useEffect, Component } from "react";
+import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ModalContainer, ModalLink } from "react-router-modal";
-import Cookies from "js-cookie";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -86,8 +85,6 @@ class App extends Component {
 
   render() {
     document.title = "Argent DB";
-    console.log("Stae Deck", this.state.currentDeck);
-    console.log("State Deck order", this.state.decks);
     return (
       <BrowserRouter>
         <div>

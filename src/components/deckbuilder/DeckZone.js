@@ -47,9 +47,14 @@ export default class DeckZone extends Component {
               {this.props.cards.map((card, index) => (
                 <Card
                   key={card.id}
+                  deck={this.props.deck.id}
                   card={card}
                   index={index}
                   breakPoint={this.props.breakPoint}
+                  increase={this.props.increase}
+                  decrease={this.props.decrease}
+                  remove={this.props.remove}
+                  copySB={this.props.copySB}
                 />
               ))}
               {provided.placeholder}

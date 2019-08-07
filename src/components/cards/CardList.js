@@ -110,8 +110,6 @@ export default class CardList extends Component {
     let currentDeck = this.state.currentDeck;
     let exists = false;
     Object.entries(currentDeck).forEach(([key, val]) => {
-      console.log("key", key);
-      console.log("val", val);
       if (val.index === index) {
         exists = true;
         if (val.quantity !== quantity) {

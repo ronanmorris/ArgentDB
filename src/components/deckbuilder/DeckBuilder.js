@@ -1,14 +1,6 @@
 import React, { Component } from "react";
-import uniqueId from "lodash/uniqueId";
-import cardDB from "../../CardDB.json";
 import "./DeckBuilder.css";
 import "css-reset-and-normalize";
-import deckIcon from "../../deckicon.svg";
-import {
-  LazyLoadImage,
-  LazyLoadComponent
-} from "react-lazy-load-image-component";
-import Tippy from "@tippy.js/react";
 import DeckZone from "./DeckZone";
 import { DragDropContext } from "react-beautiful-dnd";
 
@@ -128,6 +120,51 @@ export default class DeckBuilder extends Component {
     this.props.updateDeckOrder(newState.decks);
   };
 
+  increaseQuantity = (deck, index) => {
+    let currentDeck = this.state.currentDeck;
+    let decks = this.state.decks;
+    let id = decks[deck].cards[index];
+    currentDeck[id].quantity = (
+      parseInt(currentDeck[id].quantity) + 1
+    ).toString();
+    this.props.updateDeck(currentDeck);
+  };
+
+  decreaseQuantity = (deck, index) => {
+    let currentDeck = this.state.currentDeck;
+    let decks = this.state.decks;
+    let id = decks[deck].cards[index];
+    if (currentDeck[id].quantity > 0) {
+      currentDeck[id].quantity = (
+        parseInt(currentDeck[id].quantity) - 1
+      ).toString();
+      this.props.updateDeck(currentDeck);
+    }
+  };
+
+  removeFromDeck = (deck, index) => {
+    let currentDeck = this.state.currentDeck;
+    let decks = this.state.decks;
+    let id = decks[deck].cards[index];
+    decks[deck].cards.splice(index, 1);
+    delete currentDeck[id];
+    this.props.updateDeckOrder(decks);
+    this.props.updateDeck(currentDeck);
+  };
+
+  copyToSideBoard = (deck, index) => {
+    let currentDeck = this.state.currentDeck;
+    let decks = this.state.decks;
+    let cardId = decks[deck].cards[index];
+    let newIndex = Object.keys(currentDeck).length;
+    currentDeck[newIndex] = JSON.parse(JSON.stringify(currentDeck[cardId]));
+    currentDeck[newIndex].id = newIndex.toString();
+    currentDeck[newIndex].quantity = "1";
+    decks.deckSide.cards.push(newIndex.toString());
+    this.props.updateDeckOrder(decks);
+    this.props.updateDeck(currentDeck);
+  };
+
   PrintMain = breakPoint => {
     const deck = this.state.decks["deckMain"];
     const cards = deck.cards.map(card => this.state.currentDeck[card]);
@@ -140,6 +177,10 @@ export default class DeckBuilder extends Component {
         cards={cards}
         breakPoint={breakPoint}
         amount={amount}
+        increase={this.increaseQuantity.bind(this)}
+        decrease={this.decreaseQuantity.bind(this)}
+        remove={this.removeFromDeck.bind(this)}
+        copySB={this.copyToSideBoard.bind(this)}
       />
     );
   };
@@ -156,6 +197,10 @@ export default class DeckBuilder extends Component {
         cards={cards}
         breakPoint={breakPoint}
         amount={amount}
+        increase={this.increaseQuantity.bind(this)}
+        decrease={this.decreaseQuantity.bind(this)}
+        remove={this.removeFromDeck.bind(this)}
+        copySB={this.copyToSideBoard.bind(this)}
       />
     );
   };
@@ -172,6 +217,10 @@ export default class DeckBuilder extends Component {
         cards={cards}
         breakPoint={breakPoint}
         amount={amount}
+        increase={this.increaseQuantity.bind(this)}
+        decrease={this.decreaseQuantity.bind(this)}
+        remove={this.removeFromDeck.bind(this)}
+        copySB={this.copyToSideBoard.bind(this)}
       />
     );
   };
@@ -188,6 +237,10 @@ export default class DeckBuilder extends Component {
         cards={cards}
         breakPoint={breakPoint}
         amount={amount}
+        increase={this.increaseQuantity.bind(this)}
+        decrease={this.decreaseQuantity.bind(this)}
+        remove={this.removeFromDeck.bind(this)}
+        copySB={this.copyToSideBoard.bind(this)}
       />
     );
   };
@@ -204,6 +257,10 @@ export default class DeckBuilder extends Component {
         cards={cards}
         breakPoint={breakPoint}
         amount={amount}
+        increase={this.increaseQuantity.bind(this)}
+        decrease={this.decreaseQuantity.bind(this)}
+        remove={this.removeFromDeck.bind(this)}
+        copySB={this.copyToSideBoard.bind(this)}
       />
     );
   };
@@ -220,13 +277,17 @@ export default class DeckBuilder extends Component {
         cards={cards}
         breakPoint={breakPoint}
         amount={amount}
+        increase={this.increaseQuantity.bind(this)}
+        decrease={this.decreaseQuantity.bind(this)}
+        remove={this.removeFromDeck.bind(this)}
+        copySB={this.copyToSideBoard.bind(this)}
       />
     );
   };
 
   render() {
     let windowWidth = this.state.windowWidth;
-    let isMobile = windowWidth <= 576;
+    // let isMobile = windowWidth <= 576;
     let breakPoint =
       windowWidth < 576
         ? "xs"
@@ -271,6 +332,7 @@ export default class DeckBuilder extends Component {
               <div className="col-6 col-sm-6 col-md-6 col-lg-5 mr-auto pl-1">
                 {PrintSpirit}
                 {PrintTower}
+                {PrintShard}
                 {PrintSide}
               </div>
               <div className="col-4"></div>

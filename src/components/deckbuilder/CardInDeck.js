@@ -114,23 +114,52 @@ const Quantity = styled.div`
 `;
 
 export default class CardInDeck extends Component {
-  QuantityButtons = id => {
+  QuantityButtons = (deck, index) => {
     return (
-      <div className="btn-group">
-        <button
-          type="button"
-          className="btn btn-danger"
-          onClick={this.props.adjustQuantity(id, "decrease")}
-        >
-          -
-        </button>
-        <button
-          type="button"
-          className="btn btn-info"
-          onClick={this.props.adjustQuantity(id, "increase")}
-        >
-          +
-        </button>
+      <div>
+        <div className="btn-group mr-3">
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={() => {
+              this.props.remove(deck, index);
+            }}
+          >
+            X
+          </button>
+        </div>
+
+        <div className="btn-group">
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={() => {
+              this.props.decrease(deck, index);
+            }}
+          >
+            -
+          </button>
+          <button
+            type="button"
+            className="btn btn-info"
+            onClick={() => {
+              this.props.increase(deck, index);
+            }}
+          >
+            +
+          </button>
+        </div>
+        <div className="btn-group ml-2">
+          <button
+            type="button"
+            className="btn btn-info"
+            onClick={() => {
+              this.props.copySB(deck, index);
+            }}
+          >
+            +SB
+          </button>
+        </div>
       </div>
     );
   };
@@ -150,9 +179,17 @@ export default class CardInDeck extends Component {
               imageUrl={"/img/" + this.props.card.index + ".jpg"}
               breakPoint={this.props.breakPoint}
             ></ImageHolder>
-            <Quantity breakPoint={this.props.breakPoint}>
-              {this.props.card.quantity}
-            </Quantity>
+            <Tippy
+              content={this.QuantityButtons(this.props.deck, this.props.index)}
+              distance="3"
+              interactive="true"
+              duration={[275, 550]}
+              arrow={true}
+            >
+              <Quantity breakPoint={this.props.breakPoint}>
+                {this.props.card.quantity}
+              </Quantity>
+            </Tippy>
             <CardName breakPoint={this.props.breakPoint}>
               {this.props.card.name}
             </CardName>

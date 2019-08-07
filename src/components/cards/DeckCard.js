@@ -34,7 +34,6 @@ export default class DeckCard extends Component {
   }
 
   render() {
-    console.log(this.state.imageUrl);
     let quantity = this.state.quantity;
     if (quantity === "1") {
       return (
