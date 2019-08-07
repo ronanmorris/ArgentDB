@@ -520,7 +520,7 @@ export default class CardList extends Component {
     //variables for filtering results
     const filter = this.state.search.toLowerCase();
     let currentList = this.state.cards;
-    let filteredCards = currentList;
+    let filteredCards = JSON.parse(JSON.stringify(currentList));
     let filterMap;
 
     //only filter if there is some query set
@@ -759,7 +759,7 @@ export default class CardList extends Component {
         filteredCards.sort(this.functionSortNewest);
       } else if (this.state.sortOldest) {
         filteredCards.sort(this.functionSortOldest);
-      } else {
+      } else if (this.state.sortNumerical) {
         filteredCards.sort(this.functionSortNumerical);
       }
 
@@ -780,12 +780,12 @@ export default class CardList extends Component {
         </div>
       ));
     } else {
-      filteredCards = this.state.cards;
+      filteredCards = JSON.parse(JSON.stringify(this.state.cards));
       if (this.state.sortNewest) {
         filteredCards.sort(this.functionSortNewest);
       } else if (this.state.sortOldest) {
         filteredCards.sort(this.functionSortOldest);
-      } else {
+      } else if (this.state.sortNumerical) {
         filteredCards.sort(this.functionSortNumerical);
       }
       filterMap = filteredCards.slice(0, this.state.showItems).map(card => (
